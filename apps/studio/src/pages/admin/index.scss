@@ -1,0 +1,37 @@
+@import '../../style/aiui_mixin.scss';
+
+.admin-container {
+  min-height: calc(100vh - 200px);
+
+  .no-permission {
+    text-align: center;
+    @include aiui-ui-13;
+    @include aiui-text-secondary;
+    margin-top: 200px;
+
+    .desc{
+        margin-top: 20px;
+    }
+  }
+
+  .user-attr-container {
+    display: flex;
+    flex-direction: row;
+
+    .left {
+      flex: 1;
+      flex-direction: column;
+      display: flex;
+      align-items: flex-start;
+
+      p {
+        @include aiui-ui-13;
+        margin-bottom: 0;
+
+        &:not(:last-child) {
+          margin-bottom: 10px;
+        }
+      }
+    }
+  }
+}

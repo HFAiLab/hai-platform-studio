@@ -1,0 +1,56 @@
+{
+  "studio": {},
+  "ailab-server": {
+    // [必填] bff 通用请求的 token
+    "bff_admin_token": "",
+    // [必填] bff 接入层服务暴露的端口
+    "studio_port": 9700,
+    // [必填] bff 接入层地址（调试的话可以直接填写类似 http://127.0.0.1:9700）
+    "bff_url": "",
+    // [必填] bff 的 websocket 服务 url（调试的话可以直接填写类似 ws://127.0.0.1:9700）
+    "ws_url": "",
+    // [必填] jupyter 默认的 url 前缀
+    "studio_jupyter_url": "",
+    // [必填] 集群后端 url
+    "cluster_server_url": "",
+    // [必填] 集群后端的 redis
+    "studio_cluster_redis": "",
+    // [必填] 集群后端的 pgsql
+    "studio_cluster_pgsql": "",
+    // [必填] studio bff 独立使用的 redis
+    "studio_bff_redis": "",
+    // [必填] studio bff 的 redis，实际使用的 db
+    "bff_redis_db": 11,
+    // [必填] 实验的默认分组
+    "scheduler_default_group": "",
+    // [必填] 手动禁用节点的分组
+    "scheduler_error_node_meta_group": "",
+    // [必填] jupyter 共享开发容器的分组前缀，如果不填写无法启动开发容器
+    "jupyter_shared_node_group_prefix": "",
+    // 广场模块的搜索引擎
+    "studio_meili_search_url": "",
+    // 广场模块的搜索引擎秘钥
+    "studio_meili_search_key": "",
+    // countly 的 url
+    "studio_countly_url": "",
+    // countly 的 key
+    "studio_countly_api_key": "",
+    // 外部用户归档任务使用的 user_token
+    // 任务归属于一个特定的打包用户 ext_user_archiver，查日志需要用此 token
+    "studio_archive_external_user_token": "",
+    // 是否开启 fetion 上报
+    "enable_fetion_report": false,
+    // 是否开启线上调试，开启后会多一些日志
+    "enable_online_debug": false,
+    // 创建外部账号VPN账号用的API，一般不用填
+    "vpn_url": "",
+    // 创建外部集群账号用的API，一般不用填
+    "neptune_url": "",
+    // 外部用户查看和申请MIG时用的API，一般不用填
+    "mig_url": "",
+    // 广场模块 线上静态文件存放路径
+    "studio_xtopic_static_online_path": "",
+    // 广场模块 线上静态文件服务，出于性能考虑建议独立部署此服务
+    "studio_xtopic_static_online_uri": ""
+  }
+}

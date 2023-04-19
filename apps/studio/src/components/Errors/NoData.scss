@@ -1,0 +1,20 @@
+@import '../../style/aiui_mixin.scss';
+
+.no-data-error-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 22px;
+    // 最小高度在 Table 的配置中有定义
+    svg {
+        width: 40px;
+        height: 40px;
+    }
+
+    .no-data-tip {
+        margin: auto;
+        margin-top: 10px;
+        @include aiui-paragraph-14;
+        @include aiui-text-secondary;
+    }
+}

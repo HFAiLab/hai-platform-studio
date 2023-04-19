@@ -1,0 +1,29 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "composite": true,
+    "module": "ES2020",
+    "moduleResolution": "node",
+    "outDir": "lib",
+    "rootDir": "src",
+    "typeRoots": [
+      "./node_modules/@types",
+      "../node_modules/@types",
+      "../../node_modules/@types",
+      "./src/@types",
+      "../src/@types"
+    ],
+    "paths": {
+      "react": ["./node_modules/@types/react"]
+    },
+    "baseUrl": "."
+  },
+  "include": [
+    "src/**/*",
+    "src/**/*.json",
+    "src/**/*.svg",
+    "src/**/*.tsx",
+    "src/**/*.js",
+    "src/**/*.ts"
+  ]
+}

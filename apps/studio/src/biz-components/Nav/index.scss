@@ -1,0 +1,136 @@
+@import '../../style/aiui_mixin.scss';
+@import '../../style/common.scss';
+@import '../../style/z-index.scss';
+
+.app-nav-bar {
+  z-index: $nav-bar-z-index;
+  min-width: 978px;
+
+  // top: 30px !important;
+
+  .hai-nav-logo-container {
+    height: 26px;
+    display: block;
+  }
+
+  .lan-active {
+    @include aiui-text-primary;
+  }
+
+  .lan-not-active {
+    @include aiui-text-other;
+  }
+
+  .nav-user-name {
+    // hint: 这里因为默认反色，无法直接使用 mixin
+    @include aiui-text-secondary;
+    &.active {
+      @include aiui-text-primary;
+    }
+  }
+
+  .hfai-nav-item.user {
+    margin-right: 0;
+  }
+
+  .hai-nav-logo {
+    width: 162px;
+    height: 26px;
+    margin-right: 60px;
+  }
+
+  .hai-nav-only-logo {
+    width: 26px;
+    height: 26px;
+    margin-right: 20px;
+    display: none;
+  }
+
+  .hfai-nav-item {
+    margin-right: 20px;
+  }
+
+  .nav-icon-user {
+    margin-right: 5px;
+    opacity: 0.6;
+    &.active {
+      opacity: 1;
+    }
+  }
+
+  &.in-other-user {
+    background: linear-gradient(
+      45deg,
+      var(--nav-back-color-highlight) 25%,
+      #1f2533 0,
+      #1f2533 50%,
+      var(--nav-back-color-highlight) 0,
+      var(--nav-back-color-highlight) 75%,
+      #1f2533 0
+    );
+    background-size: 30px 30px;
+  }
+
+  .nav-current-other-user {
+    margin-left: 10px;
+    color: $gray5;
+    &.active {
+      color: $light-gray3;
+    }
+    .nav-current-other-user-icon {
+      cursor: pointer;
+    }
+  }
+
+  &.hai-ui-dark {
+    .lan-active {
+      color: white;
+    }
+
+    .lan-not-active {
+      color: grey;
+    }
+
+    .nav-user-name {
+      // hint: 这里因为默认反色，无法直接使用 mixin
+      color: $gray5;
+      &.active {
+        color: $light-gray3;
+      }
+    }
+  }
+
+  .xtopic-nav-button {
+    position: relative;
+    &.beta-badge:after {
+      content: 'Beta';
+      color: white;
+      background-color: var(--hai-ui-green4);
+      font-size: 12px;
+      border-radius: 2px;
+      padding-left: 4px;
+      padding-right: 4px;
+      line-height: 14px;
+      position: absolute;
+      top: -6px;
+      right: -8px;
+    }
+    .hfai-nav-item-badge {
+      // content: 'Beta';
+      position: absolute;
+      right: -8px;
+      top: -8px;
+    }
+  }
+}
+
+@media screen and (max-width: $min_screen_width) {
+  .app-nav-bar {
+    .hai-nav-only-logo {
+      display: block;
+    }
+    .hai-nav-logo {
+      display: none;
+    }
+  }
+}

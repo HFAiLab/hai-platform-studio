@@ -1,0 +1,35 @@
+{
+  "name": "@hai-platform/studio-toolkit",
+  "version": "0.19.0-alpha.1681870131.da1d707d",
+  "main": "./lib/cjs/index.js",
+  "module": "./lib/esm/index.js",
+  "types": "./lib/esm/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "pnpm run build:esm && pnpm run build:cjs",
+    "build-pkg": "pnpm run build",
+    "build:cjs": "tsc --outDir lib/cjs --module commonjs",
+    "build:esm": "tsc --outDir lib/esm --module es2020",
+    "test": "vitest run",
+    "watch": "npm-run-all --parallel watch:esm watch:cjs",
+    "watch:cjs": "pnpm run build:cjs --watch",
+    "watch:esm": "pnpm run build:esm --watch"
+  },
+  "dependencies": {
+    "@hai-platform/countly-sdk-web": "20.11.3-beta5",
+    "@hai-platform/logger": "^0.3.3",
+    "@hai-platform/shared": "workspace:*",
+    "@hai-platform/studio-schemas": "workspace:*",
+    "dayjs": "^1.10.7",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "@types/uuid": "8.3.4",
+    "vitest": "^0.9.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

@@ -1,0 +1,31 @@
+export const DEFAULT_USERS_TRAINING_TASKS_TABLE_COLUMN_KEYS = [
+  'nickname',
+  'queueing_task_num',
+  'gpu_node_num__EXTREME_HIGH',
+  'gpu_node_num__VERY_HIGH',
+  'gpu_node_num__HIGH',
+  'gpu_node_num__ABOVE_NORMAL',
+  'gpu_node_num__BELOW_NORMAL',
+  'gpu_node_num__LOW',
+  'gpu_node_num__A',
+  'gpu_node_num__B',
+  'gpu_node_num__all',
+  'cpu_node_num__EXTREME_HIGH',
+  'cpu_node_num__VERY_HIGH',
+  'cpu_node_num__HIGH',
+  'cpu_node_num__ABOVE_NORMAL',
+  'cpu_node_num__A',
+  'cpu_node_num__B',
+  'cpu_node_num__all',
+  'working_task_num__all',
+]
+
+export const QUOTA_COLUMNS = [
+  'quota__EXTREME_HIGH',
+  'quota__VERY_HIGH',
+  'quota__HIGH',
+  'quota__NORMAL',
+  'quota__ABOVE_NORMAL',
+  'quota__BELOW_NORMAL',
+  'quota__LOW',
+]

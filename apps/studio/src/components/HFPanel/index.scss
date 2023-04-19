@@ -1,0 +1,81 @@
+@import '../../style/aiui_mixin.scss';
+@import '../../style/variables.scss';
+
+.hf-panel {
+  background-color: var(--hai-ui-layout-1);
+  width: 100%;
+  height: fit-content;
+  position: relative;
+
+  .header-container {
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    height: 42px;
+    border-bottom: 1px solid var(--hai-ui-light-gray5);
+
+    .hf-panel-title-icon {
+      margin-right: 10px;
+    }
+
+    .hf-panel-title-dnd-drag {
+      margin-right: 2px;
+    }
+
+    .collapse-handler {
+      margin-right: 10px;
+      cursor: pointer;
+    }
+  }
+
+  h2 {
+    color: var(--hf-ui-font-color1);
+    margin: -16px 0 0;
+    height: 54px;
+    font-size: 14px;
+    line-height: 54px;
+    font-weight: 500;
+  }
+
+  .hf-panel-title {
+    @include aiui-h6r;
+    @include aiui-text-primary;
+  }
+
+  // &:hover {
+  // box-shadow: 0 0 2px var(--hfapp-layout-color5);
+  // }
+  &.shadow {
+    box-shadow: 1px 2px 2px 0px rgba(0, 0, 0, 0.05);
+    border-radius: 4px;
+  }
+
+  &.panel-hide {
+    display: none;
+  }
+
+  .children-container {
+    position: relative;
+    min-height: 60px;
+    padding: 25px;
+    &.nano-top-padding {
+      // 有的内容组件本身带不少上部空间，在此收窄 pd-top
+      padding-top: 16px;
+    }
+    &.no-padding {
+      padding: 0;
+    }
+  }
+
+  &.docPanel {
+    padding: 40px;
+  }
+}
+
+.#{$ns}-dark {
+  .hf-panel {
+    background-color: var(--hai-ui-layout-1);
+  }
+}

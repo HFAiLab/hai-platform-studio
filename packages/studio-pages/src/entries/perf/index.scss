@@ -1,0 +1,99 @@
+.hf.perf {
+    padding: 10px;
+    overflow: auto;
+    background: var(--jp-layout-color1);
+
+    .u-tooltip {
+        font-size: 10pt;
+        line-height: 1.2em;
+        color: var(--hf-ui-font-color1);
+        position: absolute;
+        background: var(--jp-layout-color1);
+        opacity: 0.8;
+        display: none;
+        border: 1px solid var(--hf-ui-highlight-bg);
+        padding: 4px;
+        pointer-events: none;
+        z-index: 100;
+        white-space: pre;
+        font-family: monospace;
+        text-align: left;
+    }
+
+    .loading {
+        font-size: 20px;
+        text-align: center;
+        margin-top: 100px;
+        color: var(--hf-ui-font-color3)
+    }
+
+    .chart-block {
+        box-sizing: border-box;
+        min-width: 600px;
+
+
+        .control {
+            color: var(--hf-ui-font-color2);
+            font-size: 14px;
+            position: relative;
+
+            .left {
+                float: left
+            }
+
+            .right {
+                float: right
+            }
+        }
+
+        .task-name {
+            color: var(--hf-ui-font-color1);
+            margin-top: 12px;
+            text-align: center;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            word-break: break-all;
+        }
+
+        .chart-wrapper {
+            color: var(--hf-ui-font-color1);
+
+            .err-msg {
+                text-align: center;
+                height: 30px;
+                margin-top: 30px;
+                color: rgb(233, 119, 119);
+            }
+
+            // 防止 tooltip 跑外面去顶出滚动条
+            .u-wrap {
+                overflow: hidden;
+            }
+        }
+
+        .chain-id {
+            margin-top: 6px;
+            margin-bottom: 0px;
+            text-align: left;
+            font-size: 10px;
+            color: var(--hf-ui-font-color2);
+            text-align: center;
+
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            word-break: break-all;
+        }
+
+        .mr20 {
+            margin-right: 20px;
+        }
+
+        .ml10 {
+            margin-left: 10px;
+        }
+
+
+    }
+}

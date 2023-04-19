@@ -1,0 +1,90 @@
+@import '../../../../style/aiui_mixin.scss';
+@import '../../../../style/z-index.scss';
+
+/* ------------variable---------- */
+// 颜色定义：
+@import '@hai-ui/colors/src/_colors.scss';
+
+.percentage-bar-container {
+  overflow: visible;
+  position: relative;
+
+  .percentage-bar {
+    height: 5px;
+    width: 100%;
+    background-color: var(--hai-ui-light-gray4);
+    display: flex;
+  }
+
+  .percentage-bar-tip {
+    @include aiui-paragraph-14;
+    @include aiui-text-secondary;
+
+    .tip-li {
+      display: flex;
+      .tip-li-key {
+        display: block;
+        min-width: 80px;
+      }
+
+      .tip-li-value {
+        word-break: keep-all;
+        width: max-content;
+      }
+
+      &.custom-tip {
+        margin-top: 3px;
+        @include aiui-paragraph-12;
+        @include aiui-text-other;
+      }
+    }
+  }
+
+  &:hover {
+    .percentage-bar-tip {
+      display: flex;
+    }
+  }
+
+  .segment {
+    height: 100%;
+    &:not(:last-child) {
+      border-right: 1px solid var(--hai-ui-layout-1);
+    }
+  }
+
+  .primary {
+    background-color: rgba($blue4, 1);
+    &:hover {
+      background-color: rgba($blue4, 0.8);
+    }
+  }
+
+  .danger {
+    background-color: rgba($red4, 0.15);
+    &:hover {
+      background-color: rgba($red4, 0);
+    }
+  }
+
+  .none {
+    background-color: rgba($gray4, 1);
+    &:hover {
+      background-color: rgba($gray4, 0.8);
+    }
+  }
+
+  .success {
+    background-color: rgba($green4, 1);
+    &:hover {
+      background-color: rgba($green4, 0.8);
+    }
+  }
+
+  .warn {
+    background-color: rgba($orange4, 1);
+    &:hover {
+      background-color: rgba($orange4, 0.8);
+    }
+  }
+}

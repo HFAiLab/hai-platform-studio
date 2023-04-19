@@ -1,0 +1,49 @@
+.date-range-container {
+  position: relative;
+  .date-range-popover {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--hai-ui-layout-1);
+    padding: 10px;
+    display: none;
+    flex-direction: column;
+    z-index: 20; // inline-dialog-z-index
+    box-shadow: 0 0 0 1px rgb(17 20 24 / 10%), 0 2px 4px rgb(17 20 24 / 20%),
+      0 8px 24px rgb(17 20 24 / 20%);
+
+    &.show {
+      display: block;
+    }
+  }
+
+  .quick-select {
+    margin-bottom: 10px;
+    flex-wrap: nowrap;
+    display: flex;
+    width: max-content;
+
+    button {
+      word-break: keep-all;
+      margin-right: 10px;
+    }
+  }
+
+  .date-select-line {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    .label {
+      min-width: 120px;
+      margin-right: 10px;
+    }
+  }
+
+  .date-operation {
+    display: flex;
+    flex-direction: row-reverse;
+    button {
+      margin-left: 10px;
+    }
+  }
+}

@@ -1,0 +1,68 @@
+@import '../../style/variables.scss';
+
+.layout-container {
+  padding: 20px;
+  .layout-title {
+    h1 {
+      color: var(--hf-ui-font-color1);
+      font-size: 24px;
+    }
+  }
+}
+
+.hf-layout {
+  display: flex;
+
+  &.horizontal {
+    flex-direction: row;
+    > * {
+      height: auto; // 高度自适应撑满
+      &:nth-child(n + 2) {
+        margin-left: 20px;
+      }
+    }
+  }
+
+  &.vertical {
+    flex-direction: column;
+    > * {
+      width: auto; // 宽度自适应撑满
+      &:nth-child(n + 1) {
+        margin-bottom: 20px;
+      }
+    }
+  }
+}
+
+.page-layout-outer-container {
+  // background-color: var(--hai-ui-layout-bg);
+  // height: calc(100vh - 50px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-bottom: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 70px;
+
+  margin: auto;
+
+  // 宽度不够的时候，页面出现横向滚动条：
+  width: max-content;
+
+  &.responsive {
+    width: 100%;
+  }
+
+  .page-layout-inner-container {
+    margin: auto;
+    width: 1390px;
+    // min-width: 1390px; //1440 -20 -20 -10
+    // max-width: 1980px;
+
+    &.responsive {
+      width: 100%;
+      max-width: 1390px;
+      min-width: $min_screen_width;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+@import '../../../style/aiui_mixin.scss';
+
+.xtopic-bulletin {
+  .content {
+    @include aiui-paragraph-13;
+    @include aiui-text-secondary;
+    text-align: center;
+  }
+}

@@ -1,0 +1,26 @@
+.debug-editor-container {
+  width: 100%;
+  margin-top: 20px;
+  .#{$ns}-form-group {
+    display: block;
+  }
+  .one-line {
+    display: flex;
+    min-width: 300px;
+
+    .#{$ns}-input-group {
+      min-width: 300px;
+    }
+    button {
+      margin-left: 5px;
+    }
+  }
+  align-items: center;
+
+  .operations {
+    display: flex;
+    button {
+      margin-right: 10px;
+    }
+  }
+}

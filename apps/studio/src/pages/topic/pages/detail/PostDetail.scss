@@ -1,0 +1,152 @@
+@import '../../../../style/aiui_mixin.scss';
+
+.xtopic-detail-panel {
+  .xtopic-notfound {
+    @include aiui-h4r;
+    @include aiui-text-other;
+    text-align: center;
+    padding: 100px 0;
+  }
+  .detail-header {
+    display: flex;
+    flex-direction: row;
+    .tags {
+      flex: 1;
+    }
+  }
+
+  .title {
+    @include aiui-h3;
+    @include aiui-text-primary;
+    margin-top: 14px;
+    word-break: break-word;
+  }
+  .meta {
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
+    padding-bottom: 14px;
+    @include aiui-ui-14;
+    @include aiui-text-secondary;
+    .avatar {
+      width: 30px;
+      height: 30px;
+      margin-right: 10px;
+      border-radius: 50%;
+    }
+    .xtopic-upvote-btn-wrapper {
+      margin-left: 40px;
+    }
+    span.nickname {
+      @include aiui-text-primary;
+      margin-right: 10px;
+    }
+  }
+  .post-content {
+    margin-top: 14px;
+    margin-bottom: 14px;
+  }
+  .content-container {
+    margin-top: 14px;
+    margin-bottom: 14px;
+  }
+  .footer-meta {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 24px;
+    .right {
+      display: flex;
+      align-items: center;
+      @include aiui-ui-13;
+      @include aiui-text-secondary;
+      .more-menu {
+        margin-right: 20px;
+      }
+    }
+  }
+}
+.xtopic-detail-reply-count {
+  display: flex;
+  justify-content: space-between;
+  &.bottom {
+    justify-content: center;
+  }
+  align-items: center;
+  margin: 20px 20px 0 20px;
+  .pagi {
+    display: flex;
+    align-items: center;
+    .pagi-show {
+      margin-right: 20px;
+      @include aiui-ui-13;
+      @include aiui-text-other;
+    }
+  }
+  .count {
+    @include aiui-h6;
+    @include aiui-text-secondary;
+    &.no-reply {
+      @include aiui-ui-13;
+      font-weight: normal;
+    }
+  }
+}
+
+.xtopic-detail-container {
+  .reply-list-panel {
+    margin-top: 20px;
+  }
+
+  .reply-recent-open {
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+    background-color: transparent;
+    // font-style: italic;
+    @include aiui-ui-14;
+    @include aiui-text-other;
+  }
+  .add-insert-editor-container {
+    width: 100%;
+    display: flex;
+    .add-insert-editor-btn {
+      width: 216px;
+      margin: auto;
+      margin-top: 20px;
+    }
+  }
+
+  .xtopic-detail-skeleton {
+    .top-placeholder {
+      width: 100%;
+      height: 24px;
+      margin-bottom: 14px;
+    }
+    .title-placeholder {
+      width: 100%;
+      height: 25px;
+      margin-bottom: 14px;
+    }
+    .meta-placeholder {
+      width: 40%;
+      height: 30px;
+      margin-bottom: 14px;
+    }
+    .content-placeholder {
+      width: 100%;
+      height: 24px;
+      margin-bottom: 10px;
+    }
+  }
+
+  .xtopic-detail-error-container {
+    min-height: 200px;
+  }
+
+  .detail-empty-placeholder {
+    @include aiui-ui-14;
+    @include aiui-text-other;
+    padding-top: 20px;
+    font-style: italic;
+  }
+}

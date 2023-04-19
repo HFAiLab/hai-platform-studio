@@ -1,0 +1,591 @@
+@import '../../components/Input/index.scss';
+@import '../../style/aiui_mixin.scss';
+@import '../../style/variables.scss';
+@import '../../style/z-index.scss';
+
+$ContainerRowHeight: 46px;
+
+.container-list-wrapper {
+  position: relative;
+  min-height: 60vh;
+}
+
+.container-creator-btn-container {
+  margin-bottom: 20px;
+  display: flex;
+
+  .creator-btn-in-list {
+    margin-right: 10px;
+  }
+  .creator-spot-btn-in-list {
+    background-color: var(--hai-ui-turquoise3);
+    &:hover {
+      background-color: var(--hai-ui-turquoise2);
+    }
+  }
+}
+
+.spot-btn-mask-container {
+  position: relative;
+  .spot-btn-mask {
+    &.active {
+      cursor: not-allowed;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      z-index: 1;
+      position: absolute;
+    }
+  }
+}
+
+.container-spot-tag {
+  background-color: var(--hai-ui-turquoise3);
+  margin-right: 5px;
+}
+
+.container-group-header {
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  background-color: var(--hai-ui-light-gray4);
+  border-bottom: 1px solid var(--hai-ui-gray5);
+  cursor: pointer;
+  .title {
+    color: var(--hai-ui-text-secondary);
+    @include aiui-h5;
+  }
+  .invoke-suspend {
+    margin-left: 10px;
+  }
+  .quota {
+    margin-left: 20px;
+    line-height: 15px;
+  }
+  .quota-used-up {
+    margin-left: 10px;
+    color: white;
+  }
+  .group-header-expand {
+    flex: 1;
+  }
+  .group-header-icon {
+    transition: 0.5s;
+    transform: rotate(0);
+    &.collapse {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.container-unit {
+  padding-top: 20px;
+  padding-bottom: 25px;
+  transition: 0.3s;
+
+  width: calc(100%);
+  padding-left: 10px;
+  position: relative;
+  padding-right: 10px;
+  padding-left: 15px;
+
+  &.running {
+    background-color: var(--hfapp-running-highlight);
+  }
+
+  &:not(:last-child) {
+    padding-bottom: 15px;
+    &:after {
+      position: absolute;
+      content: ' ';
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 1px;
+      width: 100%;
+      background-color: var(--hai-ui-light-gray2);
+    }
+  }
+}
+
+.common-container-header-name {
+  font-weight: bold;
+  min-width: 180px;
+  max-width: 180px;
+  @include overflow-ellipsis;
+  @include aiui-h5;
+  @include aiui-text-other;
+  &.active {
+    @include aiui-text-primary;
+  }
+  &.small {
+    @include aiui-paragraph-12;
+    min-width: 100px;
+    max-width: 100px;
+  }
+}
+
+.container-unit-header {
+  height: 34px;
+  display: flex;
+  margin-bottom: 10px;
+  // background-color: var(--hf-layout-light);
+  background-color: 35px;
+  align-items: center;
+  @include aiui-text-secondary;
+  .header-status {
+    font-weight: bold;
+    min-width: 120px;
+  }
+  .header-expand {
+    flex: 1;
+  }
+}
+
+.container-unit-li {
+  &:not(:last-child) {
+    margin-right: 15px;
+  }
+
+  &.header-op {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    .checkpoint-tooltip {
+      margin-right: 10px;
+    }
+
+    button {
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+    }
+  }
+
+  &.status {
+    min-width: 100px;
+    .status-info-active,
+    .status-info {
+      padding: 3px 10px;
+      font-weight: bold;
+    }
+    .status-info-active {
+      width: max-content;
+      color: white !important;
+      border-radius: 30px;
+      opacity: 0.9;
+
+      .status-quota-used-up-small {
+        font-size: 12px;
+        letter-spacing: -0.5px;
+      }
+    }
+    &.small {
+      min-width: 80px;
+    }
+  }
+}
+
+.header-db-attr {
+  min-width: 120px;
+  padding-right: 5px;
+  .db-attr-li {
+    &:not(:last-child) {
+      margin-bottom: 5px;
+    }
+
+    &.b {
+      font-weight: 500;
+    }
+  }
+  &.w95 {
+    min-width: 95px;
+  }
+  &.w160 {
+    min-width: 160px;
+  }
+  @include aiui-text-other;
+
+  &.second {
+    @include aiui-text-secondary;
+  }
+
+  &.highlight {
+    @include aiui-text-primary;
+  }
+}
+
+.container-unit-body {
+  display: flex;
+  flex-direction: column;
+  // background-color: var(--hai-ui-light-gray4);
+  padding: 0px 0 10px 0px;
+  // border-bottom: 1px solid var(--hai-ui-light-gray4);
+}
+
+.service-title,
+.nodeport-title {
+  text-align: left;
+  @include aiui-h6r;
+  @include aiui-text-other;
+  line-height: 1em;
+  padding-top: 8px;
+  padding-left: 25px;
+}
+
+.s-container {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  height: max-content;
+  .service-title,
+  .nodeport-title {
+    width: 100px;
+  }
+  &:not(:last-child) {
+    margin-bottom: 10px;
+  }
+}
+
+.service-list-container {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  height: max-content;
+  flex-wrap: wrap;
+}
+
+// 其实 nodeport-item 也是用了这些
+.service-item,
+.nodeport-item {
+  height: 46px;
+  background-color: #f4f4f4;
+  width: calc(50% - 10px);
+  padding: 8px 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-right: 10px;
+  border-radius: 4px;
+
+  &.wandering-item {
+    background-color: var(--hai-ui-light-gray5);
+  }
+
+  &:not(:nth-last-child(-n + 2)) {
+    margin-bottom: 10px;
+  }
+
+  .service-item-expand {
+    flex: 1;
+  }
+
+  .service-item-flex-attr {
+    flex: 1;
+    @include overflow-ellipsis;
+    @include aiui-text-secondary;
+    margin-right: 10px;
+  }
+
+  .item-attr-li {
+    min-width: max-content;
+    display: flex;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    > p,
+    > div,
+    > span {
+      margin-bottom: 0;
+      text-align: center;
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+    }
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+    .item-stopped-container {
+      display: block;
+      height: 14px;
+      margin-right: 5px !important;
+    }
+    .item-stopped {
+      width: 14px;
+      height: 14px;
+      fill: var(--hf-status-error);
+      margin-right: 0;
+    }
+    .li-title {
+      @include overflow-ellipsis;
+      @include aiui-text-secondary;
+    }
+    .li-info {
+      @include overflow-ellipsis;
+      @include aiui-text-primary;
+      line-height: 24px;
+
+      &.address {
+        cursor: pointer;
+        p {
+          margin-bottom: 0;
+        }
+      }
+    }
+    .jupyter-op {
+      &:not(:last-child) {
+        margin-right: 10px;
+      }
+    }
+    .service-log {
+      margin-right: 10px;
+    }
+    .item-btn-container {
+      display: block;
+      height: max-content;
+      position: relative;
+      &.disable {
+        // hint: 解决 disabled button 无法响应事件的问题
+        &:after {
+          position: absolute;
+          content: '';
+          width: 100%;
+          height: 100%;
+          top: 0;
+          bottom: 0;
+          right: 0;
+          left: 0;
+          z-index: 3;
+          cursor: not-allowed;
+        }
+      }
+    }
+    .item-tip-other {
+      @include aiui-text-other;
+    }
+  }
+}
+
+.nodeport-adder {
+  height: 46px;
+  display: flex;
+  align-items: center;
+  width: calc(50% - 10px);
+  .adder-btn {
+    width: 100%;
+    height: 46px;
+    border-style: dashed;
+  }
+}
+
+.nodeport-select-li {
+  height: 30px;
+  cursor: pointer;
+  margin-bottom: 0;
+  padding: 0 5px;
+  line-height: 30px;
+  &.active {
+    color: var(--hai-ui-blue1);
+    font-weight: bold;
+  }
+  &.disable {
+    cursor: not-allowed;
+    background-color: var(--hai-ui-light-gray4);
+    &:hover {
+      color: unset;
+    }
+  }
+  &:hover {
+    color: var(--hai-ui-blue1);
+  }
+}
+
+.create-node-port-dialog {
+  padding: 15px;
+  .node-port-dialog-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .node-port-selector {
+    margin-bottom: 15px;
+  }
+  .node-callout {
+    margin-bottom: 15px;
+  }
+  .node-port-show-btn {
+    width: 470px;
+    justify-content: space-between;
+    .#{$ns}-button-text {
+      max-width: 430px;
+      text-align: left;
+
+      @include overflow-ellipsis;
+    }
+  }
+}
+
+.container-meta-container {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  .search-input {
+    width: 200px;
+  }
+  .search-control {
+    margin-right: 5px;
+  }
+  p {
+    margin-bottom: 0;
+    line-height: 100%;
+    vertical-align: center;
+    &.total-count {
+      margin-left: 15px;
+    }
+  }
+  .search-icon-container {
+    height: 30px;
+    width: 24px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  .refresh-btn {
+    margin-left: 10px;
+  }
+}
+
+.wandering-nodeport-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  margin-bottom: 15px;
+}
+
+.wandering-nodeport-callout {
+  margin-bottom: 15px;
+  background-color: var(--hai-ui-light-gray5);
+}
+
+.wandering-header-name {
+  margin-bottom: 15px;
+  max-width: 100%;
+}
+
+.wandering-tip-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 15px;
+  .tip-text {
+    margin-right: 10px;
+    margin-bottom: 0;
+    @include aiui-text-secondary;
+  }
+}
+
+.container-log-container {
+  padding-bottom: 30px;
+  .container-log-container-sub-title {
+    font-size: 14px;
+    margin-left: 10px;
+    @include aiui-text-other;
+  }
+}
+
+.no-container-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+// overlay-mask,
+.checkpoint-mask {
+  z-index: $content-overlay-3;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--mask-background);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .loading-container {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    p {
+      color: white;
+      text-shadow: 0 0 6px black;
+    }
+  }
+
+  .lds-dual-ring {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+  }
+
+  .lds-dual-ring:after {
+    content: ' ';
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid #fff;
+    border-color: #fff transparent #fff transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+  }
+}
+
+.meta-container-expand {
+  flex: 1;
+}
+
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.service-item-logo {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  fill: #215db0;
+}
+
+.container-creator-drawer-wrapper {
+  padding: 0px 20px;
+  overflow: auto;
+}
+
+///
+/// dark mode 特殊适配的逻辑
+///
+
+.#{$ns}-dark {
+  .service-item,
+  .nodeport-item {
+    background-color: var(--hai-ui-light-gray4);
+    // 默认是灰色，体验不好
+    .hai-ui-text-overflow-ellipsis {
+      color: white;
+    }
+  }
+
+  .service-item-logo {
+    fill: #8abbff;
+  }
+}

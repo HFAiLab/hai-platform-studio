@@ -1,0 +1,24 @@
+@import '../../../../style/aiui_mixin.scss';
+.xtopic-admin-container {
+  border-top: 1px solid var(--hai-ui-layout-2);
+  padding-top: 20px;
+  @include aiui-text-secondary;
+  label {
+    min-width: 100px;
+  }
+  .sub-title {
+    @include aiui-h6;
+    @include aiui-text-primary;
+    margin-bottom: 10px;
+  }
+
+  .history-wrapper {
+    margin-top: 20px;
+  }
+}
+
+.trigger-create-dialog {
+  label {
+    min-width: 80px;
+  }
+}

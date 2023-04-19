@@ -1,0 +1,142 @@
+// @import '../../style/z-index.scss';
+
+.hf-loading-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9;
+  // hint: 当前逻辑下建议保留背景色为非透明颜色
+  background-color: var(--hai-ui-layout-1);
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.hf-loading-container {
+  .content-container {
+    margin: auto;
+    text-align: center;
+  }
+  .message {
+    color: var(--hai-ui-red1);
+    margin-bottom: 10px;
+  }
+  .error-container {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .error-load-data {
+      width: 40px;
+      height: 40px;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.lds-dual-ring {
+  margin: auto;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+}
+
+.lds-dual-ring:after {
+  content: ' ';
+  display: block;
+  width: 32px;
+  height: 32px;
+  margin: 4px;
+  border-radius: 50%;
+  border: 3px solid var(--hf-option-bg);
+  border-color: var(--hf-option-bg) transparent var(--hf-option-bg) transparent;
+  // 为保持一致性，现在在 js 层控制
+  // animation: lds-dual-ring 1.2s linear infinite;
+}
+
+// @keyframes lds-dual-ring {
+//   0% {
+//     transform: rotate(0deg);
+//   }
+//   100% {
+//     transform: rotate(360deg);
+//   }
+// }
+
+.lds-ellipsis {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  white-space: normal;
+  padding: 0;
+  margin: auto;
+}
+
+.lds-ellipsis div {
+  position: absolute;
+  top: 30px;
+  width: 14px;
+  height: 14px;
+  animation-timing-function: cubic-bezier(0, 1, 1, 0);
+  white-space: normal;
+}
+
+.lds-ellipsis div > svg {
+  width: 14px;
+  height: 14px;
+  display: block;
+}
+
+.lds-ellipsis div:nth-child(1) {
+  left: 8px;
+  animation: lds-ellipsis1 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(2) {
+  left: 8px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(3) {
+  left: 32px;
+  animation: lds-ellipsis2 0.6s infinite;
+}
+
+.lds-ellipsis div:nth-child(4) {
+  left: 56px;
+  animation: lds-ellipsis3 0.6s infinite;
+}
+
+@keyframes lds-ellipsis1 {
+  0% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(1) translate(0, 0) rotate(180deg);
+  }
+}
+
+@keyframes lds-ellipsis3 {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(0) rotate(180deg);
+  }
+}
+
+@keyframes lds-ellipsis2 {
+  0% {
+    transform: translate(0, 0);
+  }
+
+  100% {
+    transform: translate(24px, 0) rotate(180deg);
+  }
+}

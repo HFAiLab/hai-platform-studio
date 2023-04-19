@@ -1,0 +1,133 @@
+
+.hf .cell-container {
+    width: max-content;
+    display: inline-block;
+    margin: 8px 10px 0 0;
+}
+
+.hf .cell-flex-box {
+    justify-content: flex-start;
+    padding-bottom: 30px;
+    overflow-y: overlay;
+}
+
+.hf .job-cell {
+    border-width: 2px;
+    width: 30px;
+    height: 18px;
+    border-style: solid;
+    cursor: pointer;
+    line-height: 14px;
+    font-size: 14px;
+    font-weight: 600;
+
+    color: var(--hf-theme-color);
+    border-color: var(--hf-theme-color);
+    text-align: center;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    &:active {
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    &.failed {
+        border-color: var(--hf-status-error);
+        background-color: var(--hf-status-error);
+        color: white;
+        &:hover {
+            background-color: var(--hf-status-error);
+        }
+        &:active {
+            background-color: var(--hf-status-error);
+        }
+    }
+
+    &.stopped {
+        border-color: var(--hf-status-stopped);
+        color: var(--hf-status-stopped);
+    }
+
+    &.succeeded {
+        border-color: var(--hf-status-succeed);
+        color: var(--hf-status-succeed);
+    }
+}
+
+
+.hf .job-cell2 {
+    border-width: 2px;
+    width: 90px;
+    height: 28px;
+    border-style: solid;
+    cursor: pointer;
+    line-height: 24px;
+    font-size: 13px;
+    font-weight: 600;
+
+    color: var(--hf-theme-color);
+    border-color: var(--hf-theme-color);
+    text-align: center;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    &:active {
+        background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    &.failed {
+        border-color: var(--hf-status-error);
+        background-color: var(--hf-status-error);
+        color: white;
+        &:hover {
+            background-color: var(--hf-status-error);
+        }
+        &:active {
+            background-color: var(--hf-status-error);
+        }
+    }
+
+    &.stopped {
+        border-color: var(--hf-status-stopped);
+        color: var(--hf-status-stopped);
+    }
+
+    &.succeeded {
+        border-color: var(--hf-status-succeed);
+        color: var(--hf-status-succeed);
+    }
+}
+
+
+.hf .active-job-cell-container {
+    position: relative;
+
+    .active-job-cell-mask {
+        background-color: rgba(0, 0, 0, 0.4);
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        display: flex;
+        align-items: center;
+        border-radius: 3px;
+        pointer-events: none;
+        .mask-icon {
+            margin: auto;
+            svg {
+                fill: white
+            }
+        }
+
+        .#{$ns}-dark & .mask-icon {
+            svg {
+                fill: var(--hf-ui-font-color2);
+            }
+        }
+    }
+}

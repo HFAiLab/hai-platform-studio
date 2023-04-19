@@ -1,0 +1,50 @@
+.validate-portal-container {
+    padding: 10px 15px 0;
+    .validate-title {
+        height: 30px;
+        line-height: 30px;
+    }
+
+    .validate-panel {
+        height: 200px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .validate-inner-container {
+        height: 170px;
+        display: flex;
+        flex-direction: column;
+
+        .nodes-inner-header {
+            width: 100%;
+            height: 30px;
+            display: flex;
+            flex-direction: row-reverse;
+            align-items: baseline;
+
+            .inner-status {
+                flex: 1
+            }
+        }
+
+        .validate-nodes-container {
+            overflow: auto;
+            height: 140px;
+            padding-left: 4px;
+            padding-right: 4px;
+        }
+    }
+
+    .validate-footer {
+        width: 100%;
+        height: 30px;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: baseline;
+    }
+}
+
+.hfai-validate-pre {
+    white-space: pre-wrap;
+}

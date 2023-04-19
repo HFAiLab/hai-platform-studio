@@ -1,0 +1,69 @@
+{
+  "name": "hai-platform-studio",
+  "private": true,
+  "scripts": {
+    "bootstrap": "pnpm install",
+    "build:pkgs": "NODE_OPTIONS=\"--max-old-space-size=8192\" pnpm run -r build-pkg",
+    "build:shared": "NODE_OPTIONS=\"--max-old-space-size=8192\" pnpm run -r build-shared",
+    "build:prod": "NODE_OPTIONS=\"--max-old-space-size=8192\" pnpm run -r build",
+    "build:prod-skip-apps": "lerna run build --ignore @hai-platform/studio --ignore @hfapp/internal-platform --ignore musestock",
+    "bundle:hai": "bash scripts/bundle-hai.sh",
+    "first": "pnpm install && pnpm run build:pkgs",
+    "lint": "eslint --ext .js,.ts,.tsx,.vue .",
+    "lint:fix": "pnpm run lint --fix",
+    "pre-commit": "bash ./git-hook/pre-commit.sh",
+    "pre-publish": "pnpm run build:prod && bash scripts/release/pre-release.sh",
+    "pre-tag": "pnpm run build:prod-skip-apps && bash scripts/release/pre-release.sh",
+    "prepare": "husky install",
+    "test": "PNPM_TEST=true NODE_OPTIONS=\"--max-old-space-size=8192\" pnpm run -r test",
+    "w:a": "pnpm run watch:studio-page-all",
+    "watch:studio-page": "cd packages/studio-pages && pnpm run watch",
+    "watch:studio-page-all": "npm-run-all --parallel watch:studio-schema watch:io-frontier watch:studio-page watch:studio-toolkit",
+    "watch:studio-schema": "cd packages/studio-schemas && pnpm run watch",
+    "watch:io-frontier": "cd shared/io-frontier && pnpm run watch",
+    "watch:studio-toolkit": "cd packages/studio-toolkit && pnpm run watch",
+    "watch:x-editor": "cd packages/x-editor && pnpm run watch",
+    "build:i18n": "cd shared/i18n && pnpm run build",
+    "deploy:ailab-server": "pnpm --filter=@hai-platform/ailab-server deploy ailab-server-dist",
+    "cp:vditor": "rm -rf packages/x-editor/node_modules/vditor/dist/index.min.js && cp -rf ../vditor/dist/index.min.js packages/x-editor/node_modules/@high-flyer/vditor/dist/index.min.js",
+    "release": "pnpm run build:prod && lerna publish --no-private"
+  },
+  "commitlint": {
+    "extends": "@commitlint/config-conventional"
+  },
+  "lint-staged": {
+    "*.{json,md,yaml,yml}": "prettier --write",
+    "*.{js,ts,tsx,vue}": "eslint --fix",
+    "package.json": "sort-package-json"
+  },
+  "prettier": "@hai-platform/prettier-config",
+  "devDependencies": {
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
+    "@hai-platform/eslint-config": "^0.7.0",
+    "@hai-platform/eslint-config-react": "^0.7.0",
+    "@hai-platform/eslint-config-vue": "^0.7.0",
+    "@hai-platform/node-rsync": "^0.3.1",
+    "@hai-platform/prettier-config": "^0.7.0",
+    "@hai-platform/tsconfig": "^0.7.0",
+    "@lerna-lite/cli": "^1.5.1",
+    "@lerna-lite/list": "^1.5.1",
+    "@lerna-lite/run": "^1.5.1",
+    "@types/node": "^18.0.0",
+    "axios": "0.27.2",
+    "eslint": "^8.18.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.7.1",
+    "sort-package-json": "^1.57.0",
+    "typescript": "^4.7.2",
+    "win-node-env": "^0.6.1",
+    "yaml": "^1.10.2",
+    "yargs": "17"
+  },
+  "engines": {
+    "node": ">=18",
+    "pnpm": ">=7.24.0"
+  }
+}

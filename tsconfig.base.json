@@ -1,0 +1,22 @@
+{
+  "extends": "@hai-platform/tsconfig/base.json",
+  // https://www.npmjs.com/package/@hai-platform/tsconfig
+
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "jsx": "react",
+    "allowJs": true,
+    "incremental": true,
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    "noUnusedLocals": false,
+    "noEmitOnError": true,
+    "preserveWatchOutput": true,
+    "target": "es2017",
+    "moduleResolution": "node",
+    "strictPropertyInitialization": false,
+    // 这个开启可能会对 server orm 造成额外问题
+    "useDefineForClassFields": false
+  }
+}

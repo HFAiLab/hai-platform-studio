@@ -1,0 +1,235 @@
+/* STATUS */
+.hf {
+  .status-wrapper {
+    box-sizing: border-box;
+    width: 100%;
+    color: var(--hf-ui-font-color1);
+    transition: 0.4s;
+    height: max-content;
+    margin-top: 10px;
+    &.failed-file-status {
+      margin-top: 20px;
+    }
+  }
+
+  .status-wrapper-hold {
+    height: 200px;
+  }
+
+  .status-wrapper h4 {
+    margin: 0 0 10px 0;
+  }
+
+  .status-wrapper .title {
+    font-size: 14px;
+    width: 100%;
+    box-sizing: border-box;
+    /* background:yellow; */
+    line-height: 24px;
+    background: var(--hf-highlight-block);
+    word-break: break-all;
+    padding: 10px;
+  }
+
+  .status-wrapper .meta-line {
+    font-size: 14px;
+    width: calc(100%);
+    /* background:yellow; */
+    line-height: 20px;
+    margin-bottom: 4px;
+    /* background:#F2F2F2; */
+    /* word-break:break-all; */
+  }
+
+  .status-wrapper .meta-line > .label {
+    min-width: 80px;
+    width: 43%;
+    display: inline-block;
+
+    &.enchance {
+      font-weight: 700;
+    }
+  }
+
+  .status-wrapper .meta-line > .info {
+    display: inline-block;
+  }
+
+  .status-wrapper .meta-line > .info a {
+    display: inline-block;
+    margin-left: 20px;
+    color: #fff;
+    border-radius: 4px;
+    padding-left: 10px;
+    padding-right: 10px;
+    line-height: 16px;
+  }
+
+  .status-wrapper .meta-line > .info a.enable-restart {
+    background: rgb(114, 199, 114);
+  }
+
+  .status-wrapper .meta-line > .info a.disable-restart {
+    background: rgb(181, 58, 58);
+  }
+
+  .status-wrapper .jobs-wrapper {
+    margin-top: 14px;
+    width: 100%;
+    position: relative;
+  }
+
+  .status-wrapper .prompt {
+    font-size: 12px;
+    color: #999;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  /*  .status-wrapper .jobs-wrapper {
+        display: inline-block;
+    } */
+
+  .status-wrapper .jobs-wrapper .flex-box {
+    margin-top: 16px;
+    margin-left: -20px;
+  }
+
+  .status-wrapper .jobs-wrapper .job-cell {
+    margin-left: 20px;
+    margin-bottom: 10px;
+  }
+
+  .status-wrapper .updated-at {
+    vertical-align: top;
+    display: inline-block;
+    font-size: 12px;
+    line-height: 34px;
+    color: var(--hf-text-secondary);
+    margin-top: 10px;
+    margin-bottom: 12px;
+  }
+
+  .status-wrapper .refresh {
+    cursor: pointer;
+    vertical-align: top;
+    display: inline-block;
+    box-sizing: border-box;
+    margin-top: 10px;
+    margin-left: 6%;
+    height: 34px;
+    padding: 4px 8px 4px 8px;
+    border-radius: 2px;
+    background-color: var(--hf-primary-btn-color);
+  }
+
+  .status-wrapper .refresh:hover {
+    background-color: var(--hf-primary-btn-hover);
+  }
+
+  .status-wrapper .control-btn-wrapper {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+
+    svg {
+      vertical-align: middle;
+      margin: 4px;
+    }
+
+    span {
+      vertical-align: middle;
+      margin: 4px;
+    }
+
+    a:last-child {
+      margin-right: 0;
+    }
+
+    a {
+      text-align: center;
+      display: inline-block;
+      box-sizing: border-box;
+      border: 1px solid rgb(197, 197, 197);
+      line-height: 20px;
+      border-radius: 2px;
+      background: #f4f4f4;
+      color: #555;
+      font-size: 14px;
+      margin-left: calc(100% - 260px);
+      margin-bottom: 10px;
+      /* padding-left: 10px; */
+      padding-right: 10px;
+      width: 130px;
+    }
+  }
+
+  .status-wrapper .control-btn-wrapper a:first-child {
+    margin-left: 0;
+  }
+
+  /*  .status-wrapper .control-btn-wrapper a:hover {
+        background: #2196F3;
+    } */
+
+  /*
+     .status-wrapper .control-btn-wrapper a.stop {
+        background: rgb(214, 138, 138);
+    } */
+
+  .status-wrapper .control-btn-wrapper a.stop:hover {
+    background: rgb(243, 202, 202);
+    /* background: rgb(156, 41, 41); */
+  }
+
+  /*  .status-wrapper .control-btn-wrapper a.interrupt {
+        background: rgb(229, 222, 122);
+    } */
+
+  .status-wrapper .control-btn-wrapper a.interrupt:hover {
+    background: rgb(247, 243, 200);
+    /* background: rgb(179, 169, 37); */
+  }
+
+  /*  .status-wrapper .control-btn-wrapper a.rerun {
+        background: rgb(114, 199, 114);
+    } */
+
+  .status-wrapper .control-btn-wrapper a.rerun:hover {
+    background: #cef3ce;
+    /* background: rgb(76, 158, 76); */
+  }
+
+  .status-wrapper .info.running {
+    color: rgb(34, 199, 34);
+  }
+
+  .status-wrapper .info.failed {
+    color: rgb(181, 58, 58);
+  }
+
+  .status-wrapper .info.queued {
+    color: rgb(224, 195, 64);
+  }
+
+  .status-wrapper .info.succeed {
+    color: rgb(40, 111, 40);
+  }
+
+  .meta-line-status {
+    .info {
+      margin-right: 5px;
+    }
+
+    .inline-stop-btn {
+      align-items: center;
+      display: inline-flex;
+      height: 24px;
+      min-height: 24px;
+    }
+  }
+
+  .show-performance {
+    margin-top: 5px;
+  }
+}

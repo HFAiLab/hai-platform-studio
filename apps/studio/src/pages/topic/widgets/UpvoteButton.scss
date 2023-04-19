@@ -1,0 +1,178 @@
+.xtopic-upvote-btn {
+  box-sizing: border-box;
+  display: inline-block;
+  background-color: var(--hai-ui-light-gray5);
+  border-radius: 4px;
+  border: 1px solid var(--hai-ui-blue5);
+  height: 28px;
+  padding-left: 10px;
+  padding-right: 10px;
+  cursor: pointer;
+  user-select: none;
+  overflow: hidden;
+
+  &.minimal {
+    border: none;
+  }
+
+  > svg {
+    fill: var(--hai-ui-blue3);
+    margin-top: 2px;
+    vertical-align: top;
+  }
+  span.btn-text {
+    color: var(--hai-ui-blue3);
+    margin-left: 8px;
+    vertical-align: top;
+    font-size: 14px;
+    line-height: 26px;
+  }
+  transition: all 0.2s;
+
+  &:hover {
+    background: #2568c72f;
+    transform: translate(2px, -2px);
+    transition: all 0.2s;
+    box-shadow: -3px 3px 4px 0px #00000022;
+  }
+  &:active {
+    background: #2568c763;
+    transform: translate(1px, -1px);
+    box-shadow: -2px 2px 3px 0px #00000044;
+  }
+}
+
+body.hai-ui-dark button.xtopic-upvote-btn {
+  > svg {
+    fill: white;
+  }
+  span.btn-text {
+    color: white;
+  }
+  border: 1px solid var(--hai-ui-blue4);
+  &.minimal {
+    border: none;
+  }
+  &:hover {
+    background: #5698f546;
+  }
+  &:active {
+    background: #5f91d675;
+  }
+}
+
+// 点击后的动效
+@keyframes xtopic-upvote-btn-self {
+}
+
+@keyframes xtopic-upvote-kf-a {
+  0% {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(0);
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-40px);
+    opacity: 0;
+  }
+}
+
+.xtopic-upvote-ani-a {
+  user-select: none;
+  background-color: red;
+  border-radius: 4px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 20px;
+  color: white;
+  width: 80px;
+  height: 20px;
+  position: absolute;
+  top: -24px;
+  left: calc(50% - 40px);
+  animation-name: xtopic-upvote-kf-a;
+  animation-duration: 0.6s;
+  animation-timing-function: ease-in;
+  transition: all;
+}
+
+@keyframes xtopic-upvote-kf-b {
+  0% {
+    transform: translateX(0px) translateY(0px);
+    opacity: 0;
+  }
+
+  40% {
+    transform: translateX(-10px) translateY(-20px);
+    opacity: 1;
+  }
+
+  70% {
+    transform: translateX(10px) translateY(-50px);
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: translateX(70px) translateY(-120px);
+    opacity: 0;
+  }
+}
+
+.xtopic-upvote-ani-b {
+  user-select: none;
+  background-image: url(/public/upvote_egg.gif);
+  border-radius: 4px;
+  text-align: center;
+  color: white;
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  top: -30px;
+  left: calc(50% - 15px);
+  animation-name: xtopic-upvote-kf-b;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-in;
+}
+
+.xtopic-upvote-prompt {
+  user-select: none;
+  background-color: orange;
+  opacity: 0.7;
+  border-radius: 6px;
+  color: black;
+  width: 180px;
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+  position: absolute;
+  top: -40px;
+  left: calc(50% - 90px);
+}
+
+// 按钮拇指滚动动画
+@keyframes xtopic-upvote-btn-svg-up {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    fill: red;
+    transform: translateY(-20px);
+  }
+  51% {
+    fill: red;
+    transform: translateY(20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.ani .xtopic-upvote-btn {
+  > svg {
+    animation-name: xtopic-upvote-btn-svg-up;
+    animation-duration: 0.3s;
+  }
+}

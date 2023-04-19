@@ -1,0 +1,32 @@
+@import '../../../../style/variables.scss';
+
+.drag-panel {
+  width: $home_panel_default_width;
+  display: flex;
+  flex-direction: column;
+
+  div {
+    height: 50px;
+  }
+
+  .btn-container {
+    width: max-content;
+    height: max-content;
+  }
+
+  .drag-op-line {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+}
+
+.dnd-container {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+.collapse-card-container {
+  display: flex;
+  flex-direction: row;
+  padding: 0px 0px;
+}

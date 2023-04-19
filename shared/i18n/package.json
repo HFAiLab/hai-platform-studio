@@ -1,0 +1,37 @@
+{
+  "name": "@hai-platform/i18n",
+  "version": "0.19.0-alpha.1681870131.da1d707d",
+  "description": "Language package of hai-platform",
+  "keywords": [
+    "shared",
+    "i18n",
+    "language"
+  ],
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "./dist"
+  ],
+  "scripts": {
+    "build": "unbuild",
+    "build-pkg": "pnpm run build",
+    "build-shared": "pnpm run build",
+    "clean": "rimraf dist"
+  },
+  "devDependencies": {
+    "unbuild": "^0.7.6"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

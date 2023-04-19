@@ -1,0 +1,14 @@
+@keyframes background-fade {
+    from {
+        background-color: rgba(54, 130, 201, 255);
+        color: white;
+    }
+    to {
+        background-color: rgba(54, 130, 201, 0);
+        color: var(--hf-text-secondary);
+    }
+}
+
+.dynamic-updated-at {
+    color: var(--hf-text-secondary);
+}

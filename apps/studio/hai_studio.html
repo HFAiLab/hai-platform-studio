@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      html,
+      body {
+        padding: 0;
+        margin: 0;
+      }
+
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+          'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        min-width: 1080px;
+      }
+
+      p {
+        margin-bottom: 10px;
+        margin-top: 0;
+      }
+
+      #default-loading {
+        visibility: unset !important;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        background-color: white;
+        text-align: center;
+        justify-content: center;
+        position: fixed;
+        z-index: 10000;
+        font-size: 16px;
+        font-weight: 400;
+        letter-spacing: 0;
+        line-height: 1.2858142857;
+        text-transform: none;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        color: #607d8b;
+      }
+
+      .icon-loading {
+        animation: ani-loading 3.2s infinite;
+        stroke-dasharray: 60 60;
+        width: 120px;
+        height: 120px;
+        margin-bottom: 20px;
+      }
+
+      @keyframes ani-loading {
+        0% {
+          stroke-dashoffset: -60;
+          opacity: 0.4;
+        }
+
+        40% {
+          stroke-dashoffset: 0;
+          opacity: 1;
+        }
+
+        60% {
+          stroke-dashoffset: 0;
+          opacity: 1;
+        }
+
+        100% {
+          stroke-dashoffset: 60;
+          opacity: 0.4;
+        }
+      }
+    </style>
+    <meta charset="UTF-8" />
+    <%- studio_config_json_script %>
+    <link rel="icon" type="image/svg+xml" href="/src/favicon_hai.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      window.is_hai_studio = true
+    </script>
+    <title>HAI Studio</title>
+  </head>
+  <body>
+    <div id="default-loading" style="visibility: hidden">
+      <svg class="icon-loading" viewBox="0 0 46 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_413_22)">
+          <line
+            y1="-1.5"
+            x2="18"
+            y2="-1.5"
+            transform="matrix(0 -1 -1 0 0 18)"
+            stroke="#2E55A5"
+            stroke-width="3"
+          />
+          <line
+            y1="-1.5"
+            x2="11"
+            y2="-1.5"
+            transform="matrix(-1 0 0 1 13 10)"
+            stroke="#2E55A5"
+            stroke-width="3"
+          />
+          <line
+            y1="-1.5"
+            x2="18"
+            y2="-1.5"
+            transform="matrix(-4.37114e-08 -1 -1 4.37114e-08 11 18)"
+            stroke="#2E55A5"
+            stroke-width="3"
+          />
+          <path
+            d="M33.5 18.5L26.5 1.49998L25.4999 1.50002L18.5 18.5"
+            stroke="#2E55A5"
+            stroke-width="3"
+          />
+          <line
+            y1="-1.5"
+            x2="18"
+            y2="-1.5"
+            transform="matrix(0 -1 -1 0 38 18)"
+            stroke="#2E55A5"
+            stroke-width="3"
+          />
+          <path d="M30.5 12H21" stroke="#2E55A5" stroke-width="3" />
+        </g>
+        <defs>
+          <clipPath id="clip0_413_22">
+            <rect width="46" height="18" />
+          </clipPath>
+        </defs>
+      </svg>
+      <p id="default-loading-tip">[1/3] Fetching Resource</p>
+    </div>
+    <div id="root"></div>
+  </body>
+</html>

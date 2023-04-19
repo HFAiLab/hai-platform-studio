@@ -1,0 +1,171 @@
+@import './vars-less.less';
+@import './overrides-table-bordered.less';
+
+/**
+ * 部分样式无法通过变量自定义，只好先强制覆盖源文件中的对应样式
+ */
+
+// @disabled-color
+.@{empty-prefix-cls} {
+  &-normal {
+    color: var(--disabled-color);
+  }
+}
+.@{iconfont-css-prefix}.@{ant-prefix}-input-clear-icon {
+  color: var(--disabled-color);
+}
+.@{input-number-prefix-cls} {
+  &-handler-up-disabled:hover &-handler-up-inner,
+  &-handler-down-disabled:hover &-handler-down-inner {
+    color: var(--disabled-color);
+  }
+}
+.@{pagination-prefix-cls} {
+  &-jump-prev,
+  &-jump-next {
+    .@{pagination-prefix-cls}-item-container {
+      .@{pagination-prefix-cls}-item-ellipsis {
+        color: var(--disabled-color);
+      }
+    }
+  }
+  &-disabled {
+    &,
+    &:hover {
+      .@{pagination-prefix-cls}-item-link {
+        color: var(--disabled-color);
+      }
+    }
+
+    &:focus-visible {
+      .@{pagination-prefix-cls}-item-link {
+        color: var(--disabled-color);
+      }
+    }
+  }
+  &-simple &-simple-pager {
+    input {
+      &[disabled] {
+        color: var(--disabled-color);
+      }
+    }
+  }
+  &&-disabled {
+    .@{pagination-prefix-cls}-item {
+      a {
+        color: var(--disabled-color);
+      }
+    }
+    .@{pagination-prefix-cls}-item-link {
+      color: var(--disabled-color);
+    }
+
+    .@{pagination-prefix-cls}-simple-pager {
+      color: var(--disabled-color);
+    }
+  }
+}
+.antTreeFn(@custom-tree-prefix-cls) {
+  @custom-tree-node-prefix-cls: ~'@{custom-tree-prefix-cls}-treenode';
+  .@{custom-tree-node-prefix-cls} {
+    &-disabled {
+      .@{custom-tree-prefix-cls}-node-content-wrapper {
+        color: var(--disabled-color);
+      }
+    }
+  }
+  & &-node-content-wrapper {
+    cursor: default;
+  }
+}
+
+// @table-border-color
+.@{table-prefix-cls} {
+  &-thead {
+    > tr {
+      > th {
+        border-bottom: @border-width-base @border-style-base var(--table-border-color);
+      }
+    }
+  }
+  &-tbody {
+    > tr {
+      > td {
+        border-bottom: @border-width-base @border-style-base var(--table-border-color);
+      }
+    }
+  }
+  &-summary {
+    div& {
+      box-shadow: 0 -@border-width-base 0 var(--table-border-color);
+    }
+
+    > tr {
+      > th,
+      > td {
+        border-bottom: @border-width-base @border-style-base var(--table-border-color);
+      }
+    }
+  }
+  &-btns {
+    border-top: @border-width-base @border-style-base var(--table-border-color);
+  }
+
+  &-row-expand-icon {
+    border: @border-width-base @border-style-base var(--table-border-color);
+  }
+
+  &-sticky {
+    &-scroll {
+      background: lighten(@table-border-color, 80%); // <-- 罪魁祸首 lighten 函数
+      border-top: 1px solid var(--table-border-color);
+    }
+  }
+}
+
+// @text-color-secondary
+.@{form-item-prefix-cls} {
+  &-explain,
+  &-extra {
+    color: var(--text-color-secondary);
+  }
+}
+.@{input-prefix-cls} {
+  &-password-icon {
+    color: var(--text-color-secondary);
+  }
+}
+.@{input-number-prefix-cls} {
+  &-handler-up-inner,
+  &-handler-down-inner {
+    color: var(--text-color-secondary);
+  }
+}
+.@{list-prefix-cls} {
+  &-item {
+    &-meta {
+      &-description {
+        color: var(--text-color-secondary);
+      }
+    }
+  }
+}
+.@{search-prefix} {
+  > .@{ant-prefix}-input-group {
+    > .@{ant-prefix}-input-group-addon:last-child {
+      .@{search-prefix}-button:not(.@{ant-prefix}-btn-primary) {
+        color: var(--text-color-secondary);
+      }
+    }
+  }
+}
+.@{statistic-prefix-cls} {
+  &-title {
+    color: var(--text-color-secondary);
+  }
+}
+.@{typography-prefix-cls} {
+  &&-secondary {
+    color: var(--text-color-secondary);
+  }
+}

@@ -1,0 +1,231 @@
+@import '../../../../components/Input/index.scss';
+@import '../../../../style/aiui_mixin.scss';
+@import '../../../../style/variables.scss';
+
+.spot-create-callout {
+  margin-bottom: 15px;
+}
+
+.container-creator-wrapper {
+  position: relative;
+
+  &.no-group-to-use {
+    min-height: 600px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    p {
+      margin: auto;
+      font-size: 22px;
+      width: max-content;
+      @include aiui-text-secondary;
+    }
+  }
+
+  .creator-part-title {
+    @include aiui-h4;
+    margin-top: 40px;
+    margin-bottom: 20px;
+  }
+
+  .creator-part-tip {
+    margin-top: 0px;
+    margin-bottom: 20px;
+    @include aiui-text-other;
+  }
+
+  .creator-env-btn {
+    max-width: 100%;
+    width: 100%;
+    span.#{$ns}-button-text {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      flex: 1;
+    }
+  }
+}
+
+.container-new-line {
+  display: flex;
+  align-items: center;
+
+  .container-env-p {
+    margin-bottom: 0;
+    b {
+      width: 200px;
+      display: inline-block;
+    }
+  }
+
+  &.callout-warper {
+    margin-bottom: 10px;
+    width: calc(100% - 40px);
+    padding-right: 40px;
+  }
+
+  &.last-line {
+    margin-bottom: 15px;
+  }
+
+  .watch-state-tip {
+    @include aiui-text-secondary;
+  }
+
+  .number-input-with-slider {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .number-input-container {
+    width: 100px;
+    margin-right: 10px;
+  }
+
+  .slider-container {
+    flex: 1;
+    padding-top: 10px;
+    padding-left: 10px;
+    .#{$ns}-slider-handle .#{$ns}-slider-label {
+      background-color: var(--hai-ui-gray2);
+    }
+  }
+
+  textarea {
+    width: 100%;
+    height: 60px;
+  }
+
+  .panel-op-btn {
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+
+  .hai-ui-form-group {
+    padding-right: 40px;
+    margin-bottom: 20px;
+    width: calc(50% - 20px);
+
+    &.one-line {
+      width: calc(100% - 40px);
+    }
+
+    .hai-ui-html-select {
+      width: 100%;
+    }
+  }
+
+  &.checkbox-inline-container {
+    .checkbox-label {
+      width: 140px;
+      margin-bottom: 10px; // 和后面的 checkbox 相对应
+    }
+  }
+
+  .no-quota-svc-tip {
+    margin-bottom: 20px;
+    width: 50%;
+  }
+}
+
+.creator-op-btns {
+  display: flex;
+  flex-direction: column;
+
+  button {
+    width: max-content;
+    margin-bottom: 10px;
+  }
+
+  .creator-btn {
+    margin-top: 40px;
+  }
+
+  .adder-btn {
+    margin-right: 10px;
+    border: 1px dashed var(--hai-ui-gray4);
+    width: 50%;
+    height: 40px;
+    min-width: 690px;
+  }
+}
+
+.mix-service-container {
+  .mix-service-info-list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+
+    .mix-service-info {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      .info-name {
+        padding-right: 10px;
+        min-width: 80px;
+        text-align: left;
+      }
+      .info-value {
+        max-width: 180px;
+        font-weight: bold;
+        @include overflow-ellipsis;
+        &.builtin {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+        }
+      }
+      .info-script {
+        flex: 1;
+        word-break: break-all;
+      }
+      margin-right: 20px;
+    }
+    .mix-service-expand {
+      flex: 1;
+    }
+    .mix-service-op {
+      width: max-content;
+      button {
+        &:not(:last-child) {
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}
+
+.container-new-edit-svc,
+.mix-service-container {
+  background-color: var(--hai-ui-light-gray4);
+  width: 50%;
+  min-width: 690px;
+  padding: 20px;
+  margin-bottom: 15px;
+}
+
+///
+/// dark-mode
+///
+
+.#{$ns}-dark {
+  .container-new-line {
+    .slider-container {
+      .#{$ns}-slider-handle .#{$ns}-slider-label {
+        background-color: var(--hai-ui-gray5);
+        color: white;
+      }
+    }
+  }
+
+  .mix-service-container,
+  .container-new-edit-svc {
+    background-color: var(--hai-ui-light-gray3);
+  }
+}

@@ -1,0 +1,60 @@
+@import '../../../style/aiui_mixin.scss';
+@import '../../../style/variables.scss';
+
+.rank-container {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    .rank-top {
+        display: flex;
+        flex-direction: row;
+
+        .rate {
+            flex: 2;
+        }
+
+        .my-data {
+            flex: 1;
+            text-align: right;
+
+            p {
+                @include aiui-link;
+                color: var(--#{$ns}-blue3);
+            }
+        }
+    }
+
+    .rank-top5 {
+        margin-top: 30px;
+
+        .title {
+            @include aiui-h6;
+            color: var(--#{$ns}-text-secondary);
+            margin-bottom: 16px;
+        }
+    }
+    .dateRange {
+        margin-top: 16px;
+        text-align: right;
+        @include aiui-ui-13;
+        color: var(--#{$ns}--#{$ns}-text-secondary);
+    }
+
+    .corner {
+        position: absolute;
+        top: -4px;
+        right: 0;
+
+        .aiui-period-switch {
+            text-align: right;
+        }
+
+        .periodInfo {
+            margin-top: 20px;
+            @include aiui-ui-12;
+            @include aiui-text-secondary;
+            text-align: right;
+        }
+    }
+}

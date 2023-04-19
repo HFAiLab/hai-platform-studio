@@ -1,0 +1,25 @@
+@import '../../../style/aiui_mixin.scss';
+
+.message-container {
+  max-height: 400px;
+  overflow-y: auto;
+  min-height: 120px;
+
+  .#{$ns}-message-item {
+    &:not(:last-child) {
+      margin-bottom: 10px;
+    }
+
+    &:not(.warning):not(.success):not(.danger) {
+      background-color: var(--hai-ui-layout-2);
+    }
+  }
+
+  .no-message {
+    @include aiui-text-other;
+    @include aiui-ui-13;
+    text-align: center;
+    margin: auto;
+    padding-top: 42px;
+  }
+}

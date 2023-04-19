@@ -1,0 +1,121 @@
+@import '../../../style/aiui_mixin.scss';
+
+.xtopic-notification-wrapper {
+  position: relative;
+  display: inline-block;
+
+  button.xtopic-notification-button {
+    flex-direction: column;
+    > * {
+      margin-right: unset;
+    }
+
+    &.highlight {
+      &:hover {
+        > span {
+          color: var(--hai-ui-blue4);
+        }
+        svg {
+          fill: var(--hai-ui-blue4);
+        }
+      }
+
+      > span {
+        color: var(--hai-ui-blue5);
+      }
+      svg {
+        fill: var(--hai-ui-blue5);
+      }
+    }
+
+    body.hai-ui-dark &.highlight {
+      &:hover {
+        > span {
+          color: var(--hai-ui-blue5);
+        }
+        svg {
+          fill: var(--hai-ui-blue5);
+        }
+      }
+      > span {
+        color: var(--hai-ui-blue4);
+      }
+      svg {
+        fill: var(--hai-ui-blue4);
+      }
+    }
+
+    &:hover {
+      > span {
+        color: var(--hai-ui-text-secondary);
+      }
+      svg {
+        fill: var(--hai-ui-text-secondary);
+      }
+    }
+    > span {
+      color: var(--hai-ui-text-other);
+    }
+    svg {
+      fill: var(--hai-ui-text-other);
+    }
+  }
+
+  .count {
+    position: absolute;
+    top: -2px;
+    left: 55%;
+  }
+}
+
+.xtopic-notification-pop-body {
+  width: 340px;
+  min-height: 160px;
+  // padding-right:10 给列表滚动条留点空间
+  // padding: 20px 10px 0 20px;
+  // padding: 10px 10px 0 10px;
+  .header {
+    @include aiui-h6;
+    @include aiui-text-primary;
+    padding-left: 20px;
+    line-height: 50px;
+    border-bottom: 1px solid var(--hai-ui-light-gray2);
+  }
+  .no-notification {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include aiui-text-other;
+    height: 100px;
+  }
+  .list {
+    max-height: 340px;
+    overflow-y: auto;
+    // 防止过于贴近滚动条
+    // padding-right: 10px;
+    .xtopic-notification-item {
+      border-bottom: 1px solid var(--hai-ui-light-gray2);
+      &:last-child {
+        border: none;
+      }
+    }
+  }
+  .control {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px solid var(--hai-ui-light-gray2);
+    a {
+      color: var(--hai-ui-blue4);
+      &:hover {
+        color: var(--hai-ui-blue3);
+      }
+    }
+  }
+
+  .notification-item-place-holder {
+    height: 20px;
+    margin-bottom: 10px;
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "module": "ES2020",
+    "skipLibCheck": true,
+    "paths": {
+      "react": ["./node_modules/@types/react"]
+    }
+  },
+  "include": ["./src"],
+  "exclude": ["./src/svgReplace"]
+}

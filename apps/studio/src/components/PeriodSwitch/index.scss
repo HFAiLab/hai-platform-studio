@@ -1,0 +1,14 @@
+@import '../../style/aiui_mixin.scss';
+
+.aiui-period-switch {
+  .date {
+    @include aiui-ui-12;
+    color: var(--hai-ui-text-secondary);
+    margin-right: 16px;
+  }
+
+  .#{$ns}-button {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}

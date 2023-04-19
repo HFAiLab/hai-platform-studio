@@ -1,0 +1,75 @@
+@import '../../../style/aiui_mixin.scss';
+
+.task-and-performance-container {
+  .external-usage-summary {
+    border-bottom: 1px solid var(--hai-ui-layout-2);
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    .aiui-metric-item.H25 .value {
+      margin-top: 17px;
+    }
+  }
+  .range-statistics {
+    .chart-zone {
+      width: calc(100% - 25px);
+      .hai-ui-html-select {
+        select {
+          margin-top: -6px;
+          padding-left: 0;
+          height: 16px;
+          @include aiui-column-name-zh;
+          @include aiui-text-secondary;
+        }
+        span.hai-ui-icon {
+          top: -1px;
+          right: 4px;
+        }
+      }
+      .chart {
+        height: 140px;
+        margin-top: 10px;
+        background-color: var(--hai-ui-layout-2);
+      }
+    }
+    .metrics {
+      display: flex;
+      width: 100%;
+      margin-top: 16px;
+      .highlight {
+        background: linear-gradient(to right, #80baff69, transparent);
+      }
+    }
+  }
+
+  .row {
+    display: flex;
+    .main {
+      display: flex;
+      flex-wrap: wrap;
+      min-height: 10px;
+      flex: 5;
+    }
+    .side {
+      min-height: 10px;
+      flex: 1;
+      .label {
+        @include aiui-column-name-zh;
+        @include aiui-text-secondary;
+        margin-bottom: 16px;
+      }
+      .opt-item {
+        margin-bottom: 30px;
+      }
+      .date-str {
+        margin-top: 14px;
+        @include aiui-text-secondary;
+        @include aiui-ui-13;
+      }
+    }
+  }
+  .sub-title {
+    @include aiui-h6;
+    @include aiui-text-other;
+    margin-bottom: 20px;
+  }
+}

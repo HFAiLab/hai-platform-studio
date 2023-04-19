@@ -1,0 +1,30 @@
+@import '../../../style/aiui_mixin.scss';
+
+.xtopic-about-topic {
+  .content {
+    @include aiui-ui-14;
+    @include aiui-text-other;
+  }
+
+  .current-heat {
+    @include aiui-text-secondary;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    .xtopic-heat {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+    .heat-value {
+      @include aiui-h4;
+    }
+  }
+
+  .author {
+    margin-top: 4px;
+  }
+  .topic-like-count,
+  .reply-count {
+    margin-top: 10px;
+  }
+}

@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.DS_Store
+*.log
+*.local
+Vue.volar-0.38.2@linux-x64.vsix
+.npm/
+.pnpm-store/
+.env.local

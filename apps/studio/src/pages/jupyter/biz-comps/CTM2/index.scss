@@ -1,0 +1,333 @@
+@import '../../../../style/aiui_mixin.scss';
+
+/* ------------variable---------- */
+// 颜色定义：
+@import '@hai-ui/colors/src/_colors.scss';
+
+.container-admin-container {
+  padding-bottom: 50px;
+}
+
+.container-manager-wrapper {
+  .update-tip {
+    @include aiui-text-other;
+    @include aiui-paragraph-13;
+    margin-right: 5px;
+  }
+
+  .init-container {
+    text-align: center;
+    width: 100%;
+
+    padding-top: 40px;
+    padding-bottom: 40px;
+
+    @include aiui-text-other;
+    @include aiui-paragraph-16;
+  }
+
+  .global-container {
+    min-width: 1270px;
+    border: 1px solid var(--hai-ui-light-gray2);
+  }
+
+  .group-container,
+  .node-container,
+  .user-container {
+    display: flex;
+
+    &.light {
+      @include aiui-text-secondary;
+    }
+  }
+
+  .group-main,
+  .node-main,
+  .user-main {
+    flex: 1;
+    @include aiui-text-primary;
+    // padding-left: 20px;
+    .node-container {
+      display: flex;
+    }
+  }
+
+  .node-main {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    &.collapse {
+      margin-bottom: 0;
+    }
+  }
+
+  .group-meta,
+  .node-meta {
+    display: flex;
+    font-weight: bold;
+    background-color: var(--hai-ui-light-gray5);
+    &.collapse {
+      background-color: var(--hai-ui-light-gray3);
+    }
+  }
+
+  .group-meta {
+    height: 40px;
+    align-items: center;
+  }
+
+  .group-name {
+    height: 40px;
+    line-height: 40px;
+  }
+
+  .node-name {
+    margin-top: 10px;
+  }
+
+  .container-operations {
+    display: flex;
+    margin-bottom: 5px;
+    align-items: center;
+
+    .hai-ui-checkbox {
+      margin-bottom: 0;
+      height: min-content;
+      margin-right: 10px;
+    }
+
+    button:not(:last-child) {
+      margin-right: 10px;
+    }
+  }
+
+  .global-title {
+    width: 100%;
+    display: flex;
+    height: 30px;
+    border-bottom: 1px solid var(--hai-ui-light-gray2);
+    .cell-n {
+      @include aiui-h6r;
+      line-height: 30px;
+    }
+  }
+
+  .group-container {
+    padding-top: 10px;
+  }
+
+  .task-li {
+    display: flex;
+    &:hover {
+      background-color: var(--hai-ui-light-gray4);
+      font-weight: bold;
+
+      .operation-btns {
+        opacity: 1;
+        button {
+          cursor: pointer;
+        }
+      }
+    }
+
+    .out_of_allocate {
+      font-style: italic;
+    }
+  }
+
+  .operation-btns {
+    // opacity: 0;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+
+    &.cell-n {
+      overflow: visible;
+    }
+
+    button {
+      height: 24px;
+      border: none;
+      background-color: transparent;
+      box-shadow: none;
+    }
+    .service-op-icon {
+      svg {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+
+  .cell-n {
+    &.icons {
+      display: flex;
+    }
+    .service--logo-container {
+      display: flex;
+      align-items: center;
+      margin-right: 5px;
+    }
+    img.service-logo,
+    svg.service-logo {
+      width: 20px;
+      height: 20px;
+      margin-right: 0;
+    }
+
+    &.service.clickable {
+      position: relative;
+      overflow: visible;
+      cursor: pointer;
+    }
+  }
+
+  .service-cell-pop-over {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    box-shadow: 0 0 0 1px rgb(17 20 24 / 10%), 0 2px 4px rgb(17 20 24 / 20%),
+      0 8px 24px rgb(17 20 24 / 20%);
+    transform: scale(1);
+    border-radius: 3px;
+    display: inline-block;
+    background-color: var(--hai-ui-layout-1);
+    z-index: 20;
+    font-weight: normal;
+
+    &.more-btns {
+      button {
+        margin-bottom: 4px;
+      }
+    }
+
+    &.hide {
+      display: none;
+    }
+
+    .cell-pop-over-main {
+      padding: 10px;
+
+      .service-item-li {
+        display: flex;
+        width: 300px;
+        font-weight: bold;
+        align-items: center;
+        .item-li-tag {
+          background-color: var(--hai-ui-light-gray3);
+          font-size: 12px;
+          font-style: normal;
+          font-weight: normal;
+          height: 22px;
+          border-radius: 3px;
+          padding-left: 3px;
+          padding-right: 3px;
+          margin-right: 3px;
+          line-height: 22px;
+        }
+      }
+
+      &.ops {
+        width: 150px;
+        display: flex;
+        flex-direction: column;
+        button {
+          text-align: left;
+        }
+      }
+
+      button {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .jupyter-op-more {
+    position: relative;
+    overflow: visible;
+  }
+
+  .cell-n-metric {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .num {
+      height: 24px;
+    }
+  }
+
+  .group-header-icon {
+    transition: 0.5s;
+    width: 16px;
+    height: 16px;
+    margin-top: 8px;
+    margin-right: 8px;
+    transform: rotate(0);
+
+    svg {
+      fill: var(--hai-ui-text-secondary);
+    }
+
+    &.collapse {
+      transform: rotate(180deg);
+    }
+  }
+
+  .ctm-search {
+    display: flex;
+    align-items: center;
+    .label {
+      margin-right: 10px;
+    }
+    .search-icon-container {
+      height: 30px;
+      width: 24px;
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+    }
+  }
+
+  .service-common-user {
+    width: 16px;
+    height: 16px;
+    svg {
+      fill: var(--hai-ui-blue4);
+    }
+  }
+}
+
+.container-tips {
+  li {
+    margin-bottom: 5px;
+    @include aiui-text-secondary;
+  }
+}
+
+.#{$ns}-dark {
+  .container-manager-wrapper {
+    .group-meta,
+    .node-meta {
+      background-color: var(--hai-ui-light-gray3);
+      &.collapse {
+        background-color: var(--hai-ui-light-gray5);
+      }
+    }
+  }
+
+  .global-container {
+    border: 1px solid var(--hai-ui-light-gray5);
+  }
+
+  .global-title {
+    border-bottom: 1px solid var(--hai-ui-light-gray5);
+  }
+}
+
+@media screen and (max-width: 1340px) {
+  .global-container-wrapper {
+    width: 100%;
+    overflow: auto;
+    max-height: 800px;
+  }
+}

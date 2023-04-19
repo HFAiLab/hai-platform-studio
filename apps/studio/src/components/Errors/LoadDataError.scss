@@ -1,0 +1,24 @@
+@import '../../style/aiui_mixin.scss';
+
+.load-error-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+    min-height: 140px;
+    width: 100%;
+    padding-bottom: 20px;
+    padding-top: 42px;
+
+    svg {
+        width: 40px;
+        height: 40px;
+    }
+
+    .error-load-data-tip {
+        margin: auto;
+        margin-top: 10px;
+        @include aiui-paragraph-14;
+        @include aiui-text-secondary;
+    }
+}

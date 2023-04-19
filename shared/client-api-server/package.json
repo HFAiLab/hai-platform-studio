@@ -1,0 +1,47 @@
+{
+  "name": "@hai-platform/client-api-server",
+  "version": "0.19.0-alpha.1681870131.da1d707d",
+  "description": "Client package for api-server of hai-platform",
+  "keywords": [
+    "shared",
+    "client",
+    "api-server"
+  ],
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "./dist"
+  ],
+  "scripts": {
+    "build": "unbuild",
+    "build-pkg": "pnpm run build",
+    "build-shared": "pnpm run build",
+    "clean": "rimraf dist",
+    "dev": "vitest",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@hai-platform/request-client": "0.74.0",
+    "@hai-platform/shared": "workspace:*",
+    "axios": "^0.27.2",
+    "query-string": "^7.1.1"
+  },
+  "devDependencies": {
+    "unbuild": "^0.7.6",
+    "vitest": "^0.20.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "51e092464b0c0bc694df7daebe77a115b1f0680a"
+}

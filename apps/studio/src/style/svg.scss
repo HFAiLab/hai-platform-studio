@@ -1,0 +1,17 @@
+.hf .svg-icon {
+    display: inline-flex;
+    align-self: center;
+}
+
+.hf .svg-icon>svg,
+.hf .svg-icon>span>svg {
+    height: 1em;
+    width: 1em;
+}
+
+.hf .svg-icon.svg-baseline>svg {
+    /* 这里使用 relative+top 和 transform 都会触发新的合成层，会对性能造成影响，相对来说 transform 会更好一点 */
+    /* transform: translateY(.125em) translateZ(0); */
+    top: .125em;
+    position: relative;
+}

@@ -1,0 +1,25 @@
+.hf ul.hf-tabs {
+    display: block;
+    margin: 0;
+    padding: 0;
+    border-bottom: 2px solid var(--hf-ui-highlight-bg);
+}
+
+.hf ul.hf-tabs li {
+    margin-bottom: -2px;
+    font-size: 14px;
+    line-height: 26px;
+    list-style: none;
+    padding: 0px 20px 4px 20px;
+    display: inline-block;
+    box-sizing: border-box;
+    color: var(--hf-text-lighter);
+    border-bottom: 2px solid #0000;
+    transition: 0.3s;
+}
+
+.hf ul.hf-tabs li.selected {
+    color: var(--hf-theme-color);
+    border-color: var(--hf-theme-color);
+    transition: 0.3s;
+}

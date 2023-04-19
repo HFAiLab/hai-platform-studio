@@ -1,0 +1,137 @@
+@import '../../../../style/aiui_mixin.scss';
+
+.xtopic-reply-panel {
+  margin-bottom: 10px;
+  .meta-reply {
+    @include aiui-ui-13;
+    .username {
+      font-weight: bold;
+      font-size: 15px;
+    }
+    a {
+      @include aiui-text-primary;
+    }
+    .like-count {
+      margin-top: 14px;
+      @include aiui-text-secondary;
+    }
+
+    .meta-reply-line {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      .reply-user-clip {
+        flex: 1;
+      }
+      .meta-reply-floor {
+        width: max-content;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        .floor-tip {
+          margin-right: 20px;
+        }
+      }
+    }
+  }
+}
+
+.reply-refer-container {
+  border-left: 10px solid var(--hai-ui-blue4);
+  background-color: var(--hai-ui-light-gray5);
+  padding: 10px 30px;
+  margin-top: 20px;
+  .reply-refer-header {
+    @include aiui-paragraph-15;
+    @include aiui-text-primary;
+    font-weight: 400;
+  }
+  .reply-refer-content {
+    padding-left: 10px;
+  }
+  .reply-refer-delete-tip {
+    @include aiui-text-other;
+  }
+}
+
+.reply-rich-text-container {
+  position: relative;
+  margin-top: 14px;
+  margin-bottom: 0;
+  transition: max-height 0.3s linear;
+  overflow: hidden;
+
+  &.not-expand {
+    max-height: 300px;
+  }
+
+  &.refer-reply {
+    .content-ref-block-operation {
+      .gradient-container {
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0) 0%,
+          var(--hai-ui-light-gray5) 100%
+        );
+      }
+      .solid-container {
+        background-color: var(--hai-ui-light-gray5);
+      }
+    }
+
+    .content-ref-block-up-operation {
+      background-color: var(--hai-ui-light-gray5);
+    }
+  }
+
+  &.reply {
+    .content-ref-block-operation {
+      .gradient-container {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, var(--hai-ui-layout-1) 100%);
+      }
+      .solid-container {
+        background-color: var(--hai-ui-layout-1);
+      }
+    }
+
+    .content-ref-block-up-operation {
+      background-color: var(--hai-ui-layout-1);
+    }
+  }
+
+  .content-ref-block-operation {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    .gradient-container {
+      width: 100%;
+      height: 40px;
+    }
+    .solid-container {
+      height: 30px;
+      width: 100%;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .content-ref-block-up-operation {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 10px;
+    .solid-container {
+      height: 30px;
+      width: 100%;
+      align-items: center;
+      display: flex;
+      flex-direction: column;
+      // background-color: red;
+    }
+  }
+}

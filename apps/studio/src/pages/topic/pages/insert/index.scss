@@ -1,0 +1,13 @@
+.xtopic-insert-layout {
+  position: relative;
+
+  .xtopic-insert-background {
+    position: absolute;
+    right: 93px;
+    height: 110px;
+    top: -50px;
+    width: 490px;
+    background: url(/resources/topic/topic_insert_background.svg) no-repeat right/contain !important;
+    background-size: auto 100%;
+  }
+}

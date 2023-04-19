@@ -1,0 +1,144 @@
+@import '../../../style/aiui_mixin.scss';
+
+.xtopic-persona {
+  height: 240px;
+  padding-bottom: 0;
+
+  .content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .avatar {
+      position: relative;
+      width: 74px;
+      height: 74px;
+      border-radius: 50%;
+      overflow: hidden;
+      cursor: pointer;
+
+      .avatar-img {
+        width: 74px;
+        height: 74px;
+        border-radius: 50%;
+      }
+      .edit-overlay {
+        display: none;
+        width: 100%;
+        text-align: center;
+        position: absolute;
+        cursor: pointer;
+        bottom: 0;
+        height: 33%;
+        transition: opacity 0.2s ease-in-out;
+        background-color: var(--mask-background);
+
+        .hai-ui-icon-camera {
+          opacity: 0.8;
+        }
+      }
+
+      &:hover {
+        .edit-overlay {
+          display: block;
+        }
+      }
+    }
+
+    .nickname {
+      @include aiui-h5;
+      @include aiui-text-primary;
+      @include truncate;
+      cursor: pointer;
+
+      margin-top: 10px;
+      position: relative;
+
+      .hai-ui-icon-edit {
+        display: none;
+        position: absolute;
+        right: -30px;
+        padding: 2px;
+      }
+
+      .nickname-edit {
+        display: flex;
+        flex-direction: row;
+        gap: 2px;
+      }
+
+      &:hover .hai-ui-icon-edit {
+        display: inline;
+      }
+
+      &:hover {
+        background-color: var(--hf-layout-light);
+      }
+    }
+
+    .bio {
+      margin-top: 6px;
+      @include aiui-ui-13;
+      @include aiui-text-secondary;
+      max-width: 100%;
+      text-align: center;
+      cursor: pointer;
+
+      &:hover {
+        background-color: var(--hf-layout-light);
+      }
+    }
+
+    .stats {
+      display: grid;
+      width: 100%;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 16px;
+
+      .col {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+
+        .stats-header {
+          @include aiui-ui-14;
+          @include aiui-text-secondary;
+        }
+
+        .stats-value {
+          margin-top: 6px;
+          @include aiui-h3;
+          @include aiui-text-primary;
+        }
+      }
+    }
+
+    .persona-warning-tip {
+      margin-top: 10px;
+      background-color: var(--hfapp-layout-color1);
+      @include aiui-paragraph-13;
+      @include aiui-text-secondary;
+
+      a {
+        color: var(--hai-ui-blue4);
+      }
+    }
+
+    .create {
+      margin-top: 28px;
+
+      button {
+        width: 180px;
+      }
+    }
+  }
+
+  .xtopic-notification-wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+}

@@ -1,0 +1,55 @@
+@import '../../style/aiui_mixin.scss';
+@import '../../style/variables.scss';
+
+.hf-vertical-tab {
+  display: flex;
+  flex-direction: row;
+
+  .nav {
+    color: var(--hai-ui-text-secondary);
+    min-height: 200px;
+    min-width: 200px;
+    // background-color: antiquewhite;
+    padding-right: 40px;
+
+    li {
+      padding: 8px;
+      @include aiui-h6r;
+      cursor: pointer;
+      line-height: 16px;
+      list-style: none;
+      margin-bottom: 6px;
+
+      &.active {
+        @include aiui-h6;
+        line-height: 16px;
+        background-color: var(--hai-ui-layout-2);
+        &:hover {
+          background-color: var(--hai-ui-layout-2);
+        }
+      }
+
+      .#{$ns}-icon {
+        margin-right: 10px;
+      }
+
+      &:hover {
+        background-color: rgba(#738091, 0.03);
+      }
+    }
+  }
+
+  .tab-content {
+    flex: 1;
+
+    // background-color: aquamarine;
+    & > .title {
+      font-size: 24px;
+      line-height: 30px;
+      padding-bottom: 16px;
+      color: var(--hai-ui-text-primay);
+      border-bottom: 1px solid var(--hfapp-layout-color2);
+      margin-bottom: 20px;
+    }
+  }
+}

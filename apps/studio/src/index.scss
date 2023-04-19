@@ -1,0 +1,130 @@
+@import './style/reset.scss';
+@import './style/common.scss';
+@import './style/function.scss';
+@import './style/z-index.scss';
+@import './style/aiui_mixin.scss';
+@import './style/quick.scss';
+@import './style/panel-icon.scss';
+@import 'uplot/dist/uPlot.min.css';
+@import '@hai-ui/core/src/blueprint.scss';
+@import '@hai-ui/datetime/src/blueprint-datetime.scss';
+
+@import '@hai-ui/select/src/blueprint-select.scss';
+@import '@hai-ui/popover2/src/blueprint-popover2.scss';
+@import '@hai-platform/studio-pages/src/entries/manage/index.scss';
+@import '@hai-platform/studio-pages/src/entries/logs/index.scss';
+@import '@hai-platform/studio-pages/src/entries/experiment2/index.scss';
+@import '@hai-platform/studio-pages/src/entries/perf/index.scss';
+@import '@hai-platform/studio-pages/src/ui-components/uikit/ui_kit_style.scss';
+@import '@hai-platform/studio-pages/src/ui-components/svgIcon/style.css';
+
+@import '@hai-platform/studio-pages/src/style/base.scss';
+
+@import '@hai-platform/x-editor/dist/style/entries/hf-basic.css';
+
+@import 'xterm/css/xterm.css';
+
+@import './style/svg.scss';
+@import './style/rc-dock/index.scss';
+@import './style/cropperjs/index.css';
+
+@import './biz-components/LogUpload/index.scss';
+@import './biz-components/LogViewer/index.scss';
+@import './components/HFPage/index.scss';
+@import './pages/home/index.scss';
+@import './pages/manage/biz-comps/exp/index.scss';
+@import './pages/settings/index.scss';
+@import './pages/login/index.scss';
+@import './pages/manage/biz-comps/trainings/index.scss';
+@import './pages/jupyter/index.scss';
+@import './utils/toast.scss';
+@import './style/override.scss';
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.plan-container {
+  padding: 10px 50px 10px 15px;
+  max-width: 900px;
+  font-size: 15px;
+  line-height: 150%;
+  letter-spacing: 1px;
+
+  blockquote {
+    color: grey;
+  }
+
+  ul {
+    li {
+      list-style: initial !important;
+      margin-left: 2em;
+    }
+  }
+
+  img {
+    box-shadow: 2px 2px 2px lightgrey;
+  }
+
+  p {
+    margin-top: 10px;
+    margin-bottom: 0;
+  }
+}
+
+.app-drawer-container {
+  top: 51px !important;
+  box-shadow: 4px 2px 2px rgba(16, 22, 26, 0.2);
+
+  .app-drawer-content-container {
+    padding: 10px 20px 10px 20px;
+    h3,
+    h4,
+    h5 {
+      font-weight: 400;
+    }
+  }
+}
+
+.header-menu {
+  cursor: pointer;
+}
+
+.app-loading {
+  margin: auto;
+  width: max-content;
+  margin-top: 200px;
+}
+
+.App.hf {
+  height: 100vh;
+  min-height: 600px;
+  position: relative;
+}
+
+.dock-tab-highlight {
+  background-color: var(--hf-highlight-tab) !important;
+}
+
+body.#{$ns}-dark {
+  .dock-tab-highlight {
+    color: white !important;
+  }
+}
+
+.page-fixing-banner {
+  background-color: var(--hai-ui-orange4);
+  color: white;
+  height: 30px;
+  padding-left: 10px;
+  padding-right: 10px;
+  align-items: center;
+  line-height: 30px;
+  text-align: center;
+  width: 100vw;
+  top: 0;
+  right: 0;
+  left: 0;
+  position: fixed;
+  z-index: $nav-bar-z-index;
+}

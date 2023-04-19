@@ -1,0 +1,802 @@
+@import './variables.scss';
+
+/* ------------variable---------- */
+// 颜色定义：
+@import '@hai-ui/colors/src/_colors.scss';
+
+// 这个字体给 monaco 日志渲染器使用，它如果需要画图的话，大部分字体都不行，需要指定一个特殊的字体
+@font-face {
+  font-family: 'patch-source-code-pro';
+  src: url('/resources/source-code-pro/SourceCodePro-Regular.ttf.woff') format('woff'),
+    url('/resources/source-code-pro/SourceCodePro-Regular.ttf.woff2') format('woff2'),
+    url('/resources/source-code-pro/SourceCodePro-Regular.ttf') format('truetype');
+}
+
+// hint: 我们不引入 '@hai-ui/icons/src/blueprint-icons.scss';
+// 而是自己重新定义了一遍这个字体，这样的好处是我们可以控制它的路径
+@font-face {
+  font-family: 'blueprint-icons-16';
+  src: url('/assets/blueprint-icons-16.ttf?cef0a0ffd18aec99963ba4f8d84482b0') format('truetype'),
+    url('/assets/blueprint-icons-16.eot?cef0a0ffd18aec99963ba4f8d84482b0#iefix')
+      format('embedded-opentype'),
+    url('/assets/blueprint-icons-16.woff2?cef0a0ffd18aec99963ba4f8d84482b0') format('woff2'),
+    url('/assets/blueprint-icons-16.woff?cef0a0ffd18aec99963ba4f8d84482b0') format('woff');
+}
+
+@font-face {
+  font-family: 'blueprint-icons-20';
+  src: url('/assets/blueprint-icons-20.ttf?07c1d419bf8bc4bde78dc733ee0a2198') format('truetype'),
+    url('/assets/blueprint-icons-20.eot?07c1d419bf8bc4bde78dc733ee0a2198#iefix')
+      format('embedded-opentype'),
+    url('/assets/blueprint-icons-20.woff2?07c1d419bf8bc4bde78dc733ee0a2198') format('woff2'),
+    url('/assets/blueprint-icons-20.woff?07c1d419bf8bc4bde78dc733ee0a2198') format('woff');
+}
+
+.ppp {
+  font-family: 'Icons16';
+}
+
+.font-placeholder-2 {
+  font-family: 'patch-source-code-variable';
+}
+
+.font-placeholder-2 {
+  font-family: 'patch-source-code-pro';
+}
+
+body {
+  --hai-ui-text-secondary: var(--hai-ui-gray1);
+  --hai-ui-text-other: var(--hai-ui-gray4);
+  --hai-ui-text-primary: #{$dark-gray3};
+
+  --hai-ui-layout-bg: var(--hai-ui-light-gray5);
+  --hai-ui-layout-1: #ffffff;
+  --hai-ui-layout-2: var(--hai-ui-light-gray4);
+  --hai-ui-layout-m1: var(--hai-ui-light-gray5);
+
+  --hai-ui-light-gray1: #{$light-gray1};
+  --hai-ui-light-gray2: #{$light-gray2};
+  --hai-ui-light-gray3: #{$light-gray3};
+  --hai-ui-light-gray4: #{$light-gray4};
+  --hai-ui-light-gray5: #{$light-gray5};
+
+  --hai-ui-gray1: #{$gray1};
+  --hai-ui-gray2: #{$gray2};
+  --hai-ui-gray3: #{$gray3};
+  --hai-ui-gray4: #{$gray4};
+  --hai-ui-gray5: #{$gray5};
+
+  --hai-ui-blue1: #{$blue1};
+  --hai-ui-blue2: #{$blue2};
+  --hai-ui-blue3: #{$blue3};
+  --hai-ui-blue4: #{$blue4};
+  --hai-ui-blue5: #{$blue5};
+
+  --hai-ui-green1: #{$green1};
+  --hai-ui-green2: #{$green2};
+  --hai-ui-green3: #{$green3};
+  --hai-ui-green4: #{$green4};
+  --hai-ui-green5: #{$green5};
+
+  --hai-ui-orange1: #{$orange1};
+  --hai-ui-orange2: #{$orange2};
+  --hai-ui-orange3: #{$orange3};
+  --hai-ui-orange4: #{$orange4};
+  --hai-ui-orange5: #{$orange5};
+
+  --hai-ui-vermilion1: #{$vermilion1};
+  --hai-ui-vermilion2: #{$vermilion2};
+  --hai-ui-vermilion3: #{$vermilion3};
+  --hai-ui-vermilion4: #{$vermilion4};
+  --hai-ui-vermilion5: #{$vermilion5};
+
+  --hai-ui-rose1: #{$rose1};
+  --hai-ui-rose2: #{$rose2};
+  --hai-ui-rose3: #{$rose3};
+  --hai-ui-rose4: #{$rose4};
+  --hai-ui-rose5: #{$rose5};
+
+  --hai-ui-red1: #{$red1};
+  --hai-ui-red2: #{$red2};
+  --hai-ui-red3: #{$red3};
+  --hai-ui-red4: #{$red4};
+  --hai-ui-red5: #{$red5};
+
+  --hai-ui-violet1: #{$violet1};
+  --hai-ui-violet2: #{$violet2};
+  --hai-ui-violet3: #{$violet3};
+  --hai-ui-violet4: #{$violet4};
+  --hai-ui-violet5: #{$violet5};
+
+  --hai-ui-indigo1: #{$indigo1};
+  --hai-ui-indigo2: #{$indigo2};
+  --hai-ui-indigo3: #{$indigo3};
+  --hai-ui-indigo4: #{$indigo4};
+  --hai-ui-indigo5: #{$indigo5};
+
+  --hai-ui-cerulean1: #{$cerulean1};
+  --hai-ui-cerulean2: #{$cerulean2};
+  --hai-ui-cerulean3: #{$cerulean3};
+  --hai-ui-cerulean4: #{$cerulean4};
+  --hai-ui-cerulean5: #{$cerulean5};
+
+  --hai-ui-turquoise1: #{$turquoise1};
+  --hai-ui-turquoise2: #{$turquoise2};
+  --hai-ui-turquoise3: #{$turquoise3};
+  --hai-ui-turquoise4: #{$turquoise4};
+  --hai-ui-turquoise5: #{$turquoise5};
+
+  --hai-ui-forest1: #{$forest1};
+  --hai-ui-forest2: #{$forest2};
+  --hai-ui-forest3: #{$forest3};
+  --hai-ui-forest4: #{$forest4};
+  --hai-ui-forest5: #{$forest5};
+
+  --hai-ui-lime1: #{$lime1};
+  --hai-ui-lime2: #{$lime2};
+  --hai-ui-lime3: #{$lime3};
+  --hai-ui-lime4: #{$lime4};
+  --hai-ui-lime5: #{$lime5};
+
+  --hai-ui-gold1: #{$gold1};
+  --hai-ui-gold2: #{$gold2};
+  --hai-ui-gold3: #{$gold3};
+  --hai-ui-gold4: #{$gold4};
+  --hai-ui-gold5: #{$gold5};
+
+  --hai-ui-sepia1: #{$sepia1};
+  --hai-ui-sepia2: #{$sepia2};
+  --hai-ui-sepia3: #{$sepia3};
+  --hai-ui-sepia4: #{$sepia4};
+  --hai-ui-sepia5: #{$sepia5};
+
+  // from jupyter
+  // 注意，这里如果用变量，可能有些地方无法解析
+  --hf-theme-color: #2d72d2;
+  --hf-primary-btn-color: #2d72d2;
+  --hf-primary-btn-hover: #2d72d2;
+  --hf-theme-color-second: #489fe6bb;
+  --hf-theme-color-third: #6d97b9e0;
+  --hf-danger-btn-color: #d32f2f;
+  --hf-danger-btn-hover: #f44336;
+  --hf-disabled: #bbb;
+  --hf-ui-font-color0: #222;
+  --hf-ui-font-color1: #444;
+  --hf-ui-font-color2: #999;
+  --hf-ui-font-color3: #aaa;
+  --hf-text-normal: var(--hf-ui-font-color1);
+  --hf-text-secondary: var(--hf-ui-font-color2);
+  --hf-text-lighter: var(--hf-ui-font-color3);
+  --hf-option-bg: #fff;
+  --hf-option-disabled: #bbb;
+  --hf-layout-light: #f7f7f7;
+  --hf-layout-light-darken: #e7e7e7;
+
+  --hf-ui-highlight-bg: #9ad0ff3b;
+  --hf-ui-highlight-bg-light: #9ad0ff17;
+  --hf-table-border-color: #ddd;
+  /* status */
+  --hf-status-suspended: rgb(255, 166, 0);
+  --hf-status-running: #6ee089d2;
+  --hf-status-stopped: #8aa8c7;
+  --hf-status-succeed: #539664bf;
+  --hf-status-error: #cc5858d2;
+  --hf-highlight-block: #eef7ff;
+  --hf-highlight-tab: #ffeb86;
+
+  --hf-disabled-override: #5f5f5f;
+
+  --hf-nav-color: #262f3e;
+  --hf-app-background-light: #f1f1f2;
+  --hf-app-bg-view: #f7f9fa;
+
+  // hint: 携带了部分 jp 是因为 studio-pages 用到了这类变量，实际上后面最好都优化变成自己的
+  --jp-layout-color0: white;
+  --jp-layout-color1: white;
+  --jp-layout-color2: #f7f9fa;
+  --jp-layout-color3: var(--md-grey-200);
+
+  --mask-background: rgba(50, 50, 50, 0.5);
+
+  --hfapp-layout-color0: white;
+  --hfapp-layout-color1: #f4f6f8;
+  // --hfapp-layout-color1: #f7f9fa;
+  --hfapp-layout-color2: var(--md-grey-200);
+  --hfapp-layout-color3: var(--md-grey-300);
+  --hfapp-layout-color4: var(--md-grey-400);
+  --hfapp-layout-color5: var(--md-grey-500);
+  --hfapp-layout-color6: var(--md-grey-600);
+  --hfapp-layout-color7: var(--md-grey-700);
+  --hfapp-layout-color8: var(--md-grey-800);
+  --hfapp-layout-color9: var(--md-grey-900);
+
+  --hfapp-running-highlight: #00e7ff0a;
+
+  --hfapp-clickable-div: #00e7ff0a;
+  --hfapp-clickable-div-hover: #00e7ff2a;
+
+  --nav-back-color-highlight: #453746;
+}
+
+$dark1: lighten(#22262f, 6%);
+
+body.#{$ns}-dark {
+  --hai-ui-text-primary: #{$light-gray3};
+  --hai-ui-text-secondary: #{$gray5};
+  --hai-ui-text-other: #{$gray2};
+
+  --hai-ui-layout-bg: #{$dark-gray1};
+  --hai-ui-layout-1: #{$dark-gray2};
+  --hai-ui-layout-2: #{$dark-gray3};
+  --hai-ui-layout-m1: #10161a;
+
+  --hai-ui-light-gray1: #{$dark-gray1};
+  --hai-ui-light-gray2: #{$dark-gray2};
+  --hai-ui-light-gray3: #{$dark-gray3};
+  --hai-ui-light-gray4: #{$dark-gray4};
+  --hai-ui-light-gray5: #{$dark-gray5};
+
+  --hai-ui-gray1: #{$dark-gray1};
+  --hai-ui-gray2: #{$dark-gray2};
+  --hai-ui-gray3: #{$dark-gray3};
+  --hai-ui-gray4: #{$dark-gray4};
+  --hai-ui-gray5: #{$dark-gray5};
+
+  --hf-ui-font-color0: #eee;
+  --hf-ui-font-color1: #bbb;
+  --hf-ui-font-color2: #999;
+  --hf-ui-font-color3: #666;
+  --hf-option-bg: #303030;
+  --hf-text-normal: var(--hf-ui-font-color1);
+  --hf-text-secondary: var(--hf-ui-font-color2);
+  --hf-text-lighter: var(--hf-ui-font-color3);
+  /* --hf-layout-light: #333; */
+  --hf-layout-light: #171717;
+  --hf-layout-light-darken: #272727;
+  --hf-table-border-color: #444;
+  --hf-highlight-block: #2d323a;
+  --hf-highlight-tab: #877103;
+
+  --mask-background: rgba(50, 50, 50, 0.5);
+
+  --jp-layout-color0: var(--md-grey-900);
+  --jp-layout-color1: var(--md-grey-900);
+  --jp-layout-color2: #2b2f37;
+  --jp-layout-color3: #2a2e3a;
+
+  --hf-disabled-override: #d0d0d0;
+  --hfapp-layout-color0: black;
+  --hfapp-layout-color1: #1b1e25;
+  --hfapp-layout-color2: #2b2f37;
+  --hfapp-layout-color3: #2a2e3a;
+  --hfapp-layout-color4: #474c5a;
+  --hfapp-layout-color5: var(--md-grey-500);
+  --hfapp-layout-color6: var(--md-grey-400);
+  --hfapp-layout-color7: var(--md-grey-300);
+  --hfapp-layout-color8: var(--md-grey-200);
+  --hfapp-layout-color9: var(--md-grey-100);
+}
+
+body {
+  background-color: var(--hfapp-layout-color1);
+  overflow-x: auto;
+  &.#{$ns}-dark {
+    .hai-ui-navbar.#{$ns}-dark,
+    .#{$ns}-dark .hai-ui-navbar {
+      background-color: #1f262c;
+    }
+  }
+}
+
+.#{$ns}-navbar.#{$ns}-dark {
+  background-color: #1f2533 !important;
+}
+
+$theme-light4: lighten($theme, 40%);
+$theme-light5: lighten($theme, 50%);
+$theme-light6: lighten($theme, 60%);
+
+// overwrite:
+$blue1: darken($theme, 20%);
+$blue2: darken($theme, 10%);
+$blue3: $theme;
+$blue4: lighten($theme, 10%);
+$blue5: lighten($theme, 20%);
+
+$dark-input-background-color: var(--hf-highlight-block);
+
+// HINT: 这个颜色和 number input 的边框有无有关
+$input-shadow-color-focus: $theme;
+
+p,
+div {
+  white-space: pre-line;
+}
+
+.hf .ptr {
+  cursor: pointer;
+}
+
+.hf .in {
+  background: rgba($theme-light4, 0.5);
+}
+
+.#{$ns}-dark .in {
+  background: var(--hf-highlight-block);
+}
+
+.hf .inlineForm {
+  display: flex;
+  align-items: center;
+}
+
+/* reset */
+.hf ul .hf li {
+  padding: 0px;
+  margin: 0px;
+  list-style: none;
+}
+
+/* ------------scrollbar---------- */
+
+.hf,
+body,
+.hf div {
+  /*bg fg*/
+  scrollbar-color: #a1a1a1 #dfdfdf;
+  scrollbar-width: thin;
+}
+
+/* webkit */
+body::-webkit-scrollbar,
+.hf::-webkit-scrollbar,
+.hf div::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+body::-webkit-scrollbar-thumb,
+.hf::-webkit-scrollbar-thumb,
+.hf div::-webkit-scrollbar-thumb {
+  box-sizing: border-box;
+  border-radius: 2px;
+  background: var(--hai-ui-text-other);
+}
+
+body::-webkit-scrollbar-track,
+.hf::-webkit-scrollbar-track,
+.hf div::-webkit-scrollbar-track {
+  background: var(--jp-layout-color0);
+}
+
+/* 右上角挂入组件自动右对齐 */
+
+#jp-top-panel .corner-component {
+  margin-right: 4px;
+}
+
+#jp-top-panel .corner-span {
+  margin-left: auto;
+}
+
+/* -----------clearfix--------------*/
+
+.hf .clearfix:after {
+  content: '';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+/* fix jupyterlab bug */
+/* terminal 的 canvas 差两个像素 */
+.xterm .xterm-screen canvas {
+  border: none !important;
+}
+
+.jp-Dialog-body {
+  white-space: break-spaces;
+}
+
+.lm-TabBar-tabIcon.p-TabBar-tabIcon {
+  align-items: center;
+  display: flex;
+  svg[data-icon='ui-components:folder'] {
+    display: block;
+    height: auto;
+    margin: 0 auto;
+    width: 20px;
+  }
+}
+
+.jp-FileBrowser {
+  *,
+  *::before,
+  *::after {
+    box-sizing: unset;
+  }
+}
+
+@keyframes tab-color-change {
+  0% {
+  }
+  100% {
+    transition: 3s;
+    background-color: inherit;
+  }
+}
+
+.highlight-tab {
+  background-color: var(--hf-highlight-tab);
+  animation: tab-color-change 3s forwards;
+}
+
+/**
+ * google-material-color v1.2.6
+ * https://github.com/danlevan/google-material-color
+ */
+:root {
+  --md-red-50: #ffebee;
+  --md-red-100: #ffcdd2;
+  --md-red-200: #ef9a9a;
+  --md-red-300: #e57373;
+  --md-red-400: #ef5350;
+  --md-red-500: #f44336;
+  --md-red-600: #e53935;
+  --md-red-700: #d32f2f;
+  --md-red-800: #c62828;
+  --md-red-900: #b71c1c;
+  --md-red-A100: #ff8a80;
+  --md-red-A200: #ff5252;
+  --md-red-A400: #ff1744;
+  --md-red-A700: #d50000;
+
+  --md-pink-50: #fce4ec;
+  --md-pink-100: #f8bbd0;
+  --md-pink-200: #f48fb1;
+  --md-pink-300: #f06292;
+  --md-pink-400: #ec407a;
+  --md-pink-500: #e91e63;
+  --md-pink-600: #d81b60;
+  --md-pink-700: #c2185b;
+  --md-pink-800: #ad1457;
+  --md-pink-900: #880e4f;
+  --md-pink-A100: #ff80ab;
+  --md-pink-A200: #ff4081;
+  --md-pink-A400: #f50057;
+  --md-pink-A700: #c51162;
+
+  --md-purple-50: #f3e5f5;
+  --md-purple-100: #e1bee7;
+  --md-purple-200: #ce93d8;
+  --md-purple-300: #ba68c8;
+  --md-purple-400: #ab47bc;
+  --md-purple-500: #9c27b0;
+  --md-purple-600: #8e24aa;
+  --md-purple-700: #7b1fa2;
+  --md-purple-800: #6a1b9a;
+  --md-purple-900: #4a148c;
+  --md-purple-A100: #ea80fc;
+  --md-purple-A200: #e040fb;
+  --md-purple-A400: #d500f9;
+  --md-purple-A700: #aa00ff;
+
+  --md-deep-purple-50: #ede7f6;
+  --md-deep-purple-100: #d1c4e9;
+  --md-deep-purple-200: #b39ddb;
+  --md-deep-purple-300: #9575cd;
+  --md-deep-purple-400: #7e57c2;
+  --md-deep-purple-500: #673ab7;
+  --md-deep-purple-600: #5e35b1;
+  --md-deep-purple-700: #512da8;
+  --md-deep-purple-800: #4527a0;
+  --md-deep-purple-900: #311b92;
+  --md-deep-purple-A100: #b388ff;
+  --md-deep-purple-A200: #7c4dff;
+  --md-deep-purple-A400: #651fff;
+  --md-deep-purple-A700: #6200ea;
+
+  --md-indigo-50: #e8eaf6;
+  --md-indigo-100: #c5cae9;
+  --md-indigo-200: #9fa8da;
+  --md-indigo-300: #7986cb;
+  --md-indigo-400: #5c6bc0;
+  --md-indigo-500: #3f51b5;
+  --md-indigo-600: #3949ab;
+  --md-indigo-700: #303f9f;
+  --md-indigo-800: #283593;
+  --md-indigo-900: #1a237e;
+  --md-indigo-A100: #8c9eff;
+  --md-indigo-A200: #536dfe;
+  --md-indigo-A400: #3d5afe;
+  --md-indigo-A700: #304ffe;
+
+  --md-blue-50: #e3f2fd;
+  --md-blue-100: #bbdefb;
+  --md-blue-200: #90caf9;
+  --md-blue-300: #64b5f6;
+  --md-blue-400: #42a5f5;
+  --md-blue-500: #2196f3;
+  --md-blue-600: #1e88e5;
+  --md-blue-700: #1976d2;
+  --md-blue-800: #1565c0;
+  --md-blue-900: #0d47a1;
+  --md-blue-A100: #82b1ff;
+  --md-blue-A200: #448aff;
+  --md-blue-A400: #2979ff;
+  --md-blue-A700: #2962ff;
+
+  --md-light-blue-50: #e1f5fe;
+  --md-light-blue-100: #b3e5fc;
+  --md-light-blue-200: #81d4fa;
+  --md-light-blue-300: #4fc3f7;
+  --md-light-blue-400: #29b6f6;
+  --md-light-blue-500: #03a9f4;
+  --md-light-blue-600: #039be5;
+  --md-light-blue-700: #0288d1;
+  --md-light-blue-800: #0277bd;
+  --md-light-blue-900: #01579b;
+  --md-light-blue-A100: #80d8ff;
+  --md-light-blue-A200: #40c4ff;
+  --md-light-blue-A400: #00b0ff;
+  --md-light-blue-A700: #0091ea;
+
+  --md-cyan-50: #e0f7fa;
+  --md-cyan-100: #b2ebf2;
+  --md-cyan-200: #80deea;
+  --md-cyan-300: #4dd0e1;
+  --md-cyan-400: #26c6da;
+  --md-cyan-500: #00bcd4;
+  --md-cyan-600: #00acc1;
+  --md-cyan-700: #0097a7;
+  --md-cyan-800: #00838f;
+  --md-cyan-900: #006064;
+  --md-cyan-A100: #84ffff;
+  --md-cyan-A200: #18ffff;
+  --md-cyan-A400: #00e5ff;
+  --md-cyan-A700: #00b8d4;
+
+  --md-teal-50: #e0f2f1;
+  --md-teal-100: #b2dfdb;
+  --md-teal-200: #80cbc4;
+  --md-teal-300: #4db6ac;
+  --md-teal-400: #26a69a;
+  --md-teal-500: #009688;
+  --md-teal-600: #00897b;
+  --md-teal-700: #00796b;
+  --md-teal-800: #00695c;
+  --md-teal-900: #004d40;
+  --md-teal-A100: #a7ffeb;
+  --md-teal-A200: #64ffda;
+  --md-teal-A400: #1de9b6;
+  --md-teal-A700: #00bfa5;
+
+  --md-green-50: #e8f5e9;
+  --md-green-100: #c8e6c9;
+  --md-green-200: #a5d6a7;
+  --md-green-300: #81c784;
+  --md-green-400: #66bb6a;
+  --md-green-500: #4caf50;
+  --md-green-600: #43a047;
+  --md-green-700: #388e3c;
+  --md-green-800: #2e7d32;
+  --md-green-900: #1b5e20;
+  --md-green-A100: #b9f6ca;
+  --md-green-A200: #69f0ae;
+  --md-green-A400: #00e676;
+  --md-green-A700: #00c853;
+
+  --md-light-green-50: #f1f8e9;
+  --md-light-green-100: #dcedc8;
+  --md-light-green-200: #c5e1a5;
+  --md-light-green-300: #aed581;
+  --md-light-green-400: #9ccc65;
+  --md-light-green-500: #8bc34a;
+  --md-light-green-600: #7cb342;
+  --md-light-green-700: #689f38;
+  --md-light-green-800: #558b2f;
+  --md-light-green-900: #33691e;
+  --md-light-green-A100: #ccff90;
+  --md-light-green-A200: #b2ff59;
+  --md-light-green-A400: #76ff03;
+  --md-light-green-A700: #64dd17;
+
+  --md-lime-50: #f9fbe7;
+  --md-lime-100: #f0f4c3;
+  --md-lime-200: #e6ee9c;
+  --md-lime-300: #dce775;
+  --md-lime-400: #d4e157;
+  --md-lime-500: #cddc39;
+  --md-lime-600: #c0ca33;
+  --md-lime-700: #afb42b;
+  --md-lime-800: #9e9d24;
+  --md-lime-900: #827717;
+  --md-lime-A100: #f4ff81;
+  --md-lime-A200: #eeff41;
+  --md-lime-A400: #c6ff00;
+  --md-lime-A700: #aeea00;
+
+  --md-yellow-50: #fffde7;
+  --md-yellow-100: #fff9c4;
+  --md-yellow-200: #fff59d;
+  --md-yellow-300: #fff176;
+  --md-yellow-400: #ffee58;
+  --md-yellow-500: #ffeb3b;
+  --md-yellow-600: #fdd835;
+  --md-yellow-700: #fbc02d;
+  --md-yellow-800: #f9a825;
+  --md-yellow-900: #f57f17;
+  --md-yellow-A100: #ffff8d;
+  --md-yellow-A200: #ffff00;
+  --md-yellow-A400: #ffea00;
+  --md-yellow-A700: #ffd600;
+
+  --md-amber-50: #fff8e1;
+  --md-amber-100: #ffecb3;
+  --md-amber-200: #ffe082;
+  --md-amber-300: #ffd54f;
+  --md-amber-400: #ffca28;
+  --md-amber-500: #ffc107;
+  --md-amber-600: #ffb300;
+  --md-amber-700: #ffa000;
+  --md-amber-800: #ff8f00;
+  --md-amber-900: #ff6f00;
+  --md-amber-A100: #ffe57f;
+  --md-amber-A200: #ffd740;
+  --md-amber-A400: #ffc400;
+  --md-amber-A700: #ffab00;
+
+  --md-orange-50: #fff3e0;
+  --md-orange-100: #ffe0b2;
+  --md-orange-200: #ffcc80;
+  --md-orange-300: #ffb74d;
+  --md-orange-400: #ffa726;
+  --md-orange-500: #ff9800;
+  --md-orange-600: #fb8c00;
+  --md-orange-700: #f57c00;
+  --md-orange-800: #ef6c00;
+  --md-orange-900: #e65100;
+  --md-orange-A100: #ffd180;
+  --md-orange-A200: #ffab40;
+  --md-orange-A400: #ff9100;
+  --md-orange-A700: #ff6d00;
+
+  --md-deep-orange-50: #fbe9e7;
+  --md-deep-orange-100: #ffccbc;
+  --md-deep-orange-200: #ffab91;
+  --md-deep-orange-300: #ff8a65;
+  --md-deep-orange-400: #ff7043;
+  --md-deep-orange-500: #ff5722;
+  --md-deep-orange-600: #f4511e;
+  --md-deep-orange-700: #e64a19;
+  --md-deep-orange-800: #d84315;
+  --md-deep-orange-900: #bf360c;
+  --md-deep-orange-A100: #ff9e80;
+  --md-deep-orange-A200: #ff6e40;
+  --md-deep-orange-A400: #ff3d00;
+  --md-deep-orange-A700: #dd2c00;
+
+  --md-brown-50: #efebe9;
+  --md-brown-100: #d7ccc8;
+  --md-brown-200: #bcaaa4;
+  --md-brown-300: #a1887f;
+  --md-brown-400: #8d6e63;
+  --md-brown-500: #795548;
+  --md-brown-600: #6d4c41;
+  --md-brown-700: #5d4037;
+  --md-brown-800: #4e342e;
+  --md-brown-900: #3e2723;
+
+  --md-grey-50: #fafafa;
+  --md-grey-100: #f5f5f5;
+  --md-grey-200: #eeeeee;
+  --md-grey-300: #e0e0e0;
+  --md-grey-400: #bdbdbd;
+  --md-grey-500: #9e9e9e;
+  --md-grey-600: #757575;
+  --md-grey-700: #616161;
+  --md-grey-800: #424242;
+  --md-grey-900: #212121;
+
+  --md-blue-grey-50: #eceff1;
+  --md-blue-grey-100: #cfd8dc;
+  --md-blue-grey-200: #b0bec5;
+  --md-blue-grey-300: #90a4ae;
+  --md-blue-grey-400: #78909c;
+  --md-blue-grey-500: #607d8b;
+  --md-blue-grey-600: #546e7a;
+  --md-blue-grey-700: #455a64;
+  --md-blue-grey-800: #37474f;
+  --md-blue-grey-900: #263238;
+}
+
+.jupyter-drawer-container {
+  .app-drawer-content-container {
+    height: calc(100% - 50px);
+  }
+}
+
+.common-pagination {
+  width: max-content;
+  /* text-align: center; */
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  padding-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+
+  div.jump {
+    margin-left: 20px;
+
+    input,
+    button {
+      vertical-align: middle;
+      display: inline-block;
+    }
+
+    input {
+      width: 40px;
+      border-radius: 0;
+      outline: none;
+      height: 22px;
+      border-width: 1px;
+    }
+  }
+
+  li {
+    display: inline-block;
+    text-align: center;
+    margin-right: 20px;
+    min-width: 30px;
+    box-sizing: border-box;
+    line-height: 22px;
+    font-size: 13px;
+    color: var(--hf-text-secondary);
+    background: var(--jp-layout-color2);
+    text-align: center;
+    border-radius: 2px;
+
+    &.break-me {
+      background: unset;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    &.active {
+      color: #fff;
+      background: var(--hf-theme-color);
+    }
+
+    a {
+      color: inherit;
+      display: inline-block;
+      width: 100%;
+      box-sizing: border-box;
+      padding-left: 6px;
+      padding-right: 6px;
+    }
+  }
+}
+
+.#{$ns}-alert-body {
+  h3 {
+    color: var(--hf-ui-font-color0);
+  }
+}
+
+// spot 开发容器相关按钮，都是用该种颜色
+.spot-btn {
+  background-color: var(--hai-ui-turquoise3) !important;
+  &:hover {
+    background-color: var(--hai-ui-turquoise2) !important;
+  }
+}
+
+.ailab-skeleton-light {
+  background-color: var(--hf-layout-light-darken);
+}

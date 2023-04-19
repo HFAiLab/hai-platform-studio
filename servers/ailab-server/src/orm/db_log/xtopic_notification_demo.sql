@@ -1,0 +1,14 @@
+INSERT INTO frontend.topic_notification_template VALUES ('用户被禁言', 'user.banned', 'user', false, '您已被管理员禁言', NULL, NULL);
+INSERT INTO frontend.topic_notification_template VALUES ('自定义', 'custom.custom', NULL, false, '<%= content %>', NULL, NULL);
+INSERT INTO frontend.topic_notification_template VALUES ('话题被点赞', 'post.liked', 'post', false, '<%= userName %> 点赞了你的话题 <a href="#/topic/<%= postIndex %>"><%= postTitle %></a>', NULL, NULL);
+INSERT INTO frontend.topic_notification_template VALUES ('回复被删除', 'reply.deleted', 'reply', false, '你在话题 <a href="#/topic/<%= postIndex %>"><%= postTitle %></a> 下的回复已被删除', NULL, NULL);
+INSERT INTO frontend.topic_notification_template VALUES ('话题被置顶', 'post.topped', 'post', false, '你的话题 <a href="#/topic/<%= postIndex %>"><%= postTitle %></a> 已被管理员置顶', NULL, NULL);
+INSERT INTO frontend.topic_notification_template VALUES ('话题被删除', 'post.deleted', 'post', false, '你的话题 <a href="#/topic/<%= postIndex %>"><%= postTitle %></a> 已被删除', NULL, NULL);
+INSERT INTO frontend.topic_notification_template VALUES ('话题被锁定', 'post.locked', 'post', false, '你的话题 <a href="#/topic/<%= postIndex %>"><%= postTitle %></a> 已被管理员锁定发言', NULL, NULL);
+INSERT INTO frontend.topic_notification_template VALUES ('话题被多人点赞', 'post.liked', 'post', true, '话题 <a href="#/topic/<%= postIndex %>"><%= postTitle %></a> 收到来自用户 <span class="notification-users"><%= users.join(", ") %></span> 的<%= aggregateCount %>个赞', NULL, NULL);
+INSERT INTO frontend.topic_notification_template VALUES ('回复被点赞', 'reply.liked', 'reply', false, '<%= userName %> 点赞了你在话题 <a href="#/topic/<%= postIndex %>"><%= postTitle %></a> 下的回复', NULL, NULL);
+INSERT INTO frontend.topic_notification_template VALUES ('回复被多人点赞', 'reply.liked', 'reply', true, '你在话题 <a href="#/topic/<%= postIndex %>"><%= postTitle %></a> 的回复收到来自用户 <span class="notification-users"><%= users.join(", ") %></span> 的<%= aggregateCount %>个赞', NULL, NULL);
+INSERT INTO frontend.topic_notification_template VALUES ('话题新回复', 'reply.new', 'reply', false, '<%= userName %> 在话题 <a href="#/topic/<%= postIndex %>"><%= postTitle %></a> 下发表了回复', NULL, NULL);
+INSERT INTO frontend.topic_notification_template VALUES ('话题被多人引用', 'reply.referred', 'reply', true, '<%= users %> 在话题 <a href="#/topic/<%= postIndex %>"><%= postTitle %></a> 下引用了你的回复<%= aggregateCount %>次', NULL, NULL);
+INSERT INTO frontend.topic_notification_template VALUES ('话题被多人回复', 'reply.new', 'reply', true, '<%= users %> 在话题 <a href="#/topic/<%= postIndex %>"><%= postTitle %></a> 下发表了<%= aggregateCount %>条回复', NULL, NULL);
+INSERT INTO frontend.topic_notification_template VALUES ('引用回复', 'reply.referred', 'reply', false, '<%= userName %> 在话题 <a href="#/topic/<%= postIndex %>"><%= postTitle %></a> 下引用了你的回复', NULL, NULL);

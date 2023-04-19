@@ -1,0 +1,57 @@
+@import '../../../../style/aiui_mixin.scss';
+
+.xtopic-top-content-container {
+  display: flex;
+  margin-bottom: 20px;
+
+  .xtopic-top-content-block {
+    position: relative;
+    flex: 1;
+    height: 240px;
+    // box-shadow: 1px 2px 2px 0px rgba(0, 0, 0, 0.05);
+    background-size: cover;
+    background-position: center;
+    margin-right: 20px;
+    &:last-child {
+      margin-right: 0;
+    }
+
+    background-color: var(--hai-ui-layout-1);
+
+    .img-container {
+      height: 215px;
+      width: 100%;
+      background-size: cover;
+    }
+    .img-overlay {
+      height: 125px;
+      width: 100%;
+      position: absolute;
+      top: 90px;
+      background: linear-gradient(0, var(--hai-ui-layout-1) 0%, transparent 100%);
+    }
+  }
+  .xtopic-top-title-and-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-sizing: border-box;
+    padding: 30px;
+    p {
+      margin-bottom: 0;
+    }
+
+    .title {
+      @include aiui-h3;
+      @include aiui-text-primary;
+      margin-bottom: 6px;
+      word-break: break-word;
+    }
+
+    .content {
+      @include aiui-paragraph-13;
+      @include aiui-text-secondary;
+    }
+  }
+}

@@ -1,0 +1,55 @@
+@import '../../../style/aiui_mixin.scss';
+.xtopic-notification-item {
+  display: flex;
+  flex-direction: row;
+  // border-bottom: 1px solid ;
+  .icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 20px;
+    margin-top: 1px;
+  }
+  .right {
+    @include aiui-paragraph-14;
+    @include aiui-text-secondary;
+    .actor {
+      span.time {
+        @include aiui-text-other;
+      }
+    }
+    .ct {
+      margin-top: 0px;
+      a {
+        color: var(--hai-ui-blue4);
+      }
+    }
+  }
+
+  &.small {
+    padding: 10px 20px;
+    .icon {
+      width: 30px;
+      height: 30px;
+      margin-right: 16px;
+      margin-top: 2px;
+    }
+    .right {
+      @include aiui-paragraph-13;
+      flex: 1;
+    }
+    .small-t {
+      text-align: right;
+      @include aiui-text-other;
+    }
+  }
+
+  &.unread {
+    background-color: var(--hai-ui-light-gray5);
+    body.hai-ui-dark & {
+      background-color: var(--hai-ui-layout-1);
+    }
+    &:not(:last-of-type) {
+      border-bottom: 1px solid var(--hai-ui-light-gray3);
+    }
+  }
+}

@@ -1,0 +1,48 @@
+.access-token-manager {
+  .access-operating-container {
+    display: flex;
+    .access-operating-span {
+      flex: 1;
+    }
+  }
+  .access-token-mini-line {
+    display: flex;
+    margin-bottom: 0;
+    align-items: center;
+    p {
+      margin-bottom: 0;
+      width: 200px;
+    }
+    button {
+      margin-left: 10px;
+    }
+  }
+
+  .new-access-token {
+    margin-bottom: 10px;
+  }
+}
+
+.access-token-dialog-container {
+  padding: 15px 20px;
+  .create-access-token-footer {
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+  }
+
+  .dialog-access-scope {
+    width: 100%;
+  }
+
+  .create-access-token-success-callout,
+  .create-access-token-error-callout {
+    margin-bottom: 15px;
+
+    pre {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}

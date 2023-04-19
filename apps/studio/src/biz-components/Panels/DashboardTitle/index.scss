@@ -1,0 +1,33 @@
+@import '../../../style/aiui_mixin.scss';
+div.dash-title-panel {
+  background: none !important;
+  padding: 0;
+  padding-left: 20px;
+  .children-container {
+    padding: 0;
+    p {
+      margin-top: 20px;
+      color: var(--hai-ui-text-secondary);
+      font-size: 13px;
+      line-height: 20px;
+    }
+  }
+
+  h1 {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 22px;
+    line-height: 25px;
+    color: var(--hai-ui-text-primary);
+  }
+
+  .dash-title-container-v2 {
+    // display: flex;
+    flex-direction: row;
+    padding-right: 0;
+  }
+
+  .strategy-select-container {
+    width: max-content;
+  }
+}

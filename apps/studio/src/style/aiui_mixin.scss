@@ -1,0 +1,134 @@
+@mixin aiui-h1 {
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 40px;
+}
+
+@mixin aiui-h2 {
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 32px;
+}
+
+@mixin aiui-h3 {
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 25px;
+}
+
+@mixin aiui-h4 {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 21px;
+}
+
+@mixin aiui-h5 {
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 19px;
+}
+
+@mixin aiui-h6 {
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 16px;
+}
+
+@mixin aiui-h4r {
+  font-size: 18px;
+  line-height: 21px;
+}
+
+@mixin aiui-h5r {
+  font-size: 16px;
+  line-height: 19px;
+}
+
+@mixin aiui-h6r {
+  font-size: 14px;
+  line-height: 16px;
+}
+
+@mixin aiui-link {
+  text-decoration: underline;
+  font-size: 13px;
+  line-height: 19px;
+}
+
+@mixin aiui-column-name-en {
+  font-weight: bold;
+  font-size: 11px;
+  line-height: 14px;
+  letter-spacing: 0.02em;
+}
+
+@mixin aiui-column-name-zh {
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.02em;
+}
+
+@mixin aiui-ui-12 {
+  font-size: 12px;
+  line-height: 15px;
+}
+
+@mixin aiui-ui-13 {
+  font-size: 13px;
+  line-height: 16px;
+}
+
+@mixin aiui-ui-14 {
+  font-size: 14px;
+  line-height: 18px;
+}
+
+@mixin aiui-paragraph-12 {
+  font-size: 12px;
+  line-height: 18px;
+}
+
+@mixin aiui-paragraph-13 {
+  font-size: 13px;
+  line-height: 20px;
+}
+
+@mixin aiui-paragraph-14 {
+  font-size: 14px;
+  line-height: 22px;
+}
+
+@mixin aiui-paragraph-15 {
+  font-size: 14px;
+  line-height: 24px;
+}
+
+@mixin aiui-paragraph-16 {
+  font-size: 16px;
+  line-height: 26px;
+}
+
+@mixin aiui-text-primary {
+  color: var(--hai-ui-text-primary);
+}
+
+@mixin aiui-text-secondary {
+  color: var(--hai-ui-text-secondary);
+}
+
+@mixin aiui-text-other {
+  color: var(--hai-ui-text-other);
+}
+
+@mixin overflow-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+@mixin truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

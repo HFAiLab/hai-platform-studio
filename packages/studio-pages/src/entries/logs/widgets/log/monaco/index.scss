@@ -1,0 +1,12 @@
+@import 'viewerjs/dist/viewer.css';
+// monaco 0.35 以后需要
+// @import 'monaco-editor/min/vs/editor/editor.main.css';
+
+.split-line-decoration {
+  background-color: rgba(0, 176, 193, 0.3);
+  color: rgb(16, 96, 104) !important;
+}
+
+.monaco-log-image-container {
+  cursor: pointer;
+}

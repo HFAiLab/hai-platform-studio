@@ -1,0 +1,12 @@
+.hf-log-web-container {
+  height: 100%;
+  p,
+  div {
+      white-space: unset;
+
+      // hint: 如果不加这个 loading 会不正常
+      .hf-loading-container {
+          white-space: initial;
+      }
+  }
+}

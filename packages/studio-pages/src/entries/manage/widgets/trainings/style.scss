@@ -1,0 +1,493 @@
+@import './components/TaskList.scss';
+@import './components/Pagination.scss';
+@import './components/Filter.scss';
+@import './components/FilterGroup.scss';
+@import './components/FilterTag.scss';
+@import './components/SwitchCurrentUser.scss';
+@import './components/ColumnSetter.scss';
+@import './components/dateRangeInput/index.scss';
+
+// 展开的操作栏 总计宽度
+$SlideOpWidth: 210px;
+
+@keyframes slidein {
+  from {
+  }
+
+  to {
+    width: $SlideOpWidth;
+    margin-left: 5px;
+  }
+}
+
+@keyframes slideout {
+  from {
+    width: $SlideOpWidth;
+    margin-left: 5px;
+  }
+
+  to {
+    width: 0;
+    margin-left: 0;
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.hf.trainingsWindow {
+  padding: 10px;
+  /* background: #EEE; */
+  overflow: auto;
+  background: var(--jp-layout-color1);
+  color: var(--hf-text-normal);
+
+  .trainings-widget {
+    min-width: 1030px;
+    height: 100%;
+    box-sizing: border-box;
+
+    .box-title {
+      width: 100%;
+      box-sizing: border-box;
+      background: var(--hf-theme-color);
+      height: 20px;
+      line-height: 20px;
+      padding-left: 10px;
+      color: #fff;
+    }
+  }
+
+  .trainings-container {
+    .storage-usage-warning {
+      color: var(--hai-ui-orange3);
+      letter-spacing: 0.6px;
+    }
+
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: calc(100% - 64px);
+    padding-bottom: 10px;
+
+    .trainings-user-op-bar {
+      position: absolute;
+      top: -28px;
+      right: 0;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      .autoShowLog-switch {
+        margin-bottom: 0;
+        margin-right: 20px;
+      }
+      .fast-reset-filter {
+        margin-right: 10px;
+      }
+    }
+
+    .change-current-user {
+      position: absolute;
+      top: -26px;
+      right: 0;
+    }
+
+    .float-left {
+      float: left;
+      min-width: 580px;
+      flex: 1;
+      // margin-right: 15px;
+
+      .hf-exps-filter-container {
+        padding: 10px;
+        background: var(--hf-layout-light);
+        color: var(--hf-text-secondary);
+        align-items: center;
+        display: flex;
+        padding-left: 10px;
+        padding-right: 10px;
+
+        .filter-trainings {
+          display: flex;
+          flex: 1;
+          align-items: center;
+
+          .trainings-switch {
+            margin-bottom: 0;
+            margin-right: 10px;
+          }
+        }
+
+        .filter-search {
+          margin-left: 5px;
+          transition: width 0.3s;
+          width: 160px;
+
+          .#{$ns}-dark & .#{$ns}-input {
+            background-color: var(--hf-highlight-block);
+          }
+
+          &.batch-active {
+            width: 110px;
+          }
+        }
+
+        .batch-op-container {
+          overflow: hidden;
+          width: 0;
+          margin-left: 0;
+          .batch-op-content {
+            width: $SlideOpWidth;
+            display: flex;
+            flex-direction: row;
+            border-left: 1px solid #888;
+            padding-left: 4px;
+            justify-content: space-between;
+            align-items: center;
+
+            .batch-suspend {
+              svg {
+                top: 0;
+              }
+            }
+          }
+
+          button {
+            // width: 100px;
+            &.batch-stop-btn {
+              margin-right: 5px;
+            }
+          }
+          &.batch-stop-enter {
+            animation: slidein 0.3s forwards;
+          }
+          &.batch-stop-leave {
+            animation: slideout 0.3s forwards;
+          }
+        }
+      }
+
+      .filter {
+        padding: 5px 0 5px 0;
+        background: var(--hf-layout-light);
+        color: var(--hf-text-secondary);
+        align-items: center;
+        display: flex;
+
+        label {
+          line-height: 20px;
+        }
+
+        .switch {
+          display: inline-block;
+          width: 100px;
+        }
+
+        .tar {
+          text-align: right;
+        }
+
+        .main {
+          display: inline-block;
+          width: calc(100% - 230px);
+
+          span.help-icon > svg {
+            display: inline-block;
+            vertical-align: inherit;
+          }
+        }
+
+        input[type='text'].exp {
+          width: calc(100% - 40px);
+          vertical-align: inherit;
+        }
+
+        input[type='text'] {
+          box-sizing: border-box;
+          width: 120px;
+          height: 20px;
+        }
+
+        button {
+          width: 50px;
+
+          &.hf-refresh-btn {
+            margin-left: 10px;
+            padding-left: 5px;
+            padding-right: 5px;
+          }
+        }
+
+        .mr10 {
+          margin-right: 10px;
+        }
+
+        .mr20 {
+          margin-right: 20px;
+        }
+      }
+    }
+
+    .float-right {
+      float: right;
+      width: 330px;
+
+      min-height: 564px;
+      display: flex;
+      flex-direction: column;
+      // height: max-content;
+
+      .chain-detail {
+        width: 100%;
+        height: 270px;
+        background: var(--hf-layout-light);
+        margin-bottom: 12px;
+        min-width: 320px;
+
+        .content {
+          padding: 10px 14px 0 14px;
+          color: var(--hf-text-normal);
+        }
+
+        .tn-bold {
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          overflow-x: hidden;
+          font-size: 14px;
+          font-weight: bold;
+          color: var(--hf-text-normal);
+          margin-bottom: 10px;
+          line-height: 20px;
+        }
+      }
+    }
+  }
+}
+
+/* Status block */
+.hf.trainingsWindow .trainings-widget ul li span.st {
+  display: inline-block;
+  margin-right: 6px;
+  width: 6px;
+  height: 21px;
+  border-radius: 2px;
+  background: rgb(197, 197, 197);
+  vertical-align: middle;
+
+  &.succeeded {
+    background-color: #70b603;
+  }
+
+  &.failed {
+    background-color: #ff566a;
+  }
+
+  &.stopped {
+    /* background-color: #976213; */
+    background-color: #8aa8c7;
+  }
+
+  &.queued {
+    background-color: #e6c400;
+  }
+}
+
+.hf.trainingsWindow .pic-notfound {
+  text-align: center;
+  padding-top: 100px;
+  font-size: 22px;
+  font-weight: bold;
+  min-height: 600px;
+  position: relative;
+  color: var(--hf-text-secondary);
+}
+
+.auto-refresh-ani {
+  animation: blink 2.4s infinite;
+}
+
+.auto-refresh-p {
+  display: flex;
+  align-items: center;
+  // 需要整理
+  color: var(--hf-theme-color) !important;
+}
+
+.star-status {
+  margin-left: 5px;
+  margin-right: 5px;
+  cursor: pointer;
+  position: relative;
+  top: -2px;
+}
+
+.dur-tip {
+  p {
+    margin-bottom: 0;
+    i {
+      width: 50px;
+      display: inline-block;
+    }
+  }
+}
+
+// filter part
+// hint: 这里是给 finish 按钮的下拉菜单使用的，因为我们的用法还是比较奇怪的，所以我们通过 important 来覆盖一些内容
+.finish-select-list {
+  > div {
+    top: 10px !important;
+    left: 10px !important;
+    background: var(--hai-ui-layout-2);
+  }
+  .#{$ns}-menu {
+    padding: 5px 10px;
+    .finish-select-checkbox {
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.finish-select-container {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+
+  &.active {
+    background-color: var(--hai-ui-orange5);
+    border-radius: 3px;
+    &:hover {
+      background-color: var(--hai-ui-orange4);
+    }
+  }
+
+  .#{$ns}-icon {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+  }
+
+  &:hover {
+    background-color: var(--hf-layout-light);
+  }
+}
+
+.manage-batch-alert {
+  .hai-ui-alert-body {
+    width: 100%;
+    .hai-ui-alert-contents {
+      width: 100%;
+    }
+  }
+
+  .batch-alert-callout {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .batch-alert-options {
+    display: flex;
+    flex-direction: row-reverse;
+  }
+
+  .batch-alert-no-match {
+    color: var(--hf-text-secondary);
+    margin-top: 5px;
+  }
+}
+
+.tag-editor-single,
+.tag-editor-batch {
+  max-width: unset;
+  padding-bottom: 20px;
+
+  .dialog-body {
+    width: 100%;
+    padding: 0 20px 0 20px;
+  }
+  .footer {
+    margin-top: 10px;
+    text-align: right;
+    button {
+      margin-left: 10px;
+    }
+  }
+  .#{$ns}-icon {
+    margin-right: 2px;
+  }
+  .suggested-tags {
+    button {
+      margin-right: 10px;
+      margin-bottom: 10px;
+      span.#{$ns}-button-text {
+        max-width: 400px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+    margin-bottom: 10px;
+  }
+  .dialog-title {
+    color: var(--hf-text-normal);
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  .nb-name,
+  .sub-title {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .help {
+    font-size: 13px;
+    color: var(--hf-text-secondary);
+    margin-bottom: 10px;
+    line-height: 1.5em;
+  }
+  .selected-to-remove {
+    span.#{$ns}-tag {
+      margin-bottom: 5px;
+      margin-right: 5px;
+    }
+  }
+
+  .funcs {
+    padding: 10px 20px 10px 20px;
+    margin-top: 10px;
+    border-radius: 4px;
+    background-color: var(--jp-layout-color1);
+
+    .panel {
+      margin-top: 10px;
+    }
+  }
+  .nb-name {
+    ul {
+      padding-left: 20px;
+      li {
+        color: var(--hf-text-normal);
+      }
+    }
+  }
+  .remove-tag-select {
+    max-height: 300px;
+    overflow-y: auto;
+    border: 1px solid #77777777;
+  }
+  .no-tag-to-remove {
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    color: var(--hf-text-secondary);
+  }
+}

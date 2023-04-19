@@ -1,0 +1,98 @@
+@import '../../../style/aiui_mixin.scss';
+@import '../../../style/z-index.scss';
+
+.hf-panel .global-view.hf {
+  width: 100%;
+  position: relative;
+  min-height: 500px;
+
+  &.external {
+    min-height: 200px;
+  }
+
+  .overview-error-container {
+    padding-top: 20px;
+    .overview-error {
+      color: var(--hai-ui-orange4);
+    }
+  }
+
+  // 右上角更新日期
+  .gpu-cpu-switch-container {
+    position: absolute;
+    top: -4px;
+    right: 0;
+    font-size: 13px;
+    color: var(--hai-ui-text-other);
+    margin-bottom: 0;
+    &.outer {
+      top: 0px;
+    }
+    .gpu-cpu-outer-show {
+      margin-bottom: 0;
+    }
+  }
+
+  // http 模式下的刷新按钮
+  .global-view-refresh-container {
+    position: absolute;
+    top: 24px;
+    right: 0;
+  }
+
+  .flexRow {
+    margin-top: 16px;
+    width: 100%;
+    display: flex;
+  }
+
+  .aiui-metric-item {
+    flex: 1;
+  }
+  .usage-chart-title {
+    margin: 8px 0;
+    @include aiui-column-name-zh;
+    @include aiui-text-other;
+  }
+
+  .bar {
+    margin-top: 16px;
+  }
+
+  .subTitle {
+    @include aiui-text-secondary;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 25px;
+  }
+
+  .taskTable {
+    margin-top: 20px;
+    overflow: hidden;
+
+    .art-loading-wrapper .art-loading-indicator {
+      z-index: $inner-loading;
+    }
+  }
+
+  .detail {
+    text-align: center;
+    margin-top: 20px;
+    a {
+      @include aiui-ui-13;
+      color: var(--hai-ui-blue3);
+      &:hover {
+        color: var(--hai-ui-blue4);
+      }
+    }
+  }
+}
+
+.range-info-container {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: row;
+  .range-metric-item {
+    width: 50%;
+  }
+}

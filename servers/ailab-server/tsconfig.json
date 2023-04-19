@@ -1,0 +1,43 @@
+{
+  // hint: 这个如果直接用根目录的，会导致不好发布包，因为根目录并没有 node_modules
+  "extends": "@hai-platform/tsconfig/base.json",
+  // https://www.npmjs.com/package/@hai-platform/tsconfig
+
+  "compilerOptions": {
+    "declaration": false,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "jsx": "react",
+    "incremental": true,
+    "isolatedModules": true,
+    "skipLibCheck": true,
+    "noUnusedLocals": false,
+    "noEmitOnError": true,
+    "preserveWatchOutput": true,
+    "target": "es2017",
+    "strictPropertyInitialization": false,
+    // 这个开启可能会对 server orm 造成额外问题
+    "useDefineForClassFields": false,
+
+    "exactOptionalPropertyTypes": false,
+    "noPropertyAccessFromIndexSignature": false,
+
+    // 原来的内容：
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "rootDir": "src",
+    "types": ["node", "jest"],
+    "typeRoots": [
+      "./node_modules/@types",
+      "../node_modules/@types",
+      "../../node_modules/@types",
+      "./src/@types",
+      "../src/@types"
+    ],
+    "baseUrl": "."
+  },
+  "include": ["src/**/*", "misc/redis_demo.ts"],
+  "ts-node": {
+    "swc": true
+  }
+}

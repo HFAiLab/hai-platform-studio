@@ -1,0 +1,34 @@
+.hf-collapse .ctl>span.svg-icon>svg{
+    transition: 0.3s ease;
+}
+
+.hf-collapse .ctl.show>span.svg-icon>svg{
+    transition: 0.3s ease;
+    transform: rotate(90deg);
+}
+
+.hf-collapse .hf-collapse-title {
+    min-width: 90px;
+    margin-right: 10px;
+    color: var(--hf-text-secondary);
+    font-weight: 900;
+}
+
+.hf-collapse .ctl {
+    height: 24px;
+    width: 100%;
+    .svg-icon {
+        display: initial;
+    }
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.hf-collapse-desc {
+    display: block;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

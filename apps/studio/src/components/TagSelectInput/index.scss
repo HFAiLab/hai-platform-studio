@@ -1,0 +1,76 @@
+@import '../../components/Input/index.scss';
+@import '../../style/aiui_mixin.scss';
+@import '../../style/variables.scss';
+@import '../../style/z-index.scss';
+
+// tag-select-input container
+.tsi-container {
+  position: relative;
+
+  .mst-no-data {
+    height: 60px;
+    padding-left: 10px;
+    padding-right: 20px;
+    line-height: 60px;
+    text-align: center;
+    @include aiui-text-secondary;
+  }
+
+  .multi-select-down-item {
+    cursor: pointer;
+    padding-bottom: 0;
+    height: 34px;
+    line-height: 34px;
+    padding-left: 10px;
+    padding-right: 20px;
+    margin-bottom: 0;
+    &:hover {
+      background-color: var(--hai-ui-light-gray5);
+    }
+    &.active {
+      background-color: var(--hai-ui-light-gray3);
+    }
+  }
+
+  .mst-mock-content {
+    display: inline-block;
+    height: 30px;
+    bottom: 0;
+    right: left;
+    width: 0;
+  }
+
+  .multi-select-input-container {
+    width: 600px;
+    flex: 1;
+    .hai-ui-tag {
+      &:nth-child(3n + 1),
+      &:nth-child(3n + 2) {
+        margin-right: 1px;
+      }
+      &:nth-child(3n + 3) {
+        margin-right: 6px;
+      }
+    }
+  }
+}
+
+.tsi-portal {
+  border-radius: 3px;
+  z-index: $content-overlay-2;
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  transform: translateY(100%);
+  background-color: var(--hfapp-layout-color0);
+  transition: 0.3s;
+  display: none;
+  box-shadow: 0 0 0 1px rgb(17 20 24 / 10%), 0 2px 4px rgb(17 20 24 / 20%),
+    0 8px 24px rgb(17 20 24 / 20%);
+  &.show {
+    display: block;
+  }
+  .hai-ui-popover-content {
+    padding: 0;
+  }
+}

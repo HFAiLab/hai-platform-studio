@@ -1,0 +1,27 @@
+.exp2-schedule-status-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+  border: 1px solid rgba(115, 156, 187, 0.25);
+
+  .exp2-schedule-status-header {
+    padding: 5px;
+    height: 30px;
+    align-items: center;
+    background-color: rgba(115, 156, 187, 0.25);
+    display: flex;
+    .header-title {
+      flex: 1;
+    }
+  }
+  .exp2-schedule-status-content {
+    height: 35px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    .schedule-rank {
+      flex: 1;
+    }
+  }
+}

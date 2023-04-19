@@ -1,0 +1,269 @@
+/************************************布局的一些内容****************************************/
+
+.w-60 {
+  width: 60px;
+}
+
+.w-80 {
+  width: 80px;
+}
+
+.w-100 {
+  width: 100px;
+}
+
+.w-110 {
+  width: 110px;
+}
+
+.w-120 {
+  width: 120px;
+}
+
+.w-140 {
+  width: 140px;
+}
+
+.w-180 {
+  width: 180px;
+}
+
+.w-220 {
+  width: 220px;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+.display-flex {
+  display: flex;
+}
+
+.flex-center {
+  align-items: center;
+}
+
+.no-margin {
+  margin: 0;
+}
+
+.m-l-10 {
+  margin-left: 10px;
+}
+
+.m-r-10 {
+  margin-right: 10px;
+}
+
+/************************************  辅助功能  ****************************************/
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+/************************************表格、单元格****************************************/
+
+.cell-n {
+  flex-shrink: 0;
+  font-size: 14px;
+  height: 27px;
+  line-height: 27px;
+  padding-left: 4px;
+  padding-right: 4px;
+  @include overflow-ellipsis;
+
+  &.overflow-visible {
+    overflow: visible;
+  }
+
+  &.flat {
+    height: 32px;
+    line-height: 32px;
+  }
+
+  &.column {
+    display: flex;
+  }
+
+  &.clickable {
+    background-color: var(--hfapp-clickable-div);
+
+    &:hover {
+      background-color: var(--hfapp-clickable-div-hover);
+    }
+  }
+}
+
+/************************************按钮****************************************/
+
+.hfp-btn {
+  border: none;
+  background-color: transparent;
+  box-shadow: none;
+  border-radius: 3px;
+
+  &.primary {
+    color: $blue3;
+    &:hover {
+      background-color: rgba($blue4, 0.15);
+      &:active {
+        background-color: rgba($blue4, 0.25);
+      }
+    }
+  }
+
+  &.danger {
+    color: $red3;
+    &:hover {
+      background-color: rgba($red4, 0.15);
+      &:active {
+        background-color: rgba($red4, 0.25);
+      }
+    }
+  }
+
+  &.none {
+    color: var(--hai-ui-text-primary);
+    &:hover {
+      background-color: rgba($gray4, 0.15);
+      &:active {
+        background-color: rgba($gray4, 0.25);
+      }
+    }
+  }
+
+  &.success {
+    color: $green3;
+    &:hover {
+      background-color: rgba($green4, 0.15);
+      &:active {
+        background-color: rgba($green4, 0.25);
+      }
+    }
+  }
+
+  &.warn {
+    color: $orange3;
+    &:hover {
+      background-color: rgba($orange4, 0.15);
+      &:active {
+        background-color: rgba($orange4, 0.25);
+      }
+    }
+  }
+
+  &:disabled {
+    cursor: not-allowed !important;
+    color: var(--hai-ui-text-other);
+  }
+}
+
+.emphasize,
+.primary {
+  color: var(--hai-ui-text-primary);
+}
+
+.other {
+  color: var(--hai-ui-text-other);
+}
+
+/************************************ dark ****************************************/
+
+.#{$ns}-dark {
+  .hfp-btn {
+    &.primary {
+      color: $blue4;
+      &:hover {
+        background-color: rgba($blue4, 0.15);
+        &:active {
+          background-color: rgba($blue4, 0.25);
+        }
+      }
+    }
+
+    &.danger {
+      color: $red4;
+      &:hover {
+        background-color: rgba($red4, 0.15);
+        &:active {
+          background-color: rgba($red4, 0.25);
+        }
+      }
+    }
+
+    &.none {
+      color: var(--hai-ui-text-primary);
+      &:hover {
+        background-color: rgba($gray4, 0.15);
+        &:active {
+          background-color: rgba($gray4, 0.25);
+        }
+      }
+    }
+
+    &.success {
+      color: $green4;
+      &:hover {
+        background-color: rgba($green4, 0.15);
+        &:active {
+          background-color: rgba($green4, 0.25);
+        }
+      }
+    }
+
+    &.warn {
+      color: $orange5;
+      &:hover {
+        background-color: rgba($orange4, 0.15);
+        &:active {
+          background-color: rgba($orange4, 0.25);
+        }
+      }
+    }
+  }
+}
+
+// 通用的 css tooltip 类
+.quick-bottom-tooltip {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: var(--hai-ui-layout-1);
+  padding: 10px;
+  display: none;
+  flex-direction: column;
+  z-index: $inline-dialog-z-index;
+  box-shadow: 0 0 0 1px rgb(17 20 24 / 10%), 0 2px 4px rgb(17 20 24 / 20%),
+    0 8px 24px rgb(17 20 24 / 20%);
+
+  &.permanent {
+    display: flex;
+  }
+
+  .pin-container {
+    @include aiui-paragraph-14;
+    @include aiui-text-secondary;
+    display: flex;
+    flex-direction: row-reverse;
+    padding-bottom: 5px;
+
+    .pin-btn {
+      svg {
+        transition: 0.3s;
+        transform: rotate(0);
+      }
+      &.pin {
+        svg {
+          transform: rotate(-45deg);
+        }
+      }
+    }
+  }
+}
+
+.hai-ui-dark {
+  .quick-bottom-tooltip {
+    border: 1px solid var(--hf-ui-font-color3);
+  }
+}

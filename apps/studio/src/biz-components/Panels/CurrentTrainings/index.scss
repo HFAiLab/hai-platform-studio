@@ -1,0 +1,470 @@
+@import '../../../style/aiui_mixin.scss';
+@import '../../../style/variables.scss';
+@import '../../../style/z-index.scss';
+
+.current-training-container {
+  .current-training-callout {
+    margin-bottom: 20px;
+  }
+
+  .current-training-inner-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .top-list-container {
+    overflow: auto;
+    padding-right: 10px;
+  }
+
+  .top-nodes {
+    display: inline-block;
+    min-width: 65px;
+    text-align: right;
+  }
+
+  .top {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+  }
+  .top .current-training-metrics {
+    width: 16%;
+  }
+  .top .current-training-expand {
+    flex: 2;
+  }
+  .top .left-quota {
+    width: 50%;
+  }
+  .top .aiui-metric-item {
+    flex: 1;
+  }
+  .top .aiui-metric-item .title {
+    line-height: 30px;
+  }
+  .top .aiui-metric-item .value {
+    margin-top: 15px;
+    height: 41px;
+  }
+  .top-list-container {
+    overflow: auto;
+    padding-right: 10px;
+  }
+  .top-nodes {
+    display: inline-block;
+    min-width: 65px;
+    text-align: right;
+  }
+}
+
+.tasks-tabs-container .hai-ui-tab-list .more {
+  line-height: 30px;
+  height: 30px;
+  color: var(--hai-ui-blue3);
+}
+.tasks-tabs-container .hai-ui-tab-panel {
+  margin-top: 16px;
+  height: 170px;
+}
+
+.tasks-tabs-container {
+  .#{$ns}-tab-list {
+    .more {
+      line-height: 30px;
+      height: 30px;
+      color: var(--hai-ui-blue3);
+    }
+  }
+  .#{$ns}-tab-panel {
+    margin-top: 16px;
+    height: 170px;
+  }
+}
+
+.left-quota {
+  display: flex;
+  flex-direction: column;
+  color: var(--hai-ui-text-secondary);
+
+  .quota-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 30px;
+  }
+  .quota-header .quota-title {
+    flex: 1;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+    color: var(--hai-ui-text-secondary);
+  }
+  .quota-header .hai-ui-html-select {
+    height: 25px;
+    float: right;
+  }
+  .quota-header .hai-ui-html-select select {
+    height: 25px;
+    max-width: 150px;
+  }
+  .quota-header .hai-ui-html-select .hai-ui-icon-double-caret-vertical {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .quota-select {
+    max-width: 150px;
+  }
+  .quota-list {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 15px;
+  }
+  .quota-list .quota-li-item {
+    width: calc(50% - 10px);
+    height: 16px;
+    display: flex;
+  }
+  .quota-list .quota-li-item:nth-child(n + 3) {
+    margin-top: 9px;
+  }
+  .quota-list .quota-li-item:nth-child(2n + 1) {
+    margin-right: 20px;
+  }
+  .quota-list .quota-li-item .quota-li-desc {
+    flex: 1;
+  }
+}
+
+.panel-task {
+  @include aiui-text-secondary;
+
+  .fragment-item {
+    display: flex;
+    @include aiui-paragraph-13;
+
+    .fragment-name {
+      flex: 1;
+      @include overflow-ellipsis;
+    }
+
+    &:nth-child(n + 2) {
+      margin-top: 10px;
+    }
+  }
+}
+
+// hint: 这部分是从遗留 css 中恢复
+.task-queue {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: space-between;
+  height: 100%;
+
+  .q-container {
+    display: flex;
+    flex-direction: row;
+    height: 78px;
+  }
+  .q-container.empty {
+    height: 32px;
+  }
+  .q-container.empty .exp-drag-list-container {
+    padding-top: 2px;
+  }
+  .q-container .q-title {
+    width: 30px;
+    min-width: 40px;
+    position: relative;
+  }
+  .q-container .q-title .svg-icon {
+    margin-top: 6px;
+    margin-left: 8px;
+  }
+  .q-container .q-title:after {
+    content: ' ';
+    top: 0;
+    bottom: 0;
+    right: 8px;
+    position: absolute;
+    background-color: var(--hai-ui-layout-1);
+    width: 2px;
+  }
+  .q-container .exp-drag-list-container {
+    padding-top: 9px;
+    overflow-x: auto;
+  }
+  .q-container .exp-drag-list-container::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+  .q-container .exp-drag-list-container .exp-drag-list {
+    width: max-content;
+    display: flex;
+    flex-direction: row;
+    padding-right: 20px;
+  }
+  .q-container.EXTREME_HIGH {
+    background-color: #ff563833;
+    .exp-drag-empty-tip {
+      color: #ff563877;
+    }
+  }
+  .q-container.VERY_HIGH {
+    background-color: #ff56381f;
+    .exp-drag-empty-tip {
+      color: #ff563866;
+    }
+  }
+  .q-container.HIGH {
+    background-color: #ff56380d;
+    .exp-drag-empty-tip {
+      color: #ff563855;
+    }
+  }
+  .q-container.ABOVE_NORMAL,
+  .q-container.AUTO {
+    background-color: #80a7e426;
+    .exp-drag-empty-tip {
+      color: #80a7e488;
+    }
+  }
+}
+
+@keyframes width-expand {
+  0% {
+    width: 0;
+  }
+  to {
+    width: 80px;
+  }
+}
+@keyframes width-expand-empty {
+  0% {
+    width: 0;
+  }
+  to {
+    width: 80px;
+  }
+}
+.exp-drag-item {
+  width: 90px;
+  height: 60px;
+  background-color: var(--hai-ui-layout-1);
+  position: relative;
+}
+.exp-drag-item:not(:last-child) {
+  margin-right: 10px;
+}
+.exp-drag-item .move-handler {
+  position: absolute;
+  top: 1px;
+  right: 3px;
+  cursor: move;
+  height: 16px;
+  width: 16px;
+  padding: 1px;
+  display: flex;
+}
+.exp-drag-item .move-handler svg {
+  width: 1em;
+  height: 1em;
+}
+.exp-drag-item .move-handler:hover,
+.exp-drag-item .move-handler:active,
+.exp-drag-item.moving .move-handler {
+  background-color: #80a7e426;
+}
+.exp-drag-item.move-skip {
+  background-color: var(--hai-ui-light-gray4);
+  border: 1px solid var(--hai-ui-light-gray3);
+}
+body.#{$ns}-dark {
+  .exp-drag-item.move-skip {
+    background-color: var(--hai-ui-gray1);
+    border: 1px solid var(--hai-ui-gray3);
+  }
+}
+.exp-drag-item.move-target {
+  width: 0;
+  background-color: var(--hf-theme-color);
+  opacity: 0.3;
+  animation: width-expand 0.2s forwards;
+}
+.exp-drag-item.move-target.in-empty-list {
+  height: 28px;
+  animation: width-expand 0.2s forwards;
+}
+.exp-drag-item.moving {
+  position: fixed;
+}
+.exp-drag-item .queue-item-name-container {
+  width: 100%;
+  display: block;
+}
+.exp-drag-item p {
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+.exp-drag-item p.chain-name {
+  font-size: 14px;
+  line-height: 22px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-right: 10px;
+  line-height: 20px;
+  margin-bottom: 2px;
+}
+.exp-drag-item p.chain-nodes {
+  .quick-icon-container {
+    display: contents;
+    height: 14px;
+    cursor: pointer;
+  }
+  .quick-icon {
+    cursor: pointer;
+    transform: rotate(90deg);
+    margin-bottom: 0;
+    svg {
+      width: 14px;
+      height: 14px;
+      fill: var(--hai-ui-text-other);
+    }
+  }
+  .chain-nodes-icon-number {
+    display: flex;
+    align-items: center;
+  }
+  .chain-nodes-inner-content {
+    width: 100%;
+    .chain-nodes-tip-and-icon {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+.exp-drag-item p.chain-nodes .chain-nodes-number {
+  margin-left: 3px;
+  color: var(--hai-ui-text-other);
+}
+.exp-drag-item .q-status-bar {
+  height: 20px;
+}
+.exp-drag-item .q-status-bar svg {
+  margin-top: 3px;
+  width: 1em;
+  height: 1em;
+}
+.exp-drag-item .q-nodes {
+  fill: var(--hai-ui-text-other);
+  width: 14px;
+  height: 14px;
+}
+.exp-drag-item {
+  .chain-nodes-expand {
+    flex: 1;
+  }
+  .q-node-type {
+    margin-left: 3px;
+    fill: var(--hai-ui-text-other);
+    width: 20px;
+    height: 9px;
+  }
+}
+.edit-loading {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  z-index: $content-overlay-1;
+}
+.edit-loading p {
+  margin: auto;
+}
+.task-queue-title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 5px;
+}
+.task-queue-title .title {
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 16px;
+  margin: 0 10px 0 0;
+  line-height: 30px;
+  font-weight: 400;
+}
+.task-queue-title .desc {
+  flex: 1;
+  color: var(--hai-ui-text-other);
+  font-size: 12px;
+  line-height: 18px;
+  margin-bottom: 0;
+  line-height: 30px;
+  display: flex;
+  align-items: center;
+}
+.task-queue-title .desc .desc-help-container {
+  cursor: pointer;
+  height: 16px;
+  display: block;
+  width: 16px;
+  margin-left: 10px;
+}
+.task-queue-title .more {
+  color: var(--hai-ui-blue3);
+}
+.task-queue-op-container,
+.queue-item-tooltip {
+  display: flex;
+  flex-direction: column;
+}
+.queue-item-tooltip p {
+  margin-bottom: 5px;
+}
+.queue-item-tooltip p .tooltip-name {
+  display: inline-block;
+  width: 120px;
+}
+.queue-helper-dialog {
+  padding: 20px;
+
+  .queue-helper-title {
+    margin-top: 10px;
+    color: var(--hai-ui-text-primary);
+  }
+  .queue-helper-ul {
+    color: var(--hai-ui-text-secondary);
+  }
+  .queue-helper-ul li {
+    margin-bottom: 10px;
+  }
+  .queue-get-it {
+    float: right;
+  }
+}
+
+/** 后面的这些是人手工写的 **/
+
+.exp-drag-empty-tip {
+  height: 26px;
+  line-height: 26px;
+  margin-bottom: 0;
+}
+
+p.exp-drag-item-tooltip-p {
+  margin-bottom: 0;
+  &:not(:last-child) {
+    margin-bottom: 5px;
+  }
+}

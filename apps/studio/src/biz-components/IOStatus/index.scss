@@ -1,0 +1,52 @@
+@import '../../components/Input/index.scss';
+@import '../../style/aiui_mixin.scss';
+@import '../../style/variables.scss';
+
+.io-status-icon {
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.io-status-icon-container {
+  height: 16px;
+}
+
+.socket-content-wrapper {
+  padding: 20px;
+
+  .socket-status-line {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 20px;
+    .status-title {
+      margin-right: 10px;
+      @include aiui-text-primary;
+    }
+  }
+
+  .socket-status-desc {
+    margin-bottom: 20px;
+    @include aiui-text-secondary;
+  }
+
+  .close-btn-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .close-btn-tip {
+      margin-bottom: 0;
+      margin-left: 10px;
+      opacity: 0;
+      @include aiui-text-secondary;
+      transition: 0.3s;
+      color: var(--hai-ui-red3);
+    }
+
+    &:hover {
+      .close-btn-tip {
+        opacity: 0.8;
+      }
+    }
+  }
+}

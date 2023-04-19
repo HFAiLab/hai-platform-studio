@@ -1,0 +1,44 @@
+{
+  "name": "@hai-platform/shared",
+  "version": "0.19.0-alpha.1681870131.da1d707d",
+  "description": "Shared utils and types definition of hai-platform",
+  "keywords": [
+    "shared",
+    "types",
+    "utils"
+  ],
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "./dist"
+  ],
+  "scripts": {
+    "build": "unbuild",
+    "build-pkg": "pnpm run build",
+    "build-shared": "pnpm run build",
+    "clean": "rimraf dist",
+    "dev": "vitest",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "axios": "^0.27.2"
+  },
+  "devDependencies": {
+    "unbuild": "^0.7.6",
+    "vitest": "^0.20.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "51e092464b0c0bc694df7daebe77a115b1f0680a"
+}

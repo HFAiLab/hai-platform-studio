@@ -1,0 +1,15 @@
+@import '../../style/aiui_mixin.scss';
+@import '../../style/variables.scss';
+.footer-container {
+  text-align: center;
+  padding-top: 10px;
+  padding-bottom: 20px;
+
+  .footer-title {
+    @include aiui-text-secondary;
+
+    .mail  {
+      @include aiui-text-primary;
+    }
+  }
+}

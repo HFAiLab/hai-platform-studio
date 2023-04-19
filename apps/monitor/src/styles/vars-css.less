@@ -1,0 +1,76 @@
+:root {
+  // Colors
+  --primary-color: @primary-color;
+
+  // Base Scaffolding Variables
+  --component-background: #fff;
+  --text-color: fade(@black, 85%);
+  --text-color-secondary: fade(@black, 45%);
+  --item-hover-bg: var(--border-color-base);
+  --item-hover-bg-light: var(--border-color-split);
+  --background-color-base: hsv(0, 0, 96%);
+  --background-color-light: hsv(0, 0, 98%);
+
+  // Border color
+  --border-color-base: rgba(0, 0, 0, 0.15);
+  --border-color-split: rgba(0, 0, 0, 0.06);
+
+  // Disabled states
+  --disabled-color: fade(#000, 25%);
+
+  // Input
+  --input-icon-hover-color: fade(@black, 85%);
+
+  // Layout
+  --layout-body-background: #f0f2f5;
+  --layout-header-height: 50px;
+  --layout-sider-width: 200px;
+
+  // Shadow
+  --shadow-color: rgba(0, 0, 0, 0.15);
+  --shadow-2: 1px 1px 3px 1px rgba(0, 0, 0, 0.12);
+  // --shadow-2: 0 3px 6px -4px rgba(0, 0, 0, 0.12),
+  //             0 6px 16px 0 rgba(0, 0, 0, 0.08),
+  //             0 9px 28px 8px rgba(0, 0, 0, 0.05);
+  --shadow-3: rgb(226, 229, 236);
+
+  // Table
+  --table-border-color: var(--border-color-split);
+
+  // Description:
+
+  --description-bg: #fafafa;
+
+  --thumb-color: #c1c1c1;
+}
+
+.dark {
+  // Base Scaffolding Variables
+  --component-background: @layout-header-background;
+  --text-color: @text-color-dark;
+  --text-color-secondary: @text-color-secondary-dark;
+  --background-color-base: #112135;
+  --background-color-light: #101e2f;
+
+  // Border color
+  --border-color-base: rgba(255, 255, 255, 0.15);
+  --border-color-split: rgba(255, 255, 255, 0.06);
+
+  // Disabled states
+  --disabled-color: fade(#fff, 35%);
+
+  // Input
+  --input-icon-hover-color: fade(@white, 85%);
+
+  // Layout
+  --layout-body-background: #1e2c3d;
+
+  // Shadow
+  --shadow-color: rgba(255, 255, 255, 0.15);
+  --shadow-2: 1px 1px 3px 1px rgba(255, 255, 255, 0.25);
+  --shadow-3: rgba(233, 233, 233, 0.219);
+
+  --description-bg: #1e2c3d;
+
+  --thumb-color: #5e5b5b;
+}

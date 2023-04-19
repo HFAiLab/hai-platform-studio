@@ -1,0 +1,173 @@
+/**
+* fork from
+* https://github.com/highlightjs/highlight.js licensed under the BSD 3-Clause "New" or "Revised" License
+*/
+
+body {
+  // prettylights
+  --color-prettylights-hf-basic-syntax-comment: #6e7781;
+  --color-prettylights-hf-basic-syntax-constant: #0550ae;
+  --color-prettylights-hf-basic-syntax-entity: #8250df;
+  --color-prettylights-hf-basic-syntax-storage-modifier-import: #24292f;
+  --color-prettylights-hf-basic-syntax-entity-tag: #116329;
+  --color-prettylights-hf-basic-syntax-keyword: #cf222e;
+  --color-prettylights-hf-basic-syntax-string: #238551;
+  --color-prettylights-hf-basic-syntax-variable: #953800;
+  --color-prettylights-hf-basic-syntax-brackethighlighter-unmatched: #82071e;
+  --color-prettylights-hf-basic-syntax-invalid-illegal-text: #f6f8fa;
+  --color-prettylights-hf-basic-syntax-invalid-illegal-bg: #82071e;
+  --color-prettylights-hf-basic-syntax-carriage-return-text: #f6f8fa;
+  --color-prettylights-hf-basic-syntax-carriage-return-bg: #cf222e;
+  --color-prettylights-hf-basic-syntax-string-regexp: #116329;
+  --color-prettylights-hf-basic-syntax-markup-list: #3b2300;
+  --color-prettylights-hf-basic-syntax-markup-heading: #0550ae;
+  --color-prettylights-hf-basic-syntax-markup-italic: #24292f;
+  --color-prettylights-hf-basic-syntax-markup-bold: #24292f;
+  --color-prettylights-hf-basic-syntax-markup-deleted-text: #82071e;
+  --color-prettylights-hf-basic-syntax-markup-deleted-bg: #ffebe9;
+  --color-prettylights-hf-basic-syntax-markup-inserted-text: #116329;
+  --color-prettylights-hf-basic-syntax-markup-inserted-bg: #dafbe1;
+  --color-prettylights-hf-basic-syntax-markup-changed-text: #953800;
+  --color-prettylights-hf-basic-syntax-markup-changed-bg: #ffd8b5;
+  --color-prettylights-hf-basic-syntax-markup-ignored-text: #eaeef2;
+  --color-prettylights-hf-basic-syntax-markup-ignored-bg: #0550ae;
+  --color-prettylights-hf-basic-syntax-meta-diff-range: #8250df;
+  --color-prettylights-hf-basic-syntax-brackethighlighter-angle: #57606a;
+  --color-prettylights-hf-basic-syntax-sublimelinter-gutter-mark: #8c959f;
+  --color-prettylights-hf-basic-syntax-constant-other-reference-link: #0a3069;
+}
+
+body.hai-ui-dark {
+  // prettylights
+  --color-prettylights-hf-basic-syntax-comment: #8b949e;
+  --color-prettylights-hf-basic-syntax-constant: #79c0ff;
+  --color-prettylights-hf-basic-syntax-entity: #d2a8ff;
+  --color-prettylights-hf-basic-syntax-storage-modifier-import: #c9d1d9;
+  --color-prettylights-hf-basic-syntax-entity-tag: #7ee787;
+  --color-prettylights-hf-basic-syntax-keyword: #ff7b72;
+  --color-prettylights-hf-basic-syntax-string: #a5d6ff;
+  --color-prettylights-hf-basic-syntax-variable: #ffa657;
+  --color-prettylights-hf-basic-syntax-brackethighlighter-unmatched: #f85149;
+  --color-prettylights-hf-basic-syntax-invalid-illegal-text: #f0f6fc;
+  --color-prettylights-hf-basic-syntax-invalid-illegal-bg: #8e1519;
+  --color-prettylights-hf-basic-syntax-carriage-return-text: #f0f6fc;
+  --color-prettylights-hf-basic-syntax-carriage-return-bg: #b62324;
+  --color-prettylights-hf-basic-syntax-string-regexp: #7ee787;
+  --color-prettylights-hf-basic-syntax-markup-list: #f2cc60;
+  --color-prettylights-hf-basic-syntax-markup-heading: #1f6feb;
+  --color-prettylights-hf-basic-syntax-markup-italic: #c9d1d9;
+  --color-prettylights-hf-basic-syntax-markup-bold: #c9d1d9;
+  --color-prettylights-hf-basic-syntax-markup-deleted-text: #ffdcd7;
+  --color-prettylights-hf-basic-syntax-markup-deleted-bg: #67060c;
+  --color-prettylights-hf-basic-syntax-markup-inserted-text: #aff5b4;
+  --color-prettylights-hf-basic-syntax-markup-inserted-bg: #033a16;
+  --color-prettylights-hf-basic-syntax-markup-changed-text: #ffdfb6;
+  --color-prettylights-hf-basic-syntax-markup-changed-bg: #5a1e02;
+  --color-prettylights-hf-basic-syntax-markup-ignored-text: #c9d1d9;
+  --color-prettylights-hf-basic-syntax-markup-ignored-bg: #1158c7;
+  --color-prettylights-hf-basic-syntax-meta-diff-range: #d2a8ff;
+  --color-prettylights-hf-basic-syntax-brackethighlighter-angle: #8b949e;
+  --color-prettylights-hf-basic-syntax-sublimelinter-gutter-mark: #484f58;
+  --color-prettylights-hf-basic-syntax-constant-other-reference-link: #a5d6ff;
+}
+
+.hf-basic-code {
+  font-family: menlo, consolas, 'DejaVu Sans Mono', monospace;
+  .hljs-code;
+}
+
+.hljs-code {
+  .hljs-doctag,
+  .hljs-keyword,
+  .hljs-meta .hljs-keyword,
+  .hljs-template-tag,
+  .hljs-template-variable,
+  .hljs-type,
+  .hljs-variable.language_ {
+    color: var(--color-prettylights-hf-basic-syntax-keyword);
+  }
+
+  .hljs-title,
+  .hljs-title.class_,
+  .hljs-title.class_.inherited__,
+  .hljs-title.function_ {
+    color: var(--color-prettylights-hf-basic-syntax-entity);
+  }
+
+  .hljs-attr,
+  .hljs-attribute,
+  .hljs-literal,
+  .hljs-meta,
+  .hljs-number,
+  .hljs-operator,
+  .hljs-variable,
+  .hljs-selector-attr,
+  .hljs-selector-class,
+  .hljs-selector-id {
+    color: var(--color-prettylights-hf-basic-syntax-constant);
+  }
+
+  .hljs-regexp,
+  .hljs-string,
+  .hljs-meta .hljs-string {
+    color: var(--color-prettylights-hf-basic-syntax-string);
+  }
+
+  .hljs-built_in,
+  .hljs-symbol {
+    color: var(--color-prettylights-hf-basic-syntax-variable);
+  }
+
+  .hljs-comment,
+  .hljs-code,
+  .hljs-formula {
+    color: var(--color-prettylights-hf-basic-syntax-comment);
+  }
+
+  .hljs-name,
+  .hljs-quote,
+  .hljs-selector-tag,
+  .hljs-selector-pseudo {
+    color: var(--color-prettylights-hf-basic-syntax-entity-tag);
+  }
+
+  .hljs-subst {
+    color: var(--color-prettylights-hf-basic-syntax-storage-modifier-import);
+  }
+
+  .hljs-section {
+    color: var(--color-prettylights-hf-basic-syntax-markup-heading);
+    font-weight: bold;
+  }
+
+  .hljs-bullet {
+    color: var(--color-prettylights-hf-basic-syntax-markup-list);
+  }
+
+  .hljs-emphasis {
+    color: var(--color-prettylights-hf-basic-syntax-markup-italic);
+    font-style: italic;
+  }
+
+  .hljs-strong {
+    color: var(--color-prettylights-hf-basic-syntax-markup-bold);
+    font-weight: bold;
+  }
+
+  .hljs-addition {
+    color: var(--color-prettylights-hf-basic-syntax-markup-inserted);
+  }
+
+  .hljs-deletion {
+    color: var(--color-prettylights-hf-basic-syntax-markup-deleted);
+  }
+
+  .hljs-char.escape_,
+  .hljs-link,
+  .hljs-params,
+  .hljs-property,
+  .hljs-punctuation,
+  .hljs-tag {
+    /* purposely ignored */
+  }
+}

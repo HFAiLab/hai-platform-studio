@@ -1,0 +1,69 @@
+/* ---------------------------------- UI---------------------------------------*/
+
+/* button */
+
+.hf button.hf-btn {
+    font-size: 14px;
+    text-align: center;
+    line-height: 20px;
+    box-sizing: border-box;
+    padding: 3px 15px 3px 15px;
+    border: 1px solid var(--hf-text-normal);
+    color: var(--hf-text-normal);
+    transition: 0.3s;
+    cursor: pointer;
+    background: none;
+}
+
+.hf button.hf-btn svg {
+    fill: var(--hf-text-normal);
+    transition: 0.3s;
+}
+
+.hf button.hf-btn:hover {
+    transition: 0.3s;
+    border-color: var(--hf-primary-btn-hover);
+    color: var(--hf-primary-btn-hover)
+}
+
+.hf button.hf-btn:hover svg {
+    fill: var(--hf-primary-btn-hover);
+    transition: 0.3s;
+}
+
+.hf button.hf-btn.primary {
+    background-color: var(--hf-primary-btn-color);
+    border: 1px solid var(--hf-primary-btn-color);
+    color: #FFF;
+}
+
+.hf button.hf-btn.primary.disabled, .hf button.hf-btn.primary.disabled:hover {
+    border: #AAA;
+    background: #AAA;
+}
+
+.hf button.hf-btn.danger {
+    background-color: var(--hf-danger-btn-color);
+    border: 1px solid var(--hf-danger-btn-color);
+    color: #FFF;
+}
+
+.hf button.hf-btn.primary svg, .hf button.hf-btn.danger svg {
+    fill: #FFF;
+}
+
+.hf button.hf-btn.primary:hover {
+    background-color: var(--hf-primary-btn-hover);
+}
+
+.hf button.hf-btn.danger:hover {
+    background-color: var(--hf-danger-btn-hover);
+}
+
+.hf button.hf-btn.primary:hover svg, .hf button.hf-btn.danger:hover svg {
+    fill: #FFF
+}
+
+.hf button.small {
+    padding: 0 8px 0 8px;
+}

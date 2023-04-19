@@ -1,0 +1,12 @@
+.refresh-notice-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  .refresh-notice-desc {
+    margin-bottom: 0;
+  }
+  .refresh-notice-btn {
+    margin-top: 10px;
+    margin-left: auto;
+  }
+}

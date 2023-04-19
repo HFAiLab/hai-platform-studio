@@ -1,0 +1,14 @@
+.global-refresh {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    p {
+        margin-bottom: 0;
+        margin-left: auto;
+    }
+
+    .refresh-btn {
+        margin-left: 15px;
+    }
+}

@@ -1,0 +1,35 @@
+@import '../../style/aiui_mixin.scss';
+.quota-container {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  .desc {
+    margin-top: 16px;
+    @include aiui-ui-12;
+    @include aiui-text-other;
+  }
+}
+
+.quota-selects {
+  margin-right: auto;
+  margin-bottom: 16px;
+}
+
+.quotachange-dialog {
+  width: 400px;
+  padding: 20px;
+
+  .quotachange-input {
+    input {
+      padding-right: 0;
+    }
+    margin-bottom: 10px;
+  }
+}
+
+.quotachange-expire-from-group {
+  .#{$ns}-form-helper-text {
+    max-width: 280px;
+    word-break: break-all;
+  }
+}

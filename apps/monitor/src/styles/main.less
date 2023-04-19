@@ -1,0 +1,32 @@
+@import 'ant-design-vue/dist/antd.less';
+@import './colors.less';
+@import './vars-less.less';
+@import './vars-css.less';
+@import './overrides.less';
+@import './highlight.less';
+@import './db-log.less';
+
+* {
+  transition: color ease 0.2s, background-color ease 0.2s;
+}
+
+// Additions
+.@{popover-prefix-cls} {
+  &-arrow {
+    display: none;
+  }
+}
+.@{select-prefix-cls} {
+  &-arrow {
+    color: var(--text-color-secondary);
+  }
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background-color: var(--layout-body-background);
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--thumb-color);
+}

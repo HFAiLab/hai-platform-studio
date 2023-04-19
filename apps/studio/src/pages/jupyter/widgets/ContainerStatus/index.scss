@@ -1,0 +1,12 @@
+.container-status-info-active,
+.container-status-info {
+  // padding: 3px 15px;
+  font-weight: bold;
+}
+
+.container-status-info-active {
+  width: max-content;
+  color: white !important;
+  border-radius: 30px;
+  opacity: 0.9;
+}

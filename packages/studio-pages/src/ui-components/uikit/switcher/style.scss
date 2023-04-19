@@ -1,0 +1,51 @@
+/* ---------------------------------- UI---------------------------------------*/
+
+/* Switcher Icon */
+
+.hf .hf-switcher {
+    font-size: 14px;
+    text-align: center;
+    line-height: 20px;
+    box-sizing: border-box;
+    padding: 3px 10px 3px 10px;
+    border: none;
+    color: var(--hf-text-lighter);
+    transition: 0.3s;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+.hf .hf-switcher svg {
+    fill: var(--hf-text-lighter);
+}
+
+.hf .hf-switcher:hover {
+    transition: 0.3s;
+    color: var(--hf-theme-color)
+}
+
+.hf .hf-switcher:hover svg {
+    fill: var(--hf-theme-color)
+}
+
+.hf .hf-switcher.active {
+    background-color: var(--jp-layout-color0);
+    color: var(--hf-theme-color);
+}
+
+.hf .hf-switcher.active.disabled, .hf .hf-switcher.active.disabled:hover {
+    border: #AAA;
+    background: #AAA;
+}
+
+.hf .hf-switcher.active svg {
+    fill: var(--hf-theme-color);
+}
+
+.hf .hf-switcher.active:hover {
+    background-color: var(--jp-layout-color2);
+}
+
+.hf .hf-switcher.small {
+    padding: 0 4px 0 4px;
+}

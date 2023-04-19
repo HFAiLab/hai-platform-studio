@@ -1,0 +1,34 @@
+
+.common-refresh-btn {
+    width: 29px;
+    height: 29px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: 0.3s;
+    padding: 2px;
+
+    // &:hover {
+        // border: 1px solid var(--hf-theme-color);
+    // }
+}
+
+    
+@keyframes flash-rotate {
+    0% {}
+    100% {
+        -webkit-transform: rotate(360deg);
+    }
+}
+
+.hf .animation-rotate {
+    svg {
+        -webkit-animation-name: flash-rotate;
+        -webkit-animation-duration: 0.8s;
+        -webkit-animation-timing-function: ease-in-out;
+        -webkit-animation-iteration-count: initial;
+        animation-name: flash-rotate;
+        animation-duration: 0.8s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: initial;
+    }
+}

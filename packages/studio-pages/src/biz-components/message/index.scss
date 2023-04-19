@@ -1,0 +1,90 @@
+body {
+  --hai-ui-color-message-title-normal: var(--hf-text-secondary);
+  --hai-ui-color-message-title-warning: #a66321;
+  --hai-ui-color-message-title-danger: #ffffff;
+  --hai-ui-color-message-title-success: #ffffff;
+}
+
+.#{$ns}-message-item {
+  padding: 8px 12px 8px 8px;
+  display: block;
+  border-radius: 4px;
+  position: relative;
+  color: var(--hf-text-secondary);
+  font-size: 13px;
+  background-color: var(--jp-layout-color2);
+  min-width: 180px;
+
+  // close btn
+  & > button {
+    position: absolute;
+    right: 3px;
+    top: 3px;
+  }
+
+  .title span.t {
+    font-size: 14px;
+    display: inline-block;
+    margin-left: 6px;
+    font-weight: 400;
+  }
+
+  &.warning {
+    a {
+      color: var(--hf-theme-color);
+    }
+
+    button > span.hai-ui-icon {
+      color: var(--hai-ui-color-message-title-warning) !important;
+    }
+
+    background-color: #ffe89bde;
+    color: var(--hai-ui-color-message-title-warning);
+  }
+
+  &.danger {
+    button > span.hai-ui-icon {
+      color: var(--hai-ui-color-message-title-danger) !important;
+    }
+
+    background-color: rgba(221, 69, 69, 0.79);
+    color: var(--hai-ui-color-message-title-danger);
+  }
+
+  &.success {
+    button > span.hai-ui-icon {
+      color: rgb(255, 255, 255) !important;
+    }
+
+    background-color: rgba(65, 156, 61, 0.85);
+    color: rgb(255, 255, 255);
+  }
+
+  &.normal {
+    a {
+      color: var(--hf-theme-color);
+    }
+
+    button > span.hai-ui-icon {
+      color: var(--hai-ui-color-message-title-normal) !important;
+    }
+
+    color: var(--hai-ui-color-message-title-normal);
+  }
+
+  .message {
+    margin: 8px 0 8px 22px;
+    line-height: 1.4em;
+    word-break: break-word;
+
+    a {
+      display: inline-block;
+      margin-left: 10px;
+      text-decoration: underline;
+    }
+  }
+
+  .date {
+    text-align: right;
+  }
+}

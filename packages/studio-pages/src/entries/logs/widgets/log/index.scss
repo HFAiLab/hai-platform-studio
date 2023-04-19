@@ -1,0 +1,419 @@
+@import './monaco/index.scss';
+
+.hf-log-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .hf-mona-editor-container {
+    flex: 1;
+    overflow: hidden;
+    margin-left: 5px;
+    // min-height: 600px;
+
+    &.syslog {
+      background-image: url("data:image/svg+xml,%3Csvg fill='%23888' fill-opacity='0.07' viewBox='0 0 1024 1024' version='1.1' xmlns='http://www.w3.org/2000/svg' width='100' height='100' %3E%3Cpath d='M161 271v55.9h332.5V271H161z m0 258.9h369.5V474H161v55.9z m0 310.6h517.4v-56H161v56z m591.2-40.7v144.1h-660V81.1h660v222.2c12-1.6 24.3-2.5 37-2.5 12.5 0 30 0.9 42.1 2.5V4.5H13.1v1015h818.2V799.8c-12.1 1.6-29.7 2.6-42.1 2.6-12.6 0-24.9-1-37-2.6z m223.1-290.2h-23.2c-3.7-13.3-8.9-25.9-15.8-37.6l20.8-20.2c14-13.5 14-35.3 0-48.8l-12.5-12.2c-14-13.4-36.5-13.4-50.4 0L874 410.6c-12.6-7-26.1-12.5-40.3-16.3v-23.2c0-19.1-16-34.5-35.6-34.5h-17.8c-19.6 0-35.6 15.4-35.6 34.5v23.2c-14.3 3.8-27.8 9.3-40.3 16.3l-20.6-19.8c-13.8-13.4-36.4-13.4-50.2 0L621 402.9c-13.8 13.5-13.8 35.3 0 48.8l20.9 20.2c-6.7 11.7-12.1 24.3-15.7 37.6H603c-19.6 0-35.6 15.4-35.6 34.5v17.2c0 19 15.9 34.5 35.6 34.5h23.4c3.9 13.4 9.3 26.1 16.3 37.9l-21.7 21c-13.8 13.5-13.8 35.4 0 48.8l12.6 12.3c13.8 13.4 36.4 13.4 50.2 0l21.9-21.2c12.1 6.7 25.1 11.9 38.9 15.5v22.1c0 19 15.9 34.5 35.6 34.5H798c19.6 0 35.6-15.4 35.6-34.5V710c13.7-3.6 26.7-8.8 38.9-15.5l21.7 21.2c13.9 13.4 36.4 13.4 50.4 0l12.5-12.3c14-13.4 14-35.3 0-48.8l-21.7-21c7-11.8 12.5-24.5 16.3-37.9h23.5c19.6 0 35.6-15.4 35.6-34.5V544c0.1-19-15.9-34.4-35.5-34.4zM789.2 648c-54.1 0-97.8-42.5-97.8-94.8 0-52.4 43.7-94.8 97.8-94.8 53.9 0 97.7 42.5 97.7 94.8S843.1 648 789.2 648z m0-139c-24.6 0-44.5 19.3-44.5 43.1 0 23.9 19.9 43.2 44.5 43.2 24.5 0 44.5-19.4 44.5-43.2 0-23.8-20-43.1-44.5-43.1z' %3E%3C/path%3E%3C/svg%3E");
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: #71a27a38;
+
+      // 通过 css 覆盖 monaco 的一部分样式
+      .monaco-editor .margin,
+      .monaco-editor,
+      .monaco-editor-background,
+      .monaco-editor .inputarea.ime-input {
+        background-color: transparent;
+      }
+    }
+  }
+
+  .hflog-loading-container,
+  .hflog-error-container {
+    position: absolute;
+    top: 34px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(var(--hf-option-bg), 0.15);
+    z-index: 2;
+  }
+
+  .hflog-error-container {
+    display: flex;
+    align-items: center;
+    cursor: not-allowed;
+    display: flex;
+    flex-direction: column;
+    background: rgba(255, 255, 255, 0.7);
+    align-items: center;
+    p {
+      padding-left: 10px;
+      padding-right: 10px;
+      margin: auto;
+      color: var(--hf-status-error);
+      font-size: 18px;
+    }
+  }
+}
+
+.hf-log-share-dialog {
+  .hf-log-share-content {
+    padding: 20px 20px 10px 20px;
+    .hf-log-share-user-link {
+      color: var(--hf-theme-color);
+    }
+    .hf-log-share-d {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: row-reverse;
+      .hf-log-share-copy {
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+.hfapp-log-header {
+  min-height: 34px;
+  z-index: 3;
+  padding-left: 10px;
+  padding-right: 0;
+  font-size: 14px;
+  color: var(--hf-ui-font-color1);
+  background: #739cbb40;
+  box-shadow: 0px 1px 4px #00000042;
+
+  button {
+    vertical-align: unset;
+  }
+
+  .split-line-jump-btn {
+    background-color: transparent;
+  }
+
+  .left {
+    float: left;
+    display: flex;
+    align-items: center;
+
+    & > div {
+      display: inline-block;
+      line-height: 34px;
+    }
+
+    .task-name {
+      margin-right: 4px;
+    }
+
+    .btn-search-global {
+      margin-left: 2px;
+    }
+
+    .log-header-status {
+      margin-right: 10px;
+      // hint: 这里很多方法都没办法对齐，总是差点，先这样手动调整下
+      position: relative;
+      top: 2px;
+    }
+
+    .id {
+      font-size: 10px;
+      margin-left: 20px;
+      color: var(--hf-text-lighter);
+    }
+
+    .rank {
+      font-size: 13px;
+      margin-left: 10px;
+      color: var(--hf-text-secondary);
+    }
+  }
+
+  .right {
+    float: right;
+    display: flex;
+    height: 34px;
+    flex-direction: row;
+    align-items: center;
+    overflow: hidden;
+
+    .line-option-container {
+      background-color: rgba(0, 176, 193, 0.15);
+      border-radius: 5px;
+    }
+
+    & > div {
+      display: inline-block;
+    }
+
+    .hf-experiment-info {
+      margin-left: 4px;
+    }
+
+    .log-document-share {
+      margin-left: 10px;
+    }
+
+    .updated-at {
+      font-size: 12px;
+      word-break: keep-all;
+    }
+
+    .refresh button {
+      margin-left: 5px;
+    }
+
+    .service-name-select {
+      margin-left: 5px;
+      .log-service-name-show-btn {
+        max-width: 95px;
+        .hai-ui-button-text {
+          max-width: 80px;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          text-align: left;
+        }
+      }
+    }
+
+    .v2-logo-container {
+      width: 20px;
+      height: 34px;
+    }
+
+    .v2-log-logo {
+      height: 34px;
+      width: 34px;
+      /* clip-path: path("M 34 34 C 34 34 34 16 5 0 L 34 0 Z"); */
+      position: relative;
+      background: #3682c9;
+      cursor: pointer;
+      left: 3px;
+      top: -17px;
+      transform: rotate(45deg);
+      p {
+        color: white;
+        position: absolute;
+        right: 10px;
+        margin-bottom: 0;
+        bottom: 0;
+        font-size: 12px;
+        // transform: rotate(45deg);
+      }
+    }
+  }
+}
+
+.monaco-loading {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  p {
+    margin-top: 100px;
+    color: var(--hf-text-secondary);
+    font-size: 45px;
+    opacity: 0.4;
+  }
+}
+
+.monaco-load-error {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  .error-title {
+    margin-top: 100px;
+    color: var(--hf-text-secondary);
+    font-size: 30px;
+    opacity: 0.4;
+  }
+  .error-desc {
+    color: var(--hf-text-secondary);
+    font-size: 18px;
+    font-weight: bold;
+  }
+}
+
+.sys-log-brief {
+  height: 24px;
+  display: flex;
+  flex-direction: row;
+  background: #71a27a38;
+  font-family: Consolas, 'Courier New', monospace;
+  font-weight: normal;
+  font-size: 14px;
+  font-feature-settings: 'liga' 0, 'calt' 0;
+  line-height: 19px;
+  letter-spacing: 0px;
+  align-items: center;
+  padding-left: 5px;
+  padding-right: 5px;
+  .brief-line-tip {
+    width: max-content;
+    padding-right: 10px;
+    color: #808080;
+  }
+  .brief-content {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    // font-weight: bold; // 700
+    color: var(--hf-ui-font-color1);
+    margin: auto;
+  }
+  .brief-more {
+    width: 34px;
+    padding-bottom: 0;
+    a {
+      color: var(--hf-theme-color);
+      background-color: var(--hf-layout-light);
+      padding: 0px 3px;
+      border-radius: 3px;
+    }
+  }
+}
+
+div[role='presentation'].scroll-decoration {
+  display: none;
+}
+
+.global-search-container {
+  background: var(--jp-layout-color1);
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  top: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  width: 400px;
+
+  .global-search-group {
+    margin-bottom: 0;
+
+    .#{$ns}-form-content {
+      .#{$ns}-input {
+        border-radius: 0;
+      }
+
+      position: relative;
+      .search-icon {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+      }
+    }
+
+    .global-search-form-group {
+      margin-bottom: 0;
+      border-bottom: 1px solid var(--hf-text-lighter);
+
+      .#{$ns}-input {
+        box-shadow: none;
+        height: 40px;
+      }
+    }
+  }
+
+  .global-search-result-header {
+    padding: 10px 20px 0 10px;
+    display: flex;
+    flex-wrap: wrap;
+
+    .search-flex-item {
+      padding-bottom: 5px;
+      .search-flex-item-1 {
+        padding-right: 10px;
+        // border-right: 1px solid var(--hf-text-lighter);
+      }
+    }
+  }
+
+  .global-search-result {
+    padding: 0 10px 10px;
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 200px;
+    overflow-y: scroll;
+
+    &.empty {
+      padding-top: 10px;
+      color: var(--hf-ui-font-color1);
+    }
+
+    &::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+  }
+
+  .global-search-result .search-flex-item,
+  .global-search-result-header .search-flex-item {
+    width: calc(33% - 4px);
+    padding-right: 6px;
+    padding-left: 6px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    &:nth-child(3n + 1),
+    &:nth-child(3n + 2) {
+      margin-right: 6px;
+      border-right: 1px solid rgba(0, 0, 0, 0.3);
+    }
+
+    .search-flex-item-2 {
+      width: 60%;
+      text-align: center;
+    }
+
+    .search-content-times {
+      margin-top: 8px;
+      font-weight: bold;
+    }
+  }
+
+  .global-search-order {
+    padding: 5px 10px;
+    display: flex;
+    flex-direction: row-reverse;
+  }
+}
+
+.hf-experiment-info {
+  padding: 10px;
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    li {
+      line-height: 1.5em;
+
+      span.label {
+        min-width: 80px;
+        display: inline-block;
+        vertical-align: top;
+      }
+
+      span.value {
+        word-break: break-all;
+        display: inline-block;
+        width: 150px;
+      }
+
+      button {
+        vertical-align: top;
+        margin-left: 20px;
+      }
+    }
+  }
+}

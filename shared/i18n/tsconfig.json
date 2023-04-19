@@ -1,0 +1,10 @@
+{
+  "extends": "@hai-platform/tsconfig/base.json",
+  "compilerOptions": {
+    "lib": ["ES2020"],
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "target": "ES2017",
+    "charset": "utf8"
+  }
+}

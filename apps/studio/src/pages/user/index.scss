@@ -1,0 +1,53 @@
+@import '../../style/aiui_mixin.scss';
+
+.settings-panel {
+  padding-bottom: 30px;
+  min-height: calc(100vh - 300px);
+}
+
+.user-item {
+  display: flex;
+  flex-direction: row;
+  margin-top: 40px;
+  align-items: flex-start;
+  @include aiui-text-secondary;
+
+  .left {
+    display: flex;
+    align-items: center;
+
+    .left-icon {
+      width: 16px;
+      height: 16px;
+      background-color: var(--hai-ui-layout-2);
+      margin-right: 10px;
+    }
+
+    .left-title {
+      @include aiui-h6;
+      width: 140px;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.user-attr-container {
+  display: flex;
+  flex-direction: row;
+
+  .left {
+    flex: 1;
+    flex-direction: column;
+    display: flex;
+    align-items: flex-start;
+
+    p {
+      @include aiui-ui-13;
+      margin-bottom: 0;
+
+      &:not(:last-child) {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}

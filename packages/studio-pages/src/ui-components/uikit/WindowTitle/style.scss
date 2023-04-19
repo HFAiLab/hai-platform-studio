@@ -1,0 +1,42 @@
+.hf .hf-title {
+  margin-bottom: 16px;
+  position: relative;
+
+  .title-refresh {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+}
+
+.hf .hf-title h2 {
+  color: var(--hf-ui-font-color1);
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+  margin-bottom: 6px;
+}
+
+.hf .hf-title p {
+  color: var(--hf-ui-font-color2);
+  line-height: 1.5em;
+  font-size: 14px;
+}
+
+.hf .hf-tab-title {
+  margin-bottom: 10px;
+}
+
+.hf .hf-tab-title h3 {
+  color: var(--hf-ui-font-color1);
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+  margin-bottom: 6px;
+}
+
+.hf .hf-tab-title p {
+  color: var(--hf-ui-font-color2);
+  line-height: 1.5em;
+  font-size: 14px;
+}

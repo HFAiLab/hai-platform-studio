@@ -1,0 +1,109 @@
+@import '../../style/aiui_mixin.scss';
+
+.login-v3-container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  flex-direction: row;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+
+  .studio-login-helper-text {
+    @include aiui-paragraph-13;
+    @include aiui-text-other;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+
+    button {
+      margin-left: 5px;
+    }
+  }
+
+  .main {
+    display: flex;
+    width: 800px;
+    height: 600px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.2);
+    background-color: var(--hai-ui-layout-1);
+
+    .left {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 370px;
+      padding: 40px;
+
+      svg.hfai-login-logo {
+        width: 162px;
+        height: 26px;
+      }
+
+      .title {
+        min-height: 120px;
+
+        div.t {
+          @include aiui-h1;
+          @include aiui-text-primary;
+        }
+
+        div.desc {
+          margin-top: 10px;
+          @include aiui-ui-13;
+          @include aiui-text-secondary;
+        }
+      }
+
+      .form-login {
+        input::placeholder {
+          @include aiui-text-other;
+        }
+
+        label {
+          margin-bottom: 10px;
+          @include aiui-h6;
+          @include aiui-text-secondary;
+        }
+
+        .login-submit {
+          margin-top: 20px;
+          @include aiui-h5;
+        }
+      }
+    }
+
+    .right {
+      width: 430px;
+      background: linear-gradient(90deg, rgba(0, 0, 100, 0.06), rgba(0, 0, 0, 0) 60px);
+      .ani-login {
+        // 调整动画内容大小  400x600 -> 320x480
+        & > svg {
+          width: 320px;
+          height: 480px;
+        }
+        margin-left: 55px; // (430-320) * 0.5
+        margin-top: 60px; // (600-480) * 0.5
+      }
+    }
+  }
+
+  .corner {
+    display: flex;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+
+    .lan-active {
+      font-weight: bold;
+      @include aiui-text-primary;
+    }
+
+    .lan-not-active {
+      font-weight: normal;
+      @include aiui-text-other;
+    }
+  }
+}

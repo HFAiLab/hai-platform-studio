@@ -1,0 +1,100 @@
+/* input */
+
+.hf input.hf-input {
+    /* background-color: var(--hf-text-secondary); */
+    background-color: #FFF1;
+    box-sizing: border-box;
+    color: var(--hf-text-normal);
+    font-size: 13px;
+    width: 100%;
+    /* -webkit-appearance: none; */
+    /* -moz-appearance: none; */
+    /* appearance: none; */
+    /* background: #ffffff; */
+    border: none;
+    border-radius: var(--jp-border-radius);
+    box-shadow: 0 0 0 1px var(--jp-layout-color3);
+    font-weight: 400;
+    height: 30px;
+    line-height: 30px;
+    outline: none;
+    padding: 0 2px 0 10px;
+    -webkit-transition: -webkit-box-shadow 100ms cubic-bezier(0.4, 1, 0.75, 0.9);
+    transition: -webkit-box-shadow 100ms cubic-bezier(0.4, 1, 0.75, 0.9);
+    transition: box-shadow 100ms cubic-bezier(0.4, 1, 0.75, 0.9);
+    transition: box-shadow 100ms cubic-bezier(0.4, 1, 0.75, 0.9), -webkit-box-shadow 100ms cubic-bezier(0.4, 1, 0.75, 0.9);
+    /* vertical-align: middle; */
+}
+
+.hf input.hf-input.small {
+    line-height: 20px;
+    height: 20px;
+}
+
+.hf input.hf-input.middle {
+    line-height: 24px;
+    height: 24px;
+}
+
+.hf input.hf-input::placeholder {
+    color: var(--hf-text-lighter);
+    font-family: inherit;
+}
+
+.hf input.hf-input:focus {
+    border-color: var(--hf-theme-color);
+    box-shadow: 0 0 0 1px var(--hf-theme-color), 0 0 0 3px rgba(19, 124, 189, 0.3), inset 0 1px 1px rgba(16, 22, 26, 0.2);
+}
+
+/* select */
+
+.hf select.hf-select {
+    background-color: #FFF1;
+    box-sizing: border-box;
+    color: var(--hf-text-normal);
+    width: 100%;
+    /* -webkit-appearance: none; */
+    /* -moz-appearance: none; */
+    /* appearance: none; */
+    border: none;
+    border-radius: var(--jp-border-radius);
+    box-shadow: 0 0 0 1px var(--jp-layout-color3);
+    font-weight: 400;
+    height: 30px;
+    line-height: 30px;
+    outline: none;
+    /* padding: 0 10px; */
+    padding: 0 6px;
+    -webkit-transition: -webkit-box-shadow 100ms cubic-bezier(0.4, 1, 0.75, 0.9);
+    transition: -webkit-box-shadow 100ms cubic-bezier(0.4, 1, 0.75, 0.9);
+    transition: box-shadow 100ms cubic-bezier(0.4, 1, 0.75, 0.9);
+    transition: box-shadow 100ms cubic-bezier(0.4, 1, 0.75, 0.9), -webkit-box-shadow 100ms cubic-bezier(0.4, 1, 0.75, 0.9);
+    /* vertical-align: middle; */
+}
+
+.hf select.hf-select.small {
+    line-height: 20px;
+    height: 20px;
+}
+
+.hf select.hf-select.middle {
+    line-height: 24px;
+    height: 24px;
+}
+
+.hf select.hf-select option {
+    color: var(--hf-text-normal);
+    font-family: inherit;
+    background-color: var(--hf-option-bg);
+}
+
+/* set option:disabled text color will cause some color render problem*/
+
+.hf select.hf-select option:disabled {
+    font-family: inherit;
+    background-color: var(--hf-option-disabled);
+}
+
+.#{$ns}-dark select.hf-select option:disabled {
+    color: #eee;
+}

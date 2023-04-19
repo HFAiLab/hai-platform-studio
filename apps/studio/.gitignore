@@ -1,0 +1,12 @@
+node_modules
+.DS_Store
+dist
+dist-ssr
+*.local
+stats.html
+
+.env
+dist2
+.env.production
+
+!public/vditor@3.8.17/dist

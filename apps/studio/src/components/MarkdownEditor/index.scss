@@ -1,0 +1,12 @@
+@import '../../style/aiui_mixin.scss';
+
+.xtopic-editor-tip-li {
+  max-width: 400px;
+  @include overflow-ellipsis;
+
+  .xtopic-editor-tip-id {
+    min-width: 30px;
+    display: inline-block;
+    margin-right: 5px;
+  }
+}

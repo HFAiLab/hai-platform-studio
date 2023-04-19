@@ -1,0 +1,24 @@
+.hf-exps-filter-container {
+  .manage-filter-date-range {
+    .manage-date-picker-input {
+      width: 130px;
+      margin-right: 5px;
+    }
+    margin-right: 5px;
+  }
+
+  .manage-filter-tag,
+  .manage-filter-group {
+    margin-right: 5px;
+  }
+
+  button.exp-filter-quick-clear-time {
+    margin-left: -5px;
+  }
+
+  .batch-stop-btn,
+  .batch-resume-btn {
+    font-size: 12px;
+    padding: 0 2px;
+  }
+}

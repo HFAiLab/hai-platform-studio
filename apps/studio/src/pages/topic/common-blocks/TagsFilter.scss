@@ -1,0 +1,30 @@
+@import '../../../style/aiui_mixin.scss';
+
+.xtopic-tags-filter {
+  .content {
+    @include aiui-paragraph-13;
+    @include aiui-text-secondary;
+    span.hai-ui-tag {
+      margin-bottom: 12px;
+    }
+    .search {
+      // 弱化搜索框存在感
+      input,
+      .hai-ui-icon {
+        opacity: 0.7;
+      }
+      margin-bottom: 12px;
+    }
+    .tags-more {
+      @include aiui-text-other;
+      margin-top: 10px;
+    }
+  }
+
+  .tags-search-tip {
+    align-items: center;
+    padding: 10px 5px;
+    text-align: center;
+    @include aiui-text-other;
+  }
+}

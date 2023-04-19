@@ -1,0 +1,45 @@
+@import '../../../../style/aiui_mixin.scss';
+
+.path-guide-container {
+  .desc {
+    @include aiui-h6;
+    @include aiui-text-other;
+  }
+  ul {
+    padding: 0;
+    margin: 14px 0 0 0;
+    li {
+      list-style: none;
+      display: flex;
+      line-height: 30px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      font-size: 13px;
+      @include aiui-text-secondary;
+      .path-name {
+        font-weight: bold;
+        flex: 1;
+      }
+      .right {
+        flex: 5;
+        display: flex;
+        button {
+          display: none;
+          max-height: 30px;
+        }
+        .path-value {
+          font-family: monospace;
+          flex: 1;
+        }
+      }
+      &:hover {
+        button {
+          display: block;
+        }
+        background-color: var(--hf-ui-highlight-bg);
+      }
+    }
+  }
+}

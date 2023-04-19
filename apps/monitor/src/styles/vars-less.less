@@ -1,0 +1,95 @@
+@import 'ant-design-vue/lib/style/themes/default.less';
+
+/**
+ * Override LESS Vars with CSS Vars
+ *
+ * 部分被用到了 less 函数中，无法直接覆盖为 CSS Vars ，暂时通过下方强制覆盖
+ */
+
+// Base Scaffolding Variables
+@body-background: var(--layout-body-background);
+@component-background: var(--component-background);
+@text-color: var(--text-color);
+// @text-color-secondary: var(--text-color-secondary);
+@heading-color: var(--text-color);
+@item-hover-bg: var(--item-hover-bg);
+@background-color-base: var(--background-color-base);
+@background-color-light: var(--background-color-light);
+
+// Media queries breakpoints
+@screen-sm: 640px;
+@screen-md: 768px;
+@screen-lg: 1024px;
+@screen-xl: 1280px;
+@screen-xxl: 1536px;
+
+// Alert
+@alert-close-color: var(--text-color-secondary);
+
+// BackTop
+@back-top-bg: var(--text-color-secondary);
+
+// Border color
+@border-color-base: var(--border-color-base);
+@border-color-split: var(--border-color-split);
+@normal-color: var(--border-color-base);
+
+// Breadcrumb
+@breadcrumb-base-color: var(--text-color-secondary);
+@breadcrumb-link-color: var(--text-color-secondary);
+@breadcrumb-separator-color: var(--text-color-secondary);
+
+// Card
+@card-padding-base: 18px;
+
+// Comment
+@comment-author-name-color: var(--text-color-secondary);
+@comment-action-color: var(--text-color-secondary);
+
+// Disabled states
+// @disabled-color: var(--disabled-color);
+
+// Divider
+@divider-color: var(--border-color-split);
+
+// Layout
+@layout-body-background: var(--layout-body-background);
+@layout-header-height: var(--layout-header-height);
+@layout-header-padding: 0;
+
+// Modal
+@modal-close-color: var(--text-color-secondary);
+
+// Menu
+@menu-item-group-title-color: var(--text-color-secondary);
+
+// Input
+@input-affix-margin: 11px; // 暂时没找到对应的变量
+@input-icon-hover-color: var(--input-icon-hover-color);
+
+// Popover
+@popover-bg: var(--component-background);
+
+// Select
+@select-item-active-bg: var(--item-hover-bg-light);
+@select-item-selected-bg: var(--item-hover-bg);
+
+// Shadow
+// @shadow-color: var(--shadow-color);
+@shadow-2: var(--shadow-2);
+
+// Table
+@table-body-sort-bg: var(--component-background);
+@table-border-color: rgba(0, 0, 0, 0.06); // 原始 less 中用了 lighten 函数，只能先写成固定值，然后强制覆盖
+@table-header-bg: var(--component-background);
+@table-header-sort-bg: var(--component-background);
+@table-header-sort-active-bg: var(--component-background);
+@table-header-cell-split-color: var(--border-color-base);
+@table-row-hover-bg: var(--background-color-base);
+@table-expanded-row-bg: var(--background-color-light);
+
+// Upload
+@upload-actions-color: var(--text-color-secondary);
+
+// description
+@descriptions-bg: var(--description-bg);

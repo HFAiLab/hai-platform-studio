@@ -1,0 +1,30 @@
+{
+  "name": "@hai-platform/x-editor",
+  "version": "0.19.0-alpha.1681870131.da1d707d",
+  "description": "",
+  "keywords": [],
+  "author": "",
+  "main": "./lib/esm/index.js",
+  "module": "./lib/esm/index.js",
+  "scripts": {
+    "build": "pnpm run build:esm && pnpm run build:less",
+    "build-pkg": "pnpm run build",
+    "build:esm": "tsc --outDir lib/esm --module es2020",
+    "build:less": "node scripts/less-build-or-listen.cjs",
+    "build:less-index": "pnpm lessc src/style/entries/hf-basic.less dist/style/entries/hf-basic.css",
+    "build:less-theme": "pnpm lessc src/style/themes/hf-basic.less dist/style/themes/hf-basic.css",
+    "watch": "pnpm run watch:esm",
+    "watch:esm": "pnpm run build:esm --watch",
+    "watch:less": "node scripts/less-build-or-listen.cjs --watch"
+  },
+  "dependencies": {
+    "@hai-platform/vditor": "3.8.17-beta.2"
+  },
+  "devDependencies": {
+    "less": "^4.1.1",
+    "yargs": "^17.6.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

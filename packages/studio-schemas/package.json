@@ -1,0 +1,34 @@
+{
+  "name": "@hai-platform/studio-schemas",
+  "version": "0.19.0-alpha.1681870131.da1d707d",
+  "main": "./lib/cjs/index.js",
+  "module": "./lib/esm/index.js",
+  "types": "./lib/esm/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "pnpm run build:esm && pnpm run build:cjs",
+    "build:cjs": "tsc --outDir lib/cjs --module commonjs",
+    "build:esm": "tsc --outDir lib/esm --module es2020",
+    "build-pkg": "pnpm run build",
+    "fst-gen": "cd src/fst && fst-json gen",
+    "test": "echo 0",
+    "watch": "npm-run-all --parallel watch:esm watch:cjs",
+    "watch:cjs": "pnpm run build:cjs --watch",
+    "watch:esm": "pnpm run build:esm --watch"
+  },
+  "dependencies": {
+    "@hai-platform/client-ailab-server": "workspace:*",
+    "@hai-platform/client-api-server": "workspace:*",
+    "@hai-platform/shared": "workspace:*",
+    "fast-json-stringify": "^3"
+  },
+  "devDependencies": {
+    "fst-json": "0.1.4",
+    "npm-run-all": "^4.1.5"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

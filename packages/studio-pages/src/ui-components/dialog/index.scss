@@ -1,0 +1,11 @@
+.base-dialog-container {
+  position: relative;
+}
+
+.base-dialog-close-tip {
+  position: absolute;
+  left: 20px;
+  bottom: 26px;
+  width: max-content;
+  color: var(--hf-ui-font-color2);
+}

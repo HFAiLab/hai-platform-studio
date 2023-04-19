@@ -1,0 +1,11 @@
+
+*, *::before, *::after {
+    box-sizing: unset;
+    outline: none;       /*去除点击后样式的核心代码*/
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+    color: inherit;
+}

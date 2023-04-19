@@ -1,0 +1,18 @@
+@import '../../../style/aiui_mixin.scss';
+.xtopic-heat {
+  width: 40px;
+  margin-right: 20px;
+  > svg {
+    // 图本身不是很平衡，微调下
+    margin-left: 6px;
+  }
+  // background-color: gray;
+  text-align: center;
+  .value {
+    @include aiui-ui-14;
+    @include aiui-text-secondary;
+    &.hot {
+      color: var(--hai-ui-red3);
+    }
+  }
+}

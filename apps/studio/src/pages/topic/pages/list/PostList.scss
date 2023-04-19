@@ -1,0 +1,75 @@
+@import '../../../../style/aiui_mixin.scss';
+.xtopic-post-list {
+  .hai-ui-tabs {
+    min-height: 60px;
+    .hai-ui-tab {
+      line-height: 60px;
+    }
+    .hai-ui-tab-list {
+      align-items: center;
+    }
+  }
+
+  .pagi {
+    margin-left: 10px;
+    margin-top: 20px;
+    display: flex;
+
+    justify-content: space-between;
+    .page-size-control {
+      > span {
+        margin-right: 10px;
+        font-size: 12px;
+        @include aiui-text-secondary;
+      }
+      button {
+        padding-left: 10px;
+        padding-right: 10px;
+        height: 20px;
+      }
+    }
+  }
+
+  .posts-not-found-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px;
+  }
+
+  .posts-error-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 50px;
+    min-height: 200px;
+  }
+
+  .xtopic-x-search-group {
+    margin-left: 10px;
+    width: 260px;
+    input {
+      &::placeholder {
+        color: var(--hai-ui-text-other);
+      }
+      &:not(:focus) {
+        box-shadow: unset;
+      }
+      border: 1px solid var(--hai-ui-text-other);
+    }
+    .hai-ui-icon {
+      color: var(--hai-ui-text-other);
+    }
+
+    &.focused {
+      input {
+        &::placeholder {
+          color: var(--hai-ui-text-secondary);
+        }
+      }
+      .hai-ui-icon {
+        color: var(--hai-ui-text-secondary);
+      }
+    }
+  }
+}

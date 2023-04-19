@@ -1,0 +1,54 @@
+.filter-group-container {
+  position: relative;
+
+  // hint: 这里有一些定制，最好不要去复用
+  .filter-range-popover {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: var(--hai-ui-layout-1);
+    padding: 0;
+    display: none;
+    flex-direction: column;
+    z-index: 20; // inline-dialog-z-index
+    box-shadow: 0 0 0 1px rgb(17 20 24 / 10%), 0 2px 4px rgb(17 20 24 / 20%),
+      0 8px 24px rgb(17 20 24 / 20%);
+
+    .filter-menu {
+      width: 400px;
+      max-height: 500px;
+      overflow: auto;
+    }
+
+    &.show {
+      display: block;
+    }
+  }
+
+  .loading {
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
+    color: var(--hf-text-lighter);
+  }
+
+  .filter-btn {
+    max-width: 150px;
+    span {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+
+  .quick-opts {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding: 5px;
+    .flex-1 {
+      flex: 1;
+    }
+    border-bottom: 1px solid var(--hai-ui-light-gray4);
+  }
+}

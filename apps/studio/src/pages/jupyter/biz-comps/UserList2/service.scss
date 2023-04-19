@@ -1,0 +1,13 @@
+@import '../../../../components/Input/index.scss';
+@import '../../../../style/aiui_mixin.scss';
+@import '../../../../style/variables.scss';
+
+.service-item-more-pop {
+  width: 14px;
+  height: 22px;
+  cursor: pointer;
+}
+
+.service-item-attention-warning {
+  margin-bottom: 10px;
+}

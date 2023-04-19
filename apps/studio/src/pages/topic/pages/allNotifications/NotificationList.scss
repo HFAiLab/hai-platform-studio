@@ -1,0 +1,65 @@
+@import '../../../../style/aiui_mixin.scss';
+.xtopic-all-notifications-list {
+  padding: 0px;
+  .title-line {
+    // background-color: bisque;
+    padding: 0 30px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--hai-ui-light-gray4);
+    .t {
+      @include aiui-h4;
+      @include aiui-text-primary;
+    }
+    .options button {
+      @include aiui-text-secondary;
+    }
+  }
+  .content {
+    min-height: 500px;
+    padding: 0 30px;
+    margin-top: 20px;
+    div.group {
+      .group-title {
+        @include aiui-h5;
+        @include aiui-text-primary;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+      .xtopic-notification-item {
+        padding: 15px;
+      }
+      &:not(:last-child) {
+        border-bottom: 1px solid var(--hai-ui-light-gray2);
+      }
+    }
+    .no-notification {
+      .pop {
+        height: 330px;
+        background: url(../../images//notification_no_message.svg) center bottom no-repeat;
+      }
+      .desc {
+        margin-top: 40px;
+        text-align: center;
+        @include aiui-text-other;
+        @include aiui-h5;
+      }
+    }
+  }
+  .pagi {
+    &.no-pagi {
+      height: 50px;
+    }
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.xtopic-notification-type-select {
+  min-width: 93px;
+  @include aiui-text-secondary;
+}

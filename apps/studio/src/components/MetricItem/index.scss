@@ -1,0 +1,66 @@
+@import '../../style/aiui_mixin.scss';
+
+.aiui-metric-item {
+  &.pointer {
+    cursor: pointer;
+  }
+
+  .title {
+    @include aiui-column-name-zh;
+    color: var(--hai-ui-text-other);
+  }
+
+  .value {
+    @include aiui-h4;
+    color: var(--hai-ui-text-secondary);
+    margin-top: 10px;
+  }
+
+  &.H1 {
+    .title {
+      @include aiui-h6;
+      color: var(--hai-ui-text-secondary);
+    }
+
+    .value {
+      font-size: 48px;
+      line-height: 60px;
+      font-weight: normal;
+    }
+  }
+
+  &.H2 {
+    .title {
+      @include aiui-h6;
+      color: var(--hai-ui-text-secondary);
+    }
+
+    .value {
+      line-height: 36px;
+      font-size: 32px;
+    }
+  }
+
+  &.H25 {
+    .title {
+      @include aiui-h6;
+      color: var(--hai-ui-text-secondary);
+    }
+
+    .value {
+      font-size: 24px;
+      margin-top: 7px;
+    }
+  }
+
+  &.H3 {
+    .title {
+      @include aiui-h6;
+      color: var(--hai-ui-text-secondary);
+    }
+
+    .value {
+      @include aiui-h4;
+    }
+  }
+}

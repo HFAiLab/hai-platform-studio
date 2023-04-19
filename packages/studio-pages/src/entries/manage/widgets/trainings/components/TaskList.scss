@@ -1,0 +1,272 @@
+.page-task-list {
+  width: 100%;
+
+  .task-list-main {
+    min-height: 472px;
+  }
+
+  .list-header,
+  .list-content {
+    margin-top: 10px;
+    padding-left: 10px;
+
+    div {
+      display: inline-block;
+      margin-right: 10px;
+      &.sel {
+        margin-right: 0;
+        .#{$ns}-control.#{$ns}-inline {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
+  .list-header,
+  .list-content .task-list-item {
+    display: flex;
+    align-items: center;
+  }
+
+  ul.list-content {
+    list-style: none;
+    li {
+      margin-top: 8px;
+      // padding-left: 10px;
+      color: var(--hf-text-normal);
+      line-height: 28px;
+      min-height: 28px;
+
+      &:hover {
+        background-color: var(--hf-ui-highlight-bg-light);
+        color: var(--hf-ui-font-color0);
+      }
+
+      &.selected {
+        background: var(--hf-ui-highlight-bg);
+      }
+
+      & > div {
+        display: inline-block;
+        margin-right: 10px;
+        vertical-align: middle;
+        &.sel {
+          margin-right: 0;
+          .#{$ns}-control.#{$ns}-inline {
+            margin-right: 0;
+          }
+        }
+
+        &.tn {
+          display: inline-flex;
+        }
+      }
+
+      span.chain-icon {
+        margin-right: 5px;
+
+        svg {
+          fill: var(--hf-text-normal);
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+
+  div.tn {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    align-items: center;
+    flex-direction: row;
+
+    .tn-tags-show {
+      margin-left: 6px;
+      margin-right: 0;
+      .multi-content {
+        position: relative;
+        .more {
+          font-size: 12px;
+          font-weight: bold;
+          color: var(--hai-ui-orange4);
+          position: absolute;
+          top: -7px;
+          right: -4px;
+        }
+      }
+      span.#{$ns}-tag {
+        max-width: 120px;
+      }
+    }
+
+    .tn-item-text {
+      flex: 1;
+      overflow: hidden;
+      display: inline-flex;
+
+      .tn-item-text-name {
+        display: inline;
+        word-break: break-all;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        max-width: 100%;
+        margin-bottom: 0;
+        transition: 0.2s;
+      }
+      .tn-tag,
+      .tn-open,
+      .tn-star {
+        padding-left: 5px;
+        padding-right: 5px;
+        margin-right: 0;
+        border-radius: 4px;
+        display: none;
+        color: var(--hf-theme-color);
+        &.con-show {
+          display: inline-block;
+        }
+        &:hover {
+          background-color: var(--hf-ui-highlight-bg);
+        }
+      }
+
+      &:hover {
+        .tn-tag,
+        .tn-open,
+        .tn-star {
+          display: inline-block;
+        }
+      }
+    }
+  }
+
+  div.wk {
+    width: 50px;
+    text-align: center;
+  }
+  div.tid {
+    width: 50px;
+    text-align: left;
+    &.v {
+      font-size: 12px;
+      color: var(--hf-text-secondary);
+      font-family: monospace;
+      &:hover {
+        background-color: var(--hf-ui-highlight-bg);
+        cursor: pointer;
+      }
+
+      &:active {
+        color: var(--hf-text-normal);
+      }
+    }
+  }
+
+  div.leaf {
+    width: 50px;
+    text-align: center;
+  }
+
+  div.zone {
+    width: 40px;
+    text-align: center;
+    display: flex !important;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  div.lu {
+    width: 90px;
+  }
+
+  span.dur,
+  div.dur {
+    width: 50px;
+    display: inline-block;
+    margin-right: 10px;
+  }
+
+  div.gpu_p2u {
+    width: 70px;
+    text-align: right;
+  }
+
+  div.gpuu,
+  div.gpup {
+    width: 54px;
+    text-align: right;
+  }
+
+  div.ibr {
+    width: 70px;
+    text-align: right;
+  }
+  div.ibt {
+    width: 70px;
+    text-align: right;
+  }
+
+  div.cpu {
+    width: 70px;
+    text-align: right;
+  }
+
+  div.mem {
+    width: 70px;
+    text-align: right;
+  }
+
+  div.gpuu,
+  div.gpup,
+  div.gpu_p2u,
+  div.ibr,
+  div.ibt,
+  div.cpu,
+  div.mem {
+    &.low {
+      color: #2bc5cb;
+      font-weight: bold;
+    }
+
+    &.err {
+      color: #b3575b;
+    }
+
+    &.high {
+      color: #b48f0e;
+      font-weight: bold;
+    }
+  }
+
+  div.sel {
+    width: 19px;
+    opacity: 0.5;
+    .#{$ns}-control {
+      margin-bottom: 0;
+    }
+
+    &.selected {
+      opacity: 1;
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  // 不加这层影响标题
+  .task-list-item div.lc_group {
+    font-size: 12px;
+  }
+  div.lc_group {
+    width: 95px;
+    flex-direction: row;
+    align-items: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}

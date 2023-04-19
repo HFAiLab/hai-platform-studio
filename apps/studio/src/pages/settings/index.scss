@@ -1,0 +1,47 @@
+@import '../../style/aiui_mixin.scss';
+
+.setting-outer-container {
+  padding: 0 0 0 15px;
+}
+
+.settings-container {
+  margin-top: 26px;
+  display: flex;
+  flex-direction: row;
+
+  .setting-column {
+    .title {
+      @include aiui-h6;
+      @include aiui-text-secondary;
+      margin-bottom: 10px;
+      line-height: 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .setting-textarea {
+      // width: 500px;
+      height: 400px;
+    }
+
+    .json-editor-container {
+      // width: 500px;
+      height: 400px;
+      border: solid 1px var(--hai-ui-text-other);
+    }
+
+    &:nth-of-type(1) {
+      width: 45%;
+      margin-right: 5%;
+    }
+
+    &:nth-of-type(2) {
+      width: 50%;
+    }
+  }
+}
+
+.module-init-container {
+  color: var(--hai-ui-text-secondary);
+}

@@ -1,0 +1,32 @@
+.hf .jobs-wrapper {
+  transition: 0.4s;
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-height: 160px;
+}
+
+.cell-flex-box {
+  // GPU 加速
+  transform: translate3d(0, 0, 0); /* translateZ(0) 亦可 */
+  overflow-y: auto;
+  flex: 1;
+}
+
+.validate-btn {
+  margin-top: 10px;
+  display: block;
+  width: max-content;
+}
+
+.hf .nodes-filter {
+  .#{$ns}-dark & .#{$ns}-input {
+    background-color: var(--hf-highlight-block);
+  }
+}
+
+.validate-dialog {
+  width: 568px;
+}

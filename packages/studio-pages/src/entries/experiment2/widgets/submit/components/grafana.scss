@@ -1,0 +1,61 @@
+.grafana-sub-panel {
+  padding: 15px;
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.grafana-panel1-title {
+  display: flex;
+  align-items: center;
+  height: 30px;
+  .title {
+    flex: 1;
+    margin-bottom: 0;
+  }
+}
+
+.grafana-panel-container {
+  overflow: auto;
+}
+
+.grafana-warning-tip {
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.grafana-panel1-meta {
+  display: flex;
+  flex-direction: row;
+  p {
+    margin-right: 10px;
+    margin-bottom: 0;
+    font-style: italic;
+    color: var(--hf-ui-font-color1);
+  }
+}
+
+.grafana-operating-part {
+  .grafana-operating-url {
+    margin-bottom: 10px;
+  }
+
+  .grafana-operating-line {
+    height: 30px;
+    display: flex;
+    align-items: center;
+    button {
+      margin-right: 10px;
+    }
+  }
+
+  margin-top: 10px;
+}
+
+.grafana-panel1-container {
+  .hai-ui-collapse-body {
+    padding: 10px;
+    border: 1px solid lightgray;
+    margin-top: 10px;
+  }
+}

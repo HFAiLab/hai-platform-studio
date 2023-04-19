@@ -1,0 +1,77 @@
+@import '../../../../style/aiui_mixin.scss';
+
+.xtopic-insert-container {
+  .topic-insert-input {
+    width: 600px;
+  }
+
+  .post-insert-label {
+    h5 {
+      margin: 0;
+      @include aiui-h5;
+      margin-bottom: 8px;
+    }
+    p {
+      margin: 0;
+      @include aiui-paragraph-12;
+      @include aiui-text-secondary;
+      margin-bottom: 8px;
+    }
+  }
+
+  .hai-ui-form-group {
+    margin-bottom: 22px;
+  }
+
+  .xtopic-pub-btn-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row-reverse;
+    button {
+      min-width: 100px;
+    }
+  }
+
+  .xtopic-insert-tip-panel {
+    .header-container {
+      background: var(--hai-ui-light-gray3);
+      font-weight: 700;
+
+      @include aiui-text-primary;
+    }
+
+    .xtopic-insert-tip-list {
+      list-style: none;
+      padding: 0px;
+      margin: 0;
+      li {
+        position: relative;
+        padding-left: 20px;
+        margin-bottom: 24px;
+        p {
+          margin: 0;
+          @include aiui-paragraph-13;
+          margin-bottom: 10px;
+          &.primary {
+            @include aiui-text-primary;
+          }
+          &.secondary {
+            @include aiui-text-secondary;
+          }
+        }
+        &::before {
+          width: 6px;
+          height: 6px;
+          top: 7px;
+          left: 2px;
+          content: ' ';
+          position: absolute;
+          background-color: var(--hai-ui-text-primary);
+        }
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}

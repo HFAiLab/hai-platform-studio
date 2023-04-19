@@ -1,0 +1,31 @@
+@import '../../style/z-index.scss';
+
+.log-upload-container {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  z-index: $global-float-z-index;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  background-color: var(--hf-option-bg);
+
+  .log-upload--icon-container {
+    margin: auto;
+    width: 20px;
+    height: 20px;
+    svg {
+      fill: var(--hai-ui-text-secondary);
+    }
+  }
+
+  .log-upload {
+    margin: auto;
+    width: 20px;
+    height: 20px;
+  }
+}

@@ -1,0 +1,11 @@
+$theme: #2d72d2;
+$darkBaseColor: #22262f;
+$ns: hai-ui;
+$bg-line-45deg: url(data:image/svg+xml,%3Csvg%20width%3D%2214%22%20height%3D%2214%22%20viewBox%3D%220%200%2014%2014%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cpath%20fill-rule%3D%22evenodd%22%20clip-rule%3D%22evenodd%22%20d%3D%22M2%2014H0V11.7573L11.7573%200H14V2L2%2014ZM14%2011.7573V14H11.7573L14%2011.7573ZM2%200L0%202V0H2Z%22%20fill%3D%22%2399999911%22%2F%3E%3C%2Fsvg%3E);
+
+$min_screen_width: 1080px;
+
+$desktop_screen_width: 1440px;
+
+// 和 apps/studio/src/consts.ts HOME_PANEL_DEFAULT_WIDTH 保持对应
+$home_panel_default_width: 1008px;

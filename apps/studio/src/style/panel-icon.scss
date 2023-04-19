@@ -1,0 +1,13 @@
+@import './variables.scss';
+
+body {
+  --app-panel-icon-secondary: #d9d9d9;
+  --app-panel-icon-primary: #3c3c3c;
+  --app-panel-icon-color: #6d97c9;
+}
+
+body.#{$ns}-dark {
+  --app-panel-icon-secondary: #707070;
+  --app-panel-icon-primary: #efefef;
+  --app-panel-icon-color: #6898d0;
+}

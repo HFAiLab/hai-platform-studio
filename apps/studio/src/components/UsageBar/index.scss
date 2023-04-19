@@ -1,0 +1,64 @@
+@import '../../style/aiui_mixin.scss';
+
+.aiui-usage-bar {
+  span.#{$ns}-popover2-target {
+    width: 100%;
+  }
+  .no-data {
+    @include aiui-ui-12;
+    @include aiui-text-secondary;
+  }
+  .bar-container {
+    display: flex;
+    width: 100%;
+    position: relative;
+    overflow: visible;
+
+    &:hover {
+      .quick-bottom-tooltip {
+        display: flex;
+      }
+    }
+  }
+
+  .bar-entity {
+    overflow-x: hidden;
+    display: flex;
+  }
+
+  .bar-entity,
+  .no-data {
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 4px;
+  }
+
+  .bar-item {
+    min-width: 2px;
+    height: 100%;
+
+    &:last-child {
+      border: none;
+      border-radius: 0 4px 4px 0;
+    }
+  }
+}
+
+.usage-bar-tip-unit {
+  @include aiui-text-primary;
+  width: max-content;
+  padding-right: 10px;
+}
+
+.usage-bar-tip-chunk-list {
+  display: flex;
+  flex-direction: row;
+
+  .usage-bar-tip-chunk-item {
+    display: flex;
+    flex-direction: column;
+    .current-user-tip {
+      border-bottom: 1px solid;
+    }
+  }
+}

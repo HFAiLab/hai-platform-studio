@@ -1,0 +1,73 @@
+@import '../../../../style/aiui_mixin.scss';
+
+.xtopic-post-list-item {
+  @include aiui-text-primary;
+  display: flex;
+  padding: 20px 10px 20px 10px;
+  border-bottom: 1px solid var(--hai-ui-layout-2);
+
+  .heat-placeholder {
+    width: 40px;
+    margin-right: 20px;
+  }
+
+  .meta {
+    flex: 1;
+    .title {
+      @include aiui-h5;
+      letter-spacing: 0.025em;
+      min-height: 19px;
+      word-break: break-word;
+      .pin-icon {
+        display: inline-block;
+        margin-left: 10px;
+
+        padding-left: 8px;
+        padding-right: 8px;
+        border-radius: 4px;
+
+        background-color: var(--hai-ui-blue4);
+        color: white;
+
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 20px;
+      }
+    }
+    .other {
+      display: flex;
+      margin-top: 14px;
+      min-height: 20px;
+      @include aiui-text-secondary;
+      .tags {
+        flex: 1;
+        margin-bottom: 0;
+        line-height: 22px;
+      }
+
+      .right {
+        @include aiui-ui-12;
+        display: flex;
+        align-items: center;
+        span {
+          display: inline-block;
+        }
+        .comment-count {
+          text-align: right;
+          // margin-right: 10px;
+          min-width: 20px;
+        }
+        .created-at {
+          margin-right: 40px;
+        }
+        .last-reply {
+          margin-right: 30px;
+        }
+
+        & > svg {
+          margin-right: 4px;
+        }
+      }
+    }
+  }
+}

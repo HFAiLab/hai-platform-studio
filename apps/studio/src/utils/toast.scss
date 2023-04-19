@@ -1,0 +1,20 @@
+.cancellable-toaster-container {
+  display: flex;
+  align-items: center;
+  .timeout-tip {
+    margin-left: 50px;
+  }
+  .timeout-tip-btn {
+    margin-bottom: 2px;
+    margin-left: 10px;
+  }
+  .canceled {
+    margin-left: 10px;
+  }
+}
+
+.cancellable-Toast {
+  > .#{$ns}-button-group {
+    height: 100%;
+  }
+}

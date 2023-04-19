@@ -1,0 +1,36 @@
+@import '../../../../style/aiui_mixin.scss';
+
+@keyframes collapse-card-fade-in {
+  from {
+    width: 0;
+  }
+  to {
+    width: 80px;
+  }
+}
+
+.collapse-card {
+  cursor: pointer;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  animation: collapse-card-fade-in ease-in 0.4s forwards;
+  max-width: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  svg {
+    margin-right: 0;
+  }
+
+  p {
+    width: 80px;
+    text-align: center;
+  }
+
+  .collapse-text {
+    @include aiui-paragraph-12;
+    @include aiui-text-secondary;
+  }
+}

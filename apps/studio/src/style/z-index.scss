@@ -1,0 +1,28 @@
+// 常规浮动内容不建议超过 10:
+$content-overlay-0: 1;
+$content-overlay-1: 2;
+$content-overlay-2: 3;
+$content-overlay-3: 4;
+$content-overlay-4: 5;
+$content-overlay-5: 6;
+
+// 比如内部表格的 loading
+$inner-loading: 8;
+
+$something-float-in-panel: 9;
+
+// panel 渲染失败的 z-index
+$boundary-fallback: 10;
+
+$nav-bar-z-index: 11;
+
+$global-float-z-index: 12;
+
+// $overlay-content: 20;
+/// --- 目前 Drawer 等的 zIndex 为 20 （@hai-ui/core/src/common/_variables.scss），如果没有必要，我们就不要大于 20 了
+
+$global-float-over-drawer-z-index: 12;
+
+$inline-dialog-z-index: 20;
+
+$dialog-z-index: 30;

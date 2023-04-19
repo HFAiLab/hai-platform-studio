@@ -1,0 +1,307 @@
+@import './widgets/index.scss';
+
+@import '../../style/utils.scss';
+@import '../../ui-components/jobCell/index.scss';
+@import '../../ui-components/uikit/collapse/style.scss';
+@import '../../biz-components/validate/index.scss';
+@import '../../ui-components/uikit/switcher/style.scss';
+@import '../../ui-components/refresh/index.scss';
+
+.hf.expSidePanel {
+  background-color: var(--jp-layout-color1);
+  font-size: 13px;
+
+  .reactWidgetDiv {
+    height: 100%;
+  }
+
+  .looking-up,
+  .no-current,
+  .lookup-failed {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+
+    & > span {
+      display: block;
+      padding: 20px;
+      line-height: 2;
+      text-align: center;
+      color: var(--hf-ui-font-color1);
+    }
+  }
+
+  .subtitle {
+    color: var(--hf-ui-font-color1);
+    font-size: 14px;
+  }
+
+  .exp-meta-container {
+    flex-direction: row-reverse;
+    display: flex;
+    align-items: center;
+    span {
+      display: block;
+      width: max-content;
+    }
+  }
+
+  .panel-head-container {
+    .panel-no-task,
+    .updated-at {
+      padding-right: 10px;
+      font-size: 12px;
+      line-height: 1.3;
+      color: var(--hf-ui-font-color2);
+      margin-left: 10px;
+      width: 100%;
+      text-align: right;
+    }
+
+    margin-bottom: 5px;
+  }
+
+  .panelHead {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+
+    .filename.path {
+      background-color: var(--hf-highlight-block);
+    }
+
+    .filename.chainId {
+      background-image: $bg-line-45deg;
+      background-color: #f1db923b;
+    }
+
+    .filename {
+      width: 140px;
+      flex-grow: 1;
+      padding: 0;
+      padding-left: 3px;
+      line-height: 24px;
+      font-weight: normal;
+      word-break: break-all;
+      min-height: 32px;
+
+      .to-yaml {
+        float: right;
+        height: 32px;
+      }
+
+      span {
+        font-size: 12px;
+      }
+    }
+
+    .refresh-btn-wrapper {
+      margin-left: 10px;
+    }
+    &.nano {
+      .filename {
+        font-size: 24px;
+      }
+      .to-yaml {
+        float: right;
+      }
+    }
+  }
+
+  .exp-tab-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    padding: 10px 14px 10px 14px;
+    overflow-y: overlay;
+
+    /*bg fg*/
+    scrollbar-color: #a1a1a1 #dfdfdf;
+    scrollbar-width: thin;
+
+    /* webkit */
+    &::-webkit-scrollbar {
+      width: 3px;
+      height: 3px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      box-sizing: border-box;
+      border: 1px solid var(--jp-layout-color2);
+      border-radius: 2px;
+      /* background: rgba(0, 0, 0, 0.2); */
+      background: var(--jp-layout-color3);
+    }
+
+    &::-webkit-scrollbar-track {
+      background: var(--jp-layout-color0);
+    }
+  }
+
+  // 刷新按钮
+  .refresh-container {
+    margin-top: 10px;
+    text-align: center;
+
+    > button {
+      width: 100%;
+    }
+  }
+
+  // 没有任务
+  .no-chain {
+    text-align: center;
+    margin-top: 20px;
+    font-style: italic;
+  }
+
+  // 提交任务组件
+  .submit-settings-container {
+    margin-top: 4px;
+    margin-bottom: 10px;
+
+    // 禁用后的颜色，默认的可读性会有些低
+    .#{$ns}-input:disabled,
+    .#{$ns}-html-select:disabled {
+      color: var(--hf-disabled-override) !important;
+    }
+
+    .#{$ns}-form-group {
+      margin-bottom: 10px;
+
+      &.whole-life-state-override {
+        label.#{$ns}-label {
+          min-width: max-content;
+        }
+      }
+      &.whole-life-state-override,
+      &.exp-settings-dir-override,
+      &.exp-settings-file-override {
+        .#{$ns}-form-content {
+          display: flex;
+        }
+      }
+
+      &.exp-settings-file-override {
+        input,
+        .mock-input {
+          width: 100%;
+          /* 常规的 CSS 省略 */
+          white-space: nowrap;
+          //   overflow: hidden;
+          text-overflow: ellipsis;
+          /* 让省略符显示在文本左侧 */
+        }
+      }
+    }
+
+    .#{$ns}-inline label.#{$ns}-label {
+      min-width: 90px;
+      width: 90px;
+    }
+
+    label.#{$ns}-label {
+      word-break: keep-all;
+      line-height: 24px !important;
+      .#{$ns}-popover2-target {
+        margin: 0;
+      }
+    }
+
+    .#{$ns}-form-content {
+      flex-grow: 1;
+
+      .#{$ns}-input,
+      .#{$ns}-html-select select,
+      .#{$ns}-select select {
+        line-height: 24px;
+        height: 24px;
+        font-size: 13px;
+      }
+
+      .#{$ns}-select::after,
+      .#{$ns}-html-select .#{$ns}-icon,
+      .#{$ns}-select .#{$ns}-icon {
+        top: 6px;
+      }
+
+      .#{$ns}-numeric-input .#{$ns}-button-group.#{$ns}-vertical > .#{$ns}-button {
+        flex-basis: 12px;
+      }
+
+      .exp2-additional-btn {
+        margin-left: 5px;
+      }
+    }
+
+    .extra-mounts-wrapper {
+      .extraMountString {
+        font-size: 12px;
+        color: var(--hf-ui-font-color1);
+      }
+
+      .ctl {
+        margin-top: 4px;
+        display: flex;
+
+        .svg-icon.svg-baseline > svg {
+          top: 0 !important;
+        }
+      }
+
+      .extra-mounts {
+        padding: 4px 0 0 4px;
+
+        .#{$ns}-control {
+          display: inline-block;
+          min-width: 106px;
+          margin-top: 4px;
+          margin-bottom: 4px;
+        }
+      }
+    }
+
+    .exp2-setting-item {
+      margin-top: 14px;
+    }
+  }
+
+  // 状态组件部分
+  .status-wrapper {
+    position: relative;
+
+    .metas {
+      background-color: var(--hf-layout-light);
+      margin-top: 15px;
+      padding: 5px 0 5px 5px;
+
+      .meta-line {
+        font-size: 13px;
+      }
+    }
+
+    .control-btn-wrapper {
+      position: absolute;
+      right: 0;
+      top: -7px;
+      margin: 0;
+    }
+
+    .updated-at {
+      text-align: center;
+      display: block;
+    }
+  }
+
+  // 节点部分
+  .jobs-wrapper {
+    margin-top: 24px;
+
+    .hf-tab-title h3 {
+      font-size: 13px;
+    }
+  }
+}

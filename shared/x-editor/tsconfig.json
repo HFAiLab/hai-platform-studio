@@ -1,0 +1,18 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "rootDir": "src",
+    "module": "ES2020",
+    "moduleResolution": "node",
+    "tsBuildInfoFile": "./tsconfig.tsbuildinfo",
+    "typeRoots": [
+      "./node_modules/@types",
+      "../node_modules/@types",
+      "../../node_modules/@types",
+      "./src/@types",
+      "../src/@types"
+    ]
+  },
+  "include": ["src/**/*"]
+}

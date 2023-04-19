@@ -1,0 +1,44 @@
+{
+  "name": "@hai-platform/io-frontier",
+  "version": "0.19.0-alpha.1681870131.da1d707d",
+  "description": "websocket io frontier",
+  "main": "./lib/cjs/index.js",
+  "module": "./lib/esm/index.js",
+  "types": "./lib/esm/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "build": "pnpm run build:esm && pnpm run build:cjs",
+    "build:cjs": "tsc --outDir lib/cjs --module commonjs",
+    "build:esm": "tsc --outDir lib/esm --module es2020",
+    "build-pkg": "pnpm run build",
+    "test": "pnpm run test-client && pnpm run test-server",
+    "test-client": "jest --config jest.client.config.js --coverage",
+    "test-server": "jest --config jest.server.config.js --coverage",
+    "watch": "npm-run-all --parallel watch:esm watch:cjs",
+    "watch:cjs": "pnpm run build:cjs --watch",
+    "watch:esm": "pnpm run build:esm --watch"
+  },
+  "dependencies": {
+    "fst-stable-stringify": "^1.0.3",
+    "glob": "^7.2.0",
+    "javascript-state-machine": "^3.1.0",
+    "lodash": "^4.17.21",
+    "redis": "^4.0.1",
+    "socket.io": "^4.4.0",
+    "socket.io-client": "^4.4.1"
+  },
+  "devDependencies": {
+    "@types/event-emitter": "^0.3.3",
+    "@types/jest": "^27.4.0",
+    "@types/lodash": "^4.14.178",
+    "event-emitter": "^0.3.5",
+    "jest": "^27.4.7",
+    "npm-run-all": "^4.1.5",
+    "ts-jest": "^27.1.3"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
