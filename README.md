@@ -27,7 +27,7 @@
 
 HAI Platform Studio 是为 [HAI Platform](https://github.com/HFAiLab/hai-platform) 提供的用户界面，主要的功能包括但不限于：
 
-- 管理和启动基于 JupyterLab 的开发容器，配合 [Jupyter 插件](http://github.com/HFAiLab/hai-platform-jupyter-ext)，可以进行代码调试或任务提交。
+- 管理和启动基于 JupyterLab 的开发容器，配合 [Jupyter 插件](https://github.com/HFAiLab/hai-platform-jupyter-ext)，可以进行代码调试或任务提交。
 - 管理提交的实验，支持实验的实时监控、日志分析和实验状态管理。
 - 另外本项目还集成了讨论区、实验性能监控、实验调度管理等功能。
 
