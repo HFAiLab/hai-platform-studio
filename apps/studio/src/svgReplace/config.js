@@ -69,4 +69,5 @@ exports.usedHFUIIcon = [
   'bring-data',
   'stop',
   'repeat',
+  'small-info-sign',
 ]

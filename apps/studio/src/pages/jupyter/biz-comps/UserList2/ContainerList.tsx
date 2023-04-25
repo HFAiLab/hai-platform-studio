@@ -39,6 +39,7 @@ import { AppToaster, LevelLogger, getToken, getUserName } from '../../../../util
 import { AilabCountly, CountlyEventKey } from '../../../../utils/countly'
 import { TaskOperation } from '../../functions/TaskOperation'
 import { formatCPU, formatMem } from '../utils'
+import { ContainerDetail } from './ContainerDetail'
 import { ContainerCreator } from './Creator'
 import type { ContainerMockChain } from './LogDrawer'
 import { LogDrawer } from './LogDrawer'
@@ -71,6 +72,7 @@ export const ContainerList = React.memo((props: ContainerListProps): JSX.Element
   const [showCreateContainer, setShowCreateContainer] = useState(false)
   const [isCreatingSpotContainer, setIsCreatingSpotContainer] = useState(false)
   const batchIntervalRefresh = useRef<number | null>(null)
+  const [detailContainerInfo, setDetailContainerInfo] = useState<ContainerTask | null>(null)
 
   const showEditDrawer = Boolean(editContainer) || showCreateContainer
 
@@ -399,6 +401,25 @@ export const ContainerList = React.memo((props: ContainerListProps): JSX.Element
         }}
       />
       <Drawer
+        isOpen={!!detailContainerInfo}
+        onClose={() => {
+          setDetailContainerInfo(null)
+        }}
+        position={Position.RIGHT}
+        hasBackdrop={false}
+        size={DrawerSize.SMALL}
+        style={{ minWidth: '200px' }}
+        title={detailContainerInfo?.nb_name || ''}
+      >
+        <div className="container-creator-drawer-wrapper">
+          <ContainerDetail
+            schema={
+              (detailContainerInfo?.config_json.schema as unknown as Record<string, unknown>) || {}
+            }
+          />
+        </div>
+      </Drawer>
+      <Drawer
         isOpen={showEditDrawer}
         onClose={() => {
           setEditContainer(null)
@@ -618,7 +639,15 @@ export const ContainerList = React.memo((props: ContainerListProps): JSX.Element
                         {!!containerInfo.config_json.schema.resource.is_spot && (
                           <Tag className="container-spot-tag">Spot</Tag>
                         )}
-                        {containerInfo.nb_name}
+                        <p className="name">{containerInfo.nb_name}</p>
+                        <Button
+                          className="container-header-name-more"
+                          onClick={() => {
+                            setDetailContainerInfo(containerInfo)
+                          }}
+                          icon="small-info-sign"
+                          minimal
+                        />
                       </div>
                       <div className={classNames('container-unit-li status')}>
                         {shouldHighlight && (

@@ -8,7 +8,7 @@ export const LOG_COOL_MONACO_THEME = 'logcoremonacotheme'
 export const LOG_COOL_MONACO_THEME_DARK = 'logcoremonacothemedark'
 
 export const StartTrainingRegex =
-  /(\[start training .*?on.*? for .*?$|\[start service \[.*?\] of task \[.*?\] on .*? for .*?\]$)/
+  /(\[start training .*?\(([0-9]*)\).*?on.*? for .*?$|\[start service \[.*?\] of task \[.*?\] on .*? for .*?\]$)/
 
 export const HFMediaImage = /\[HFAI_PRINT:IMAGE\]\s/
 export const HFMediaImagePrefix = /^(.*)?\[HFAI_PRINT:IMAGE\]\s/
@@ -54,6 +54,7 @@ export function monacoPrepare() {
         [/[a-zA-Z_-]{0,100}[Ww][Aa][Rr][Nn].{0,200}/, 'custom-warn'],
         [/".{0,200}\.py"/, 'custom-info-low'],
         [StartTrainingRegex, 'custom-start'],
+        [/\[SmartRestart\].*?$/, 'custom-smart-restart'],
         /* eslint-disable-next-line */
         [/(^|\[|\s)[0-9\.]+(\s|$|,|])/, 'custom-number'],
         /* eslint-disable-next-line */
@@ -78,6 +79,7 @@ export function monacoPrepare() {
     { token: 'custom-notice', foreground: 'FFA500' },
     { token: 'custom-date', foreground: '808080' },
     { token: 'custom-highlight', foreground: 'ffa500' },
+    { token: 'custom-smart-restart', foreground: 'ff6f1b' },
   ]
 
   // Define a new theme that contains only rules that match this language
@@ -165,12 +167,12 @@ export const getImageSizeAndContent = (imageInfo: HFMediaImageInfo) => {
     if (imageInfo.width && imageInfo.height) {
       updateHeightWidth(`${imageInfo.width}`, `${imageInfo.height}`)
     } else if (HFMediaImageSvgWidthHeight.test(svgContent)) {
-      const [_, parseWidth, parseHeight] = HFMediaImageSvgWidthHeight.exec(
+      const [, parseWidth, parseHeight] = HFMediaImageSvgWidthHeight.exec(
         svgContent,
       ) as unknown as [unknown, string, string]
       updateHeightWidth(parseWidth, parseHeight)
     } else if (HFMediaImageSvgHeightWidth.test(svgContent)) {
-      const [_, parseHeight, parseWidth] = HFMediaImageSvgHeightWidth.exec(
+      const [, parseHeight, parseWidth] = HFMediaImageSvgHeightWidth.exec(
         svgContent,
       ) as unknown as [unknown, string, string]
       updateHeightWidth(parseWidth, parseHeight)

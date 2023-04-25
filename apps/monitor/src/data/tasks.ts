@@ -11,7 +11,11 @@ import {
   isGPUGroup,
   priorityToName,
 } from '@hai-platform/shared'
-import type { RunningTask, TaskPriorityNameDeprecated } from '@hai-platform/shared'
+import type {
+  RunningTask,
+  TaskConfigJsonTraining,
+  TaskPriorityNameDeprecated,
+} from '@hai-platform/shared'
 import type { OPTION_VALUE_ALL } from '@/constants'
 import { TaskTrainingType } from '@/constants'
 import { dayjs } from '@/utils'
@@ -59,7 +63,10 @@ export const isQueuedTask = (task: RunningTask): boolean =>
  * 目前没有专门的字段表示，所以需要根据任务分组进行判断
  */
 export const getTaskTrainingType = (task: RunningTask): TaskTrainingType => {
-  const client_group = task.config_json?.client_group as string
+  const client_group: string =
+    (task.config_json?.client_group as string) ??
+    (task.config_json as TaskConfigJsonTraining)?.schema?.resource.group ??
+    task.group // 兜底
   if (client_group && isGPUGroup(client_group)) {
     return TaskTrainingType.GPU
   }

@@ -165,7 +165,7 @@ const App = () => {
       dispatch([
         {
           type: 'ioStatus',
-          value: IoStatus.fataled,
+          value: IoStatus.fatal,
         },
         {
           type: 'ioLastError',

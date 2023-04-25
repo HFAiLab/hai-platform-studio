@@ -1,3 +1,4 @@
+import type { TaskLogRestartLogMap } from '@hai-platform/client-api-server'
 import type { ExtendedTask } from '@hai-platform/shared'
 import type { IChainObj } from '../model/Chain'
 
@@ -43,6 +44,7 @@ export interface LogRespContent {
   data?: string
   fullLog?: string
   stop_code?: string | number
+  restart_log?: TaskLogRestartLogMap
   last_seen?: LogLastSeen
 }
 

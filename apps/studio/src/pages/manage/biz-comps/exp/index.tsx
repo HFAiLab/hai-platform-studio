@@ -68,7 +68,7 @@ class ContainerAPI implements Experiment2ContainerAPI {
     if (key === ServiceNames.showPerformance) {
       this.containerProps.addPerfDock({
         chain: (params as ServiceParams[ServiceNames.showPerformance]).chain,
-        createrQueryType: (params as ServiceParams[ServiceNames.showPerformance]).createrQueryType!,
+        creatorQueryType: (params as ServiceParams[ServiceNames.showPerformance]).creatorQueryType!,
       })
       return null as any
     }

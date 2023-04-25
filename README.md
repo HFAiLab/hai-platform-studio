@@ -57,6 +57,6 @@ HAI Platform Studio 是为 [HAI Platform](https://github.com/HFAiLab/hai-platfor
 
 ## License
 
-Distributed under the GPL License. See `LICENSE.txt` for more information.
+Distributed under the GPL License. See [LICENSE](./LICENSE) for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

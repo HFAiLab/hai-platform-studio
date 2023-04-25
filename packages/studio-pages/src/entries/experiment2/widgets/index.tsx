@@ -186,7 +186,7 @@ export const ExperimentPanelContainer = () => {
 
     srvc.app.api().countlyReportEvent(CountlyEventKey.Exp2Refresh)
     // 如果不是长链接，直接请求一下然后更新 Chain
-    if (IOFrontier.ioStatus === IoStatus.fataled || IOFrontier.ioStatus === IoStatus.none) {
+    if (IOFrontier.ioStatus === IoStatus.fatal || IOFrontier.ioStatus === IoStatus.none) {
       const query = getQueryFromState()
       srvc.app
         .api()

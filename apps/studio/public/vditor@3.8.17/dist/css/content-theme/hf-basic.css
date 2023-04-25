@@ -69,6 +69,13 @@ body.hai-ui-dark {
 .hf-basic-code {
   font-family: menlo, consolas, 'DejaVu Sans Mono', monospace;
 }
+.hf-basic-code p,
+.hf-basic-code div,
+.hf-basic-code * {
+  white-space: pre-wrap;
+  word-break: break-all;
+  word-wrap: break-word;
+}
 .hf-basic-code .hljs-doctag,
 .hf-basic-code .hljs-keyword,
 .hf-basic-code .hljs-meta .hljs-keyword,

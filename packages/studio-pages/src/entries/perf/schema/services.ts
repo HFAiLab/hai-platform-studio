@@ -24,7 +24,7 @@ export type PerfServiceParams = {
     continuous: boolean
     type: PerfQueryType
     duplicate: boolean
-    createrQueryType: IQueryType
+    creatorQueryType: IQueryType
     dataInterval: PerfDataInterval
   }
 }

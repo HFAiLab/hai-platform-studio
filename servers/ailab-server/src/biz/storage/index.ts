@@ -25,6 +25,9 @@ export const getUserStorageUsage = async (userName: string) => {
       {
         token: GlobalConfig.BFF_ADMIN_TOKEN,
       },
+      {
+        timeout: 20000, // 适当延长超时时间
+      },
     )
     for (const [name, userStorageUsage] of Object.entries(usageDict)) {
       externalUserStorageUsageCache.set(name, userStorageUsage)

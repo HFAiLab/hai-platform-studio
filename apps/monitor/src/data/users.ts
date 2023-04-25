@@ -1,5 +1,5 @@
 import type { Node, User } from '@hai-platform/shared'
-import { UserRole } from '@hai-platform/shared'
+import { TaskTaskType, UserRole } from '@hai-platform/shared'
 import { formatExternalUsername } from '@/utils'
 import { getNodesDataByNames } from './nodes'
 import type { NodesNameMap } from './nodes'
@@ -69,6 +69,10 @@ export const getUsersDataFromTasks = (
 
   // 填充用户任务
   for (const task of tasks) {
+    // OPENSOURCE_DELETE_BEGIN
+    // 排除部分任务
+    if (task.task_type === TaskTaskType.VALIDATION_TASK) continue
+    // OPENSOURCE_DELETE_END
     // 创建对应用户数据
     if (!usersDataNameMap[task.user_name]) {
       const user = usersNameMap[task.user_name]

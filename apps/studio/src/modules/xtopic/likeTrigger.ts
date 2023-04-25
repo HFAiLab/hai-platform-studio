@@ -29,10 +29,6 @@ class LikeTrigger {
 
   callbackMap: Map<string, TriggerCallbackInfo> = new Map()
 
-  constructor() {
-    console.info('LikeTrigger init')
-  }
-
   private safetyCheck(): boolean {
     if (this.disableLike) {
       return false

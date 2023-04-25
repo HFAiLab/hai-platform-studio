@@ -4,13 +4,14 @@
  * Log 不去读写 redis，该请求的 last_seen 在多客户端场景下比较难以控制，且单次读写数据量大。
  */
 import { ApiServerApiName } from '@hai-platform/client-api-server'
-import type { GetTaskLogResult } from '@hai-platform/client-api-server'
+import type { GetTaskLogResult, TaskLogRestartLogMap } from '@hai-platform/client-api-server'
 import type { SubMeta } from '@hai-platform/io-frontier/lib/cjs/schema'
 import { SubOP } from '@hai-platform/io-frontier/lib/cjs/schema'
 import type { QueryIdInfo } from '@hai-platform/io-frontier/lib/cjs/server/index'
 import { IOFrontierServer, MetricOP } from '@hai-platform/io-frontier/lib/cjs/server/index'
 import type { ExtendedTask } from '@hai-platform/shared'
 import { computeChainStatus } from '@hai-platform/shared'
+import stringifyInOrder from 'fst-stable-stringify'
 import type { Server, Socket } from 'socket.io'
 import type { DefaultEventsMap } from 'socket.io/dist/typed-events'
 import { getUserInfo } from '../../base/auth'
@@ -27,6 +28,7 @@ export interface ILogState {
   fullLog: string
   lastSeen: Object | null
   error_msg: string
+  restart_log: TaskLogRestartLogMap | undefined
 }
 export interface LogQueryIdInfo extends QueryIdInfo {
   state: ILogState
@@ -38,6 +40,7 @@ const newEmptyState = () => {
     fullLog: '',
     lastSeen: null,
     error_msg: '',
+    restart_log: undefined,
   }
 }
 
@@ -78,6 +81,7 @@ class LogServer extends IOFrontierServer<SubQueryParams[SubscribeCommands.Log]> 
   ) {
     let chainChanged = false
     let logChanged = false
+    let restartLogChanged = false
 
     // 比较 chain 的变更，currentData 里的 chain 不为空
     if (prevState.chain === null) {
@@ -101,9 +105,19 @@ class LogServer extends IOFrontierServer<SubQueryParams[SubscribeCommands.Log]> 
     ) {
       logChanged = true
     }
+
+    if (currentData.restart_log) {
+      if (!prevState.restart_log) restartLogChanged = true
+      else {
+        restartLogChanged =
+          stringifyInOrder(prevState.restart_log) !== stringifyInOrder(currentData.restart_log)
+      }
+    }
+
     const ret = []
-    chainChanged && ret.push('chain')
-    logChanged && ret.push('log')
+    if (chainChanged) ret.push('chain')
+    if (logChanged) ret.push('log')
+    if (restartLogChanged) ret.push('restartLog')
     return ret
   }
 
@@ -254,6 +268,7 @@ class LogServer extends IOFrontierServer<SubQueryParams[SubscribeCommands.Log]> 
     queryIdInfo.state.chain = data!.chain ?? null
     queryIdInfo.state.fullLog = data!.fullLog ?? ''
     queryIdInfo.state.lastSeen = data!.last_seen ?? null
+    queryIdInfo.state.restart_log = data!.restart_log ?? undefined
 
     this.queryIdInfoMap.set(queryId, queryIdInfo)
   }
@@ -451,6 +466,7 @@ class LogServer extends IOFrontierServer<SubQueryParams[SubscribeCommands.Log]> 
       data: lastSeen ? logResult.data : undefined,
       stop_code: logResult.stop_code,
       fullLog: lastSeen ? undefined : logResult.data,
+      restart_log: logResult.restart_log,
       error_msg: logResult.error_msg ?? '',
       last_seen: logResult.last_seen ?? lastSeen,
     }

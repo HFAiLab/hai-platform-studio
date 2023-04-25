@@ -556,7 +556,7 @@ export const HttpGlobalOverview = (props: {
 }
 
 export const GlobalOverview = (): JSX.Element => {
-  const [useIO, setUseIO] = useState<boolean>(IOFrontier.ioStatus !== IoStatus.fataled)
+  const [useIO, setUseIO] = useState<boolean>(IOFrontier.ioStatus !== IoStatus.fatal)
   const [currentOverViewType, setCurrentOverviewType] = useState<OverViewType>('gpu')
   const ioFatalErrorCallback = (error: AllFatalErrorsType) => {
     LevelLogger.info(`GlobalOverview ioFatalErrorCallback: ${error}`)

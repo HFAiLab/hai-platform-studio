@@ -68,7 +68,7 @@ export class AilabCountly {
       console.info(`[debug] safeReport key: ${key}, event:`, event)
       return
     }
-    if (!window.haiConfig?.countly?.apiKey || !window.haiConfig?.countly?.url) return
+    if (!getCountlyURL() || !getCountlyAPIKey()) return
     if (!AilabCountly.getInstance()) {
       reportCaches.push({
         key,
@@ -81,7 +81,7 @@ export class AilabCountly {
 
   static lazyInit(userName: string) {
     const deviceId = `ailab-${userName}`
-    if (!window.haiConfig?.countly?.apiKey || !window.haiConfig?.countly?.url) return
+    if (!getCountlyURL() || !getCountlyAPIKey()) return
     ailabCountly = new CountlyReport<CountlyEventKey>({
       apiKey: getCountlyAPIKey(),
       countlyURL: getCountlyURL(),

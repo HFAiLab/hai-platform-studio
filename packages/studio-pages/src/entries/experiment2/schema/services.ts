@@ -36,7 +36,7 @@ export interface OpenURLInNewTabParams {
 
 export interface ShowPerformanceParams {
   chain: Chain
-  createrQueryType: IQueryType
+  creatorQueryType: IQueryType
 }
 
 export interface QuickOpenJupyterParams {

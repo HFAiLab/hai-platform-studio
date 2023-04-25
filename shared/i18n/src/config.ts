@@ -2969,6 +2969,10 @@ export const copyWriting = Object.assign(brandSetting, {
     [Languages.EN]: 'Currently not authorized to access the page, about to jump to the login page',
     [Languages.ZH_CN]: '当前无权访问页面，即将跳转至登录页面',
   },
+  biz_container_yaml_config: {
+    [Languages.EN]: "Container's yaml configuration",
+    [Languages.ZH_CN]: '创建容器的 yaml 配置',
+  },
 })
 
 const i18nKeysRaw = Object.keys(copyWriting) as Array<keyof typeof copyWriting>

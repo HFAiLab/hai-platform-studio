@@ -543,7 +543,9 @@ export const TaskLists = (props: {
           ) : (
             <>
               <SVGWrapper svg={icons.notfound_bg} width="400px" height="300px" />
-              <div className="text">Oops. No result ...</div>
+              <div style={{ marginTop: 30 }} className="text">
+                Oops. No result ...
+              </div>
             </>
           )}
         </div>

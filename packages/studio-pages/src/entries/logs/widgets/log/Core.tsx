@@ -1,4 +1,5 @@
 /* eslint-disable consistent-return */
+import type { TaskLogRestartLogMap } from '@hai-platform/client-api-server'
 import { ApiServerApiName } from '@hai-platform/client-api-server'
 import { i18n, i18nKeys } from '@hai-platform/i18n'
 import { HFNoCacheHeader } from '@hai-platform/shared'
@@ -9,6 +10,7 @@ import classNames from 'classnames'
 import React, { useContext, useEffect, useRef, useState } from 'react'
 import { useQuery } from 'react-query'
 import { useEffectOnce } from 'react-use/esm'
+// eslint-disable-next-line import/no-cycle
 import { ServiceContext } from '../..'
 import { CONSTS } from '../../../../consts'
 import { usePageFocus } from '../../../../hooks/usePageFocus'
@@ -73,6 +75,7 @@ export const CoreLogViewer: React.FC<{
   handleIOClick?(): void
   sysLog?: string
   userLog?: string
+  restartLog?: TaskLogRestartLogMap
   error: any
   isFetching: boolean
   errorMsg: string | null
@@ -392,12 +395,14 @@ export const CoreLogViewer: React.FC<{
             showLineTime={showLineTime}
             showSystemLog={props.showSystemLog}
             rawLog={props.showSystemLog ? props.sysLog : props.userLog}
+            restartLog={props.restartLog}
             containerTheme={containerTheme}
             handleCR={handleCR}
             isFetching={props.isFetching}
             miniMapEnabled={miniMapEnabled}
             wordWrap={wordWrap}
             invokeFind={invokeFind}
+            id_list={props.currentChain?.id_list || []}
             incrementalLog={props.incrementalLog}
             IORawLogReInit={props.IORawLogReInit}
           />
@@ -412,7 +417,7 @@ export const CoreLogViewer: React.FC<{
   )
 }
 
-export const HTTPLogViewer: React.FC<{}> = () => {
+export const HTTPLogViewer = () => {
   const srvc = useContext(ServiceContext)
   const currentChain = srvc.state.chain
   const currentRank = srvc.state.rank
@@ -430,44 +435,38 @@ export const HTTPLogViewer: React.FC<{}> = () => {
   } = useQuery(
     ['hfapp-log', { chain_id, rank: currentRank, showSystemLog, service: currentService }],
     () => {
-      srvc.app
-        .api()
+      const api = srvc.app.api()
+      const apiServerClient = api.getApiServerClient()
+      api
         .getLogger()
-        .info(
-          `[hfapp-log] begin query, chain_id: ${chain_id}, rank: ${currentRank}, showSystemLog: ${showSystemLog}`,
-        )
+        .info(`[hfapp-log] begin-query, c: ${chain_id}, r: ${currentRank}, s: ${showSystemLog}`)
       if (!chain_id) {
         return {
           log: 'init...',
           sysLog: '',
+          restartLog: undefined,
         }
       }
-      const expQuery = srvc.app
-        .api()
-        .getApiServerClient()
-        .request(
-          ApiServerApiName.GET_USER_TASK,
-          { chain_id, token: userToken },
-          {
-            headers: {
-              ...HFNoCacheHeader,
-            },
+      const expQuery = apiServerClient.request(
+        ApiServerApiName.GET_USER_TASK,
+        { chain_id, token: userToken },
+        {
+          headers: {
+            ...HFNoCacheHeader,
           },
-        )
+        },
+      )
       const logQuery = showSystemLog
-        ? srvc.app
-            .api()
-            .getApiServerClient()
+        ? apiServerClient
             .request(ApiServerApiName.GET_TASK_SYS_LOG, { chain_id, token: userToken })
             .then((log) => {
               return {
                 log: '',
                 sysLog: log.data || '',
+                restartLog: undefined,
               }
             })
-        : srvc.app
-            .api()
-            .getApiServerClient()
+        : apiServerClient
             .request(ApiServerApiName.GET_TASK_LOG, {
               chain_id,
               rank: currentRank,
@@ -478,6 +477,7 @@ export const HTTPLogViewer: React.FC<{}> = () => {
               return {
                 log: logInfo.data,
                 sysLog: logInfo.error_msg,
+                restartLog: logInfo.restart_log,
               }
             })
       return Promise.all([expQuery, logQuery]).then((values) => {
@@ -494,6 +494,7 @@ export const HTTPLogViewer: React.FC<{}> = () => {
 
   const userLog = HTTPrawLog?.log
   const sysLog = HTTPrawLog?.sysLog
+  const restartLog = HTTPrawLog?.restartLog
   const error = Boolean(HTTPError)
   const isFetching = isHTTPFetching
   const errorMsg = error ? 'Get Log Failed' : null
@@ -546,6 +547,7 @@ export const HTTPLogViewer: React.FC<{}> = () => {
       setCurrentChainAndRank={setCurrentChainAndRank}
       userLog={userLog}
       sysLog={sysLog}
+      restartLog={restartLog}
       error={error}
       isFetching={isFetching}
       errorMsg={errorMsg}
@@ -555,7 +557,7 @@ export const HTTPLogViewer: React.FC<{}> = () => {
   )
 }
 
-export const IOLogViewer: React.FC<{}> = () => {
+export const IOLogViewer = () => {
   const srvc = useContext(ServiceContext)
 
   const currentChain = srvc.state.chain
@@ -567,6 +569,7 @@ export const IOLogViewer: React.FC<{}> = () => {
 
   // IO state
   const [IOrawLog, setIOrawLog] = useState('')
+  const [restartLog, setRestartLog] = useState<TaskLogRestartLogMap | undefined>(undefined)
   const IORawLogRef = useRef('')
   const [IORawLogReInit, setIORawLogReInit] = useState(Date.now())
   const [IOsysLog, setIOsysLog] = useState('')
@@ -674,6 +677,8 @@ export const IOLogViewer: React.FC<{}> = () => {
               return
             }
 
+            setIOsysLog(content.error_msg ?? '')
+            setRestartLog(content.restart_log) // hint: restartLog 要在 setIORawLogReInit 之前
             if (typeof content.fullLog === 'string') {
               setIOrawLog(content.fullLog)
               IORawLogRef.current = content.fullLog
@@ -687,7 +692,6 @@ export const IOLogViewer: React.FC<{}> = () => {
                 frontierId: frontierId.current,
               })
             }
-            setIOsysLog(content.error_msg ?? '')
 
             if (content.chain) {
               srvc.dispatch({
@@ -807,6 +811,7 @@ export const IOLogViewer: React.FC<{}> = () => {
       showSystemLog={showSystemLog}
       currentChain={currentChain}
       currentRank={currentRank}
+      restartLog={restartLog}
       setCurrentChainAndRank={setCurrentChainAndRank}
       userLog={userLog}
       sysLog={sysLog}

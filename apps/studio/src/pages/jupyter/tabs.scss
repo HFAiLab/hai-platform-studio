@@ -113,16 +113,27 @@ $ContainerRowHeight: 46px;
   font-weight: bold;
   min-width: 180px;
   max-width: 180px;
-  @include overflow-ellipsis;
-  @include aiui-h5;
-  @include aiui-text-other;
-  &.active {
-    @include aiui-text-primary;
+  display: flex;
+  align-items: center;
+  .name {
+    margin-bottom: 0;
+    @include overflow-ellipsis;
+    @include aiui-h5;
+    @include aiui-text-other;
+    &.active {
+      @include aiui-text-primary;
+    }
+    &.small {
+      @include aiui-paragraph-12;
+      min-width: 100px;
+      max-width: 100px;
+    }
   }
-  &.small {
-    @include aiui-paragraph-12;
-    min-width: 100px;
-    max-width: 100px;
+
+  .container-header-name-more {
+    padding-top: 8px;
+    opacity: 0.5;
+    margin-left: 2px;
   }
 }
 
@@ -131,7 +142,6 @@ $ContainerRowHeight: 46px;
   display: flex;
   margin-bottom: 10px;
   // background-color: var(--hf-layout-light);
-  background-color: 35px;
   align-items: center;
   @include aiui-text-secondary;
   .header-status {
@@ -587,5 +597,13 @@ $ContainerRowHeight: 46px;
 
   .service-item-logo {
     fill: #8abbff;
+  }
+}
+
+.container-detail-container {
+  padding: 20px 0;
+  .container-yaml-container {
+    padding: 10px;
+    background-color: var(--hai-ui-light-gray5);
   }
 }

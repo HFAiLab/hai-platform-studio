@@ -1,16 +1,7 @@
 import img_notfound from '@hai-platform/icons/sundries/not-found.svg?raw'
 import { HFLoadingError } from '@hai-platform/studio-pages/lib/ui-components/HFLoading'
 import { SVGWrapper } from '@hai-platform/studio-pages/lib/ui-components/svgWrapper'
-import {
-  Button,
-  ButtonGroup,
-  Icon,
-  InputGroup,
-  Menu,
-  MenuItem,
-  Tab,
-  Tabs,
-} from '@hai-ui/core/lib/esm'
+import { Button, ButtonGroup, InputGroup, Menu, MenuItem, Tab, Tabs } from '@hai-ui/core/lib/esm'
 import { Popover2 } from '@hai-ui/popover2/lib/esm'
 import classNames from 'classnames'
 import { debounce } from 'lodash-es'

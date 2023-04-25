@@ -57,7 +57,7 @@ export type ChartBlockProps = {
   type: PerfQueryType
   continuous: boolean
   dataInterval: PerfDataInterval
-  createrQueryType: IQueryType
+  creatorQueryType: IQueryType
   setter: (type: dKey, v: any) => void
   height?: number
   width?: number
@@ -71,7 +71,7 @@ export const ChartBlock: React.FC<ChartBlockProps> = ({
   rank,
   type,
   continuous,
-  createrQueryType,
+  creatorQueryType,
   dataInterval,
   setter,
   height,
@@ -214,7 +214,7 @@ export const ChartBlock: React.FC<ChartBlockProps> = ({
                     continuous,
                     type,
                     duplicate: true,
-                    createrQueryType,
+                    creatorQueryType,
                     dataInterval,
                   })
                 }}

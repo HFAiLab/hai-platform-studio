@@ -362,7 +362,7 @@ export const HttpGlobalOverviewExt = (): JSX.Element => {
 }
 
 export const GlobalOverviewExt = (): JSX.Element => {
-  const [useIO, setUseIO] = useState<boolean>(IOFrontier.ioStatus !== IoStatus.fataled)
+  const [useIO, setUseIO] = useState<boolean>(IOFrontier.ioStatus !== IoStatus.fatal)
   const ioFatalErrorCallback = (error: AllFatalErrorsType) => {
     LevelLogger.info(`GlobalOverview ioFatalErrorCallback: ${error}`)
     setUseIO(false)

@@ -51,7 +51,7 @@ export const Exp2Operations = (props: Exp2OperationsProps) => {
     if (!state.chain) return
     srvc.app.api().invokeService(ServiceNames.showPerformance, {
       chain: state.chain,
-      createrQueryType: state.queryType,
+      creatorQueryType: state.queryType,
     })
   }
 

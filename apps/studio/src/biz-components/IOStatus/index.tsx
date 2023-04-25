@@ -14,7 +14,7 @@ import './index.scss'
 // 长链接的部分比较重要，暂时不做 i18n 了
 const getIOStatusText = (status: IoStatus, error: AllFatalErrorsType | null) => {
   if (status === IoStatus.connected) return i18n.t(i18nKeys.io_tip_connected_title)
-  if (status === IoStatus.fataled) {
+  if (status === IoStatus.fatal) {
     if (
       error &&
       (error as unknown as string) === (UserFatalError.userManuallyDisconnect as string)
@@ -46,7 +46,7 @@ export const IOStatusTag = () => {
   }
 
   const isConnected = globalContext.state.ioStatus === IoStatus.connected
-  const isFatal = globalContext.state.ioStatus === IoStatus.fataled
+  const isFatal = globalContext.state.ioStatus === IoStatus.fatal
 
   return (
     <>

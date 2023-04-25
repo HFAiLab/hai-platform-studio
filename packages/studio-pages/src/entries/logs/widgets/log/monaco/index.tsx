@@ -1,9 +1,11 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable no-underscore-dangle */
+import type { TaskLogRestartLogMap } from '@hai-platform/client-api-server'
 import { i18n, i18nKeys } from '@hai-platform/i18n'
 import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
 import React, { useContext, useEffect, useRef } from 'react'
 import { useUpdateEffect } from 'react-use/esm'
+// eslint-disable-next-line import/no-cycle
 import { ServiceContext } from '../../..'
 import { useRefState } from '../../../../../hooks/useRefState'
 import { HFLoading } from '../../../../../ui-components/HFLoading'
@@ -71,8 +73,10 @@ export const MonacoViewer: React.FC<{
   miniMapEnabled: boolean
   wordWrap: WordWrapEnums
   invokeFind: number
+  restartLog?: TaskLogRestartLogMap
   incrementalLog?: IncrementalLog
   IORawLogReInit?: number
+  id_list: number[]
 }> = (props) => {
   // 自定义语言和高亮支持
   monacoPrepare()
@@ -85,6 +89,8 @@ export const MonacoViewer: React.FC<{
 
   const imageWidgets = useRef<Map<string, monaco.editor.IContentWidget>>(new Map())
   const lastRawLogRef = useRef<string | undefined>()
+  const restartLogParsedMap = useRef<Map<string, boolean>>(new Map()) // key: id:rule
+  const latestTaskIDStrRef = useRef<string>('')
 
   function preProcessLogsV2(options: {
     lastRawLog: string | undefined
@@ -93,8 +99,8 @@ export const MonacoViewer: React.FC<{
   }) {
     const rawLogStr = options.rawLog || ''
     const lastRawLogStr = options.lastRawLog || ''
-    // rawlogLists 初次处理了 \r 的原始日志行
-    let rawlogLists: string[] = []
+    // rawLogLists 初次处理了 \r 的原始日志行
+    let rawLogLists: string[] = []
     // 依次经过多次处理，返回的部分
     let logListWithMediaStrip: string[] = []
 
@@ -104,18 +110,62 @@ export const MonacoViewer: React.FC<{
     let deleteLastLine = false
 
     if (props.handleCR) {
-      rawlogLists = rawLogStr.split(/\n/g).map((text) => {
+      rawLogLists = rawLogStr.split(/\n/g).map((text) => {
         const idx = text.lastIndexOf('\r')
         return idx === -1 ? text : text.slice(idx + 1)
       })
     } else {
-      rawlogLists = rawLogStr.split(/[\n\r]/g)
+      rawLogLists = rawLogStr.split(/[\n\r]/g)
     }
 
-    for (let index = 0; index < rawlogLists.length; index += 1) {
-      let logLine = rawlogLists[index]!
+    for (let index = 0; index < rawLogLists.length; index += 1) {
+      let logLine = rawLogLists[index]!
+
+      const logStartIdStr = StartTrainingRegex.exec(logLine)?.[2]
+
+      /**
+       * hint: restart_log 需要由前端加入，这个处理逻辑为
+       * 当处理到一个 chain_id 的时候：
+       *     当前是否有没有处理的 restart_log：
+       *         无：啥也不做
+       *         有：遍历未处理的 restart_log
+       *            task_id 是当前 id：跳过
+       *            task_id 是上一个 id：加到上面
+       *            task_id 是上两个 id 以上：这个情况对于全量和增量都不太可能，肯定前面被处理过了
+       * 在本次 process 结束的时候：遍历 restart_log
+       *        这时候只可能是上面跳过的当前 id 的 restart_log，加到下面
+       *
+       * 概要解读：
+       * restart_log 的 key 是该行 id, 跳过, restart_log 的 key 是该行 id 的上一个任务 id, 在该行之前塞入 restart 日志
+       *    不考虑 key 是上上个 id 的情况，该情况应该在前面的行被处理过
+       */
+      if (logStartIdStr) {
+        latestTaskIDStrRef.current = logStartIdStr
+
+        if (props.restartLog) {
+          const currentLineIdIndex = props.id_list.findIndex((id) => id === Number(logStartIdStr))
+          const prevId = currentLineIdIndex > 0 ? props.id_list[currentLineIdIndex - 1] : undefined
+
+          for (const [idStr, restartLists] of Object.entries(props.restartLog)) {
+            if (idStr === logStartIdStr) continue
+
+            for (const restartInfo of restartLists) {
+              const cacheKey = `${idStr}:${restartInfo.rule}`
+              if (restartLogParsedMap.current.has(cacheKey)) continue
+              if (idStr !== `${prevId}`) continue
+
+              restartLogParsedMap.current.set(cacheKey, true)
+              const restartLog = `[SmartRestart]${restartInfo.result} rule: ${
+                restartInfo.rule
+              }, reason: ${(restartInfo.reason || '').trim()}`
+              logListWithMediaStrip.push(restartLog)
+            }
+          }
+        }
+      }
+
       if (HFMediaImage.test(logLine)) {
-        // 图片日志:
+        // 图片日志：
         try {
           const source = logLine.replace(HFMediaImagePrefix, '')
           const imageInfo = JSON.parse(window.atob(source)) as HFMediaImageInfo
@@ -164,10 +214,10 @@ export const MonacoViewer: React.FC<{
               deleteLastLine = true
             }
           }
-          while (rawlogLists[index + 1] && HFMediaTQDM.test(rawlogLists[index + 1]!)) {
+          while (rawLogLists[index + 1] && HFMediaTQDM.test(rawLogLists[index + 1]!)) {
             index += 1
           }
-          logLine = rawlogLists[index]!
+          logLine = rawLogLists[index]!
           logListWithMediaStrip.push(logLine.replace(HFMediaTQDM, ''))
         } catch (e) {
           // 解析出错，当做普通的
@@ -176,6 +226,23 @@ export const MonacoViewer: React.FC<{
       } else {
         // 普通日志：
         logListWithMediaStrip.push(logLine)
+      }
+    }
+
+    // 当前的日志都处理完了，再过滤一遍 restartLog
+    if (props.restartLog) {
+      for (const [idStr, restartLists] of Object.entries(props.restartLog)) {
+        // hint: 这个判断是不能省略的，如果省略了，那么可能超过 4MB 被滚没了的日志，就会全都输出在这里
+        if (idStr !== latestTaskIDStrRef.current) continue
+        for (const restartInfo of restartLists) {
+          const cacheKey = `${idStr}:${restartInfo.rule}`
+          if (restartLogParsedMap.current.has(cacheKey)) continue
+          restartLogParsedMap.current.set(cacheKey, true)
+          const restartLog = `[SmartRestart]${restartInfo.result} rule: ${
+            restartInfo.rule
+          }, reason: ${(restartInfo.reason || '').trim()}`
+          logListWithMediaStrip.push(restartLog)
+        }
       }
     }
 
@@ -406,6 +473,9 @@ export const MonacoViewer: React.FC<{
     if (editorRef.current) {
       const scrollContent = getScrollContent(currentEditorInstanceRef.current)
       // const { logs: logLists, widgets } = preProcessLogs(logDemo)
+      restartLogParsedMap.current = new Map()
+      latestTaskIDStrRef.current = ''
+
       const {
         logs: logLists,
         widgets,

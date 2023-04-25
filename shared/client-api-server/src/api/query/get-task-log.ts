@@ -42,6 +42,17 @@ export interface GetTaskLogLastSeen {
   timestamp: string
 }
 
+export interface TaskLogRestartLog {
+  rule: string
+  reason: string
+  result: string
+}
+
+export type TaskLogRestartLogMap = {
+  // 这里的 key 是 task_id 的字符串形式
+  [key: string]: TaskLogRestartLog[]
+}
+
 /**
  * 获取节点日志的接口返回结果
  */
@@ -69,6 +80,8 @@ export interface GetTaskLogResult {
   msg: string
 
   stop_code: number
+
+  restart_log?: TaskLogRestartLogMap
 }
 
 /**

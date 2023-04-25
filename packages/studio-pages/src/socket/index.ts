@@ -26,8 +26,8 @@ type ReportMetricsCallback = (metrics: ReportMetrics[]) => void
 
 export enum IoStatus {
   connected = 'connected',
-  // disconnected = 'disconnected', // hint: 出于可维护性，手动断开也归类为 fataled
-  fataled = 'fataled',
+  // disconnected = 'disconnected', // hint: 出于可维护性，手动断开也归类为 fatal
+  fatal = 'fatal',
   none = 'none',
 }
 
@@ -129,7 +129,7 @@ class IOFrontierFactory {
   remoteFatalErrorHandler = () => {
     LevelLogger.info(`remoteFatalErrorHandler callback, current status: ${this.ioStatus}`)
     // hint: 以第一次收到 SocketFatalError 为准，因为 fatalError 之后通常会有很多各种报错
-    if (this.ioStatus === IoStatus.fataled) return
+    if (this.ioStatus === IoStatus.fatal) return
     this.invokeReportMetrics(ReportMetrics.pageFrontierGetFatalError)
 
     this.lastFatalError = AllFatalErrors.fatalError as unknown as AllFatalErrorsType
@@ -155,7 +155,7 @@ class IOFrontierFactory {
   }
 
   tryRecoverFromFatalError = () => {
-    if (this.ioStatus !== IoStatus.fataled) return
+    if (this.ioStatus !== IoStatus.fatal) return
     this.invokeReportMetrics(ReportMetrics.pageFrontierCallTryRecoverFromFatalError)
     if (
       this.lastFatalError ===
@@ -202,8 +202,8 @@ class IOFrontierFactory {
   }
 
   fatalErrorCallback = (error: AllFatalErrorsType) => {
-    if (this.ioStatus === IoStatus.fataled) return
-    this.ioStatus = IoStatus.fataled
+    if (this.ioStatus === IoStatus.fatal) return
+    this.ioStatus = IoStatus.fatal
     this.lastFatalError = error
     for (const callback of this.fatalErrorCallbacks) {
       callback(error)
@@ -218,14 +218,14 @@ class IOFrontierFactory {
   }
 
   disConnectCallback = () => {
-    if (this.ioStatus === IoStatus.fataled) return
+    if (this.ioStatus === IoStatus.fatal) return
     for (const callback of this.disConnectCallbacks) {
       callback()
     }
   }
 
   addFatalErrorCallback(callback: FatalErrorCallback) {
-    if (this.ioStatus === IoStatus.fataled) callback(this.lastFatalError!)
+    if (this.ioStatus === IoStatus.fatal) callback(this.lastFatalError!)
     this.fatalErrorCallbacks.add(callback)
   }
 
@@ -243,7 +243,7 @@ class IOFrontierFactory {
   }
 
   addDisConnectCallback(callback: DisConnectCallback) {
-    if (this.ioStatus === IoStatus.fataled) callback()
+    if (this.ioStatus === IoStatus.fatal) callback()
     this.disConnectCallbacks.add(callback)
   }
 
