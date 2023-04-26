@@ -171,18 +171,33 @@
   }
 }
 
-.extra-mount, .exp2-sidecar {
+.extra-mount,
+.exp2-sidecar,
+.exp2-fuse {
   margin-top: 5px;
   margin-bottom: 10px;
 }
 
 .exp2-sidecar {
-  .sidecar-items{
+  .sidecar-items {
     padding: 4px 0 0 4px;
-  
+
     .#{$ns}-control {
       display: inline-block;
       min-width: 106px;
+      margin-top: 4px;
+      margin-bottom: 4px;
+    }
+  }
+}
+
+.exp2-fuse {
+  .fuse-items {
+    padding: 4px 0 0 4px;
+
+    .#{$ns}-control {
+      display: inline-block;
+      min-width: 40px;
       margin-top: 4px;
       margin-bottom: 4px;
     }

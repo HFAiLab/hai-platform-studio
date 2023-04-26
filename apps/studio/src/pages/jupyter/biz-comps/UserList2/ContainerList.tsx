@@ -640,14 +640,22 @@ export const ContainerList = React.memo((props: ContainerListProps): JSX.Element
                           <Tag className="container-spot-tag">Spot</Tag>
                         )}
                         <p className="name">{containerInfo.nb_name}</p>
+                      </div>
+                      <div
+                        className={classNames('container-unit-li yaml', {
+                          active: shouldHighlight,
+                        })}
+                      >
                         <Button
-                          className="container-header-name-more"
+                          className="yaml-btn"
+                          small
+                          minimal
                           onClick={() => {
                             setDetailContainerInfo(containerInfo)
                           }}
-                          icon="small-info-sign"
-                          minimal
-                        />
+                        >
+                          YAML
+                        </Button>
                       </div>
                       <div className={classNames('container-unit-li status')}>
                         {shouldHighlight && (

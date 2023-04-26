@@ -96,6 +96,11 @@ export interface CreateTaskV2Schema {
      * 选配的 sidecar
      */
     sidecar: string | string[]
+
+    /**
+     * 是否开启 3fs fuse
+     */
+    fffs_enable_fuse: true | false | undefined
   }
 
   /**
@@ -160,6 +165,11 @@ export interface ServiceTaskCreateV2Schema {
      * sidecar 配置
      */
     sidecar: string[]
+
+    /**
+     * 是否开启 3fs fuse
+     */
+    fffs_enable_fuse: true | false | undefined
   }
 
   services: CreateTaskService[]

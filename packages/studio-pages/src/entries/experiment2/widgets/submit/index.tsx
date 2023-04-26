@@ -1,7 +1,15 @@
 import { AilabServerApiName } from '@hai-platform/client-ailab-server'
 import { ApiServerApiName } from '@hai-platform/client-api-server'
 import { i18n, i18nKeys } from '@hai-platform/i18n'
-import { getDefaultMountInfo, isBackgroundTask } from '@hai-platform/shared'
+import {
+  DefaultFFFSFuse,
+  getDefaultMountInfo,
+  getFuseValueFromRemote,
+  ifUserShowFuse,
+  ifUserShowSideCar,
+  isBackgroundTask,
+  isHalfTask,
+} from '@hai-platform/shared'
 import { Button } from '@hai-ui/core/lib/esm/components'
 import React, { useContext, useEffect, useMemo, useState } from 'react'
 import { CONSTS } from '../../../../consts'
@@ -23,6 +31,7 @@ import { Exp2DirectoryInput } from './components/DirectoryInput'
 import { Exp2EntryPointInput } from './components/EntryPointInput'
 import { Exp2ExtraMountInput } from './components/ExtraMountInput'
 import { Exp2ExtraOptions } from './components/ExtraOptions'
+import { Exp2Fuse } from './components/Fuse'
 import { Exp2GroupInput } from './components/GroupInput'
 import { Exp2ImageInput } from './components/ImageInput'
 import { Exp2Operations } from './components/Operations'
@@ -47,10 +56,9 @@ export const Exp2Submit = (props: Exp2SubmitProps) => {
   const [syncRemoteReady, setSyncRemoteReady] = useState<boolean>(false)
   const [isCreating, setCreating] = useState<boolean>(false)
   const [syncRemoteFirstReady, setSyncRemoteFirstReady] = useState(false)
-  const showSidecar = srvc.app
-    .api()
-    .invokeService(ServiceNames.getUserGroupList, null)
-    .includes('platform')
+  const userGroupList = srvc.app.api().invokeService(ServiceNames.getUserGroupList, null)
+  const showSidecar = ifUserShowSideCar(userGroupList)
+  const showFuse = ifUserShowFuse(userGroupList)
 
   // group 聚焦的时候，只更新 ClusterInfo
   const syncClusterInfo = () => {
@@ -135,13 +143,17 @@ export const Exp2Submit = (props: Exp2SubmitProps) => {
     ? createParamsFromChain.mount_extra
     : getCurrentCreateParam('mount_extra') || getDefaultMountInfo()
   const sidecar = isLock ? createParamsFromChain.sidecar : getCurrentCreateParam('sidecar') || []
+  const fffs_enable_fuse = isLock
+    ? createParamsFromChain.fffs_enable_fuse
+    : getCurrentCreateParam('fffs_enable_fuse') || getFuseValueFromRemote(DefaultFFFSFuse)
+
   const tags = isLock ? createParamsFromChain.tags : getCurrentCreateParam('tags') || []
   const watchdogTime = isLock
     ? createParamsFromChain.watchdog_time
     : getCurrentCreateParam('watchdog_time') || 0
 
   const isCurrentBackgroundTask = isBackgroundTask(groupValue)
-  const isCurrentHalfTask = isBackgroundTask(groupValue)
+  const isCurrentHalfTask = isHalfTask(groupValue)
 
   const isGlobalContextLoading = state.globalInitLoading
 
@@ -523,6 +535,14 @@ export const Exp2Submit = (props: Exp2SubmitProps) => {
               onChange={commonChange}
               value={sidecar}
               historyValue={createParamsFromChain.sidecar}
+            />
+          )}
+          {showFuse && (
+            <Exp2Fuse
+              isLock={isLock}
+              isLoading={isGlobalContextLoading}
+              onChange={commonChange}
+              value={fffs_enable_fuse}
             />
           )}
           <Exp2ExtraOptions

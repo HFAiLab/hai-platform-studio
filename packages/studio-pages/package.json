@@ -1,7 +1,7 @@
 {
   "name": "@hai-platform/studio-pages",
-  "version": "0.19.0-alpha.1682409331.32209c5ec",
-  "description": "",
+  "version": "0.19.0-alpha.1682505883.c59ad262",
+  "description": "hai-platform common studio schemas",
   "keywords": [],
   "main": "index.js",
   "files": [

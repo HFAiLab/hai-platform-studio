@@ -29,6 +29,8 @@ export interface Exp2CreateParams {
   watchdog_time: number
   // sidecar: 用于灰度挂载点等
   sidecar: string[]
+  // fffs enable fuse
+  fffs_enable_fuse: string
 }
 
 export interface IExp2StateByProps {

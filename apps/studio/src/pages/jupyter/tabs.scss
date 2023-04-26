@@ -115,24 +115,22 @@ $ContainerRowHeight: 46px;
   max-width: 180px;
   display: flex;
   align-items: center;
-  .name {
-    margin-bottom: 0;
-    @include overflow-ellipsis;
-    @include aiui-h5;
-    @include aiui-text-other;
-    &.active {
-      @include aiui-text-primary;
-    }
-    &.small {
-      @include aiui-paragraph-12;
-      min-width: 100px;
-      max-width: 100px;
-    }
+
+  margin-bottom: 0;
+  @include overflow-ellipsis;
+  @include aiui-h5;
+  @include aiui-text-other;
+  &.active {
+    @include aiui-text-primary;
+  }
+  &.small {
+    @include aiui-paragraph-12;
+    min-width: 100px;
+    max-width: 100px;
   }
 
   .container-header-name-more {
     padding-top: 8px;
-    opacity: 0.5;
     margin-left: 2px;
   }
 }
@@ -193,6 +191,18 @@ $ContainerRowHeight: 46px;
     }
     &.small {
       min-width: 80px;
+    }
+  }
+
+  &.yaml {
+    .yaml-btn {
+      font-size: 10px;
+      color: var(--hai-ui-text-other) !important;
+    }
+    &.active {
+      .yaml-btn {
+        color: var(--hai-ui-text-secondary) !important;
+      }
     }
   }
 }

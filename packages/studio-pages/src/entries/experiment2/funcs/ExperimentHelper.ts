@@ -12,10 +12,13 @@ import type {
   UserImageInfo,
 } from '@hai-platform/shared'
 import {
+  DefaultFFFSFuse,
   DefaultSideCar,
   TaskPriority,
+  convertFuseValueToSubmit,
   getDefaultMountInfo,
   getDefaultTrainingGroup,
+  getFuseValueFromRemote,
   getMountCode,
   isBackgroundTask,
   priorityToName,
@@ -95,6 +98,7 @@ export class ExperimentHelper {
     let tags = [] as string[]
     let watchdog_time = 0
     let sidecar = DefaultSideCar
+    let fffs_enable_fuse = getFuseValueFromRemote(DefaultFFFSFuse)
 
     if (options.chain) {
       const { chain } = options
@@ -154,6 +158,11 @@ export class ExperimentHelper {
       const configJsonSidecar = config_json.schema?.options?.sidecar || []
       sidecar =
         typeof configJsonSidecar === 'string' ? configJsonSidecar.split(',') : configJsonSidecar
+      fffs_enable_fuse = getFuseValueFromRemote(
+        'fffs_enable_fuse' in (config_json.schema?.options || {})
+          ? config_json.schema?.options?.fffs_enable_fuse
+          : DefaultFFFSFuse,
+      )
     }
 
     return {
@@ -170,6 +179,7 @@ export class ExperimentHelper {
       tags,
       watchdog_time,
       sidecar,
+      fffs_enable_fuse,
     }
   }
 
@@ -457,6 +467,7 @@ export class ExperimentHelper {
       tags: submitParams.tags.length ? submitParams.tags : undefined,
       watchdog_time: submitParams.watchdog_time || undefined,
       sidecar: submitParams.sidecar || [],
+      fffs_enable_fuse: convertFuseValueToSubmit(submitParams.fffs_enable_fuse),
     }
   }
 

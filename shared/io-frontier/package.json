@@ -1,6 +1,6 @@
 {
   "name": "@hai-platform/io-frontier",
-  "version": "0.19.0-alpha.1682409331.32209c5ec",
+  "version": "0.19.0-alpha.1682505883.c59ad262",
   "description": "websocket io frontier",
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",

@@ -342,7 +342,7 @@ watch([tableItems, drawerData], ([newSortedData, newDrawerData]) => {
           </template>
         </template>
 
-        <template #bodyCell="{ column, record }">
+        <template #bodyCell="{ column, record, value }">
           <!-- 查看 / 修改 Quota -->
           <template v-if="(column?.key as string).startsWith('quota__') ">
             <div class="quota-cell">
@@ -368,6 +368,7 @@ watch([tableItems, drawerData], ([newSortedData, newDrawerData]) => {
               </Button>
             </div>
           </template>
+          <template v-if="value === 0"> <span></span></template>
         </template>
         <template #summary>
           <TableSummary fixed>

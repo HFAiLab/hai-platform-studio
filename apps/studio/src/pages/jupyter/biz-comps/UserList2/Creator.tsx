@@ -16,19 +16,35 @@ import type {
 import {
   BuiltinServiceList,
   BuiltinServiceListExternal,
+  DefaultFFFSFuse,
   DefaultSideCar,
+  FuseOptions,
   SidecarInfoMap,
+  convertFuseValueToSubmit,
   getDefaultJupyterGroupPrefixRegex,
   getDefaultMountInfo,
   getDefaultTrainingGroupRegex,
+  getFuseValueFromRemote,
   getMountCode,
   getMountInfoFromCode,
+  ifUserShowFuse,
+  ifUserShowSideCar,
   mountCodeInfoMap,
 } from '@hai-platform/shared'
 import { HFLoading } from '@hai-platform/studio-pages/lib/ui-components/HFLoading'
 import { Collapse as BizCollapse } from '@hai-platform/studio-pages/lib/ui-components/uikit/collapse/index'
 import { getNameSpace } from '@hai-platform/studio-pages/lib/utils/theme'
-import { Button, Callout, Checkbox, Label, MenuItem, Slider, Switch } from '@hai-ui/core'
+import {
+  Button,
+  Callout,
+  Checkbox,
+  Label,
+  MenuItem,
+  Radio,
+  RadioGroup,
+  Slider,
+  Switch,
+} from '@hai-ui/core'
 import { FormGroup } from '@hai-ui/core/lib/esm/components'
 import { Select } from '@hai-ui/select'
 import classNames from 'classnames'
@@ -228,6 +244,16 @@ export const ContainerCreator = React.memo((props: ContainerCreatorProps) => {
       : DefaultSideCar,
   )
 
+  const [fffsEnableFuse, setFFFSEnableFuse] = useState<string>(
+    props.editContainer
+      ? getFuseValueFromRemote(
+          'fffs_enable_fuse' in (props.editContainer?.config_json.schema?.options || {})
+            ? props.editContainer?.config_json.schema?.options?.fffs_enable_fuse
+            : DefaultFFFSFuse,
+        )
+      : getFuseValueFromRemote(DefaultFFFSFuse),
+  )
+
   const [name, setName] = useState<string>(props.editContainer?.config_json.schema?.name || '')
   const [cpu, setCpu] = useState<number>(
     props.editContainer?.config_json?.schema?.resource.cpu || 2,
@@ -290,6 +316,7 @@ export const ContainerCreator = React.memo((props: ContainerCreatorProps) => {
       options: {
         mount_code: getMountCode(extraMounts),
         sidecar: sideCar,
+        fffs_enable_fuse: convertFuseValueToSubmit(fffsEnableFuse),
       },
       services: [],
     }
@@ -645,7 +672,7 @@ export const ContainerCreator = React.memo((props: ContainerCreatorProps) => {
           })}
         </div>
       )}
-      {(User.getInstance().userInfo?.group_list || []).includes('platform') && (
+      {ifUserShowSideCar(User.getInstance().userInfo?.group_list || []) && (
         <div className="container-new-line checkbox-inline-container">
           <Label className="checkbox-label">Sidecar</Label>
           {Object.entries(SidecarInfoMap).map(([value, info]) => {
@@ -664,6 +691,22 @@ export const ContainerCreator = React.memo((props: ContainerCreatorProps) => {
               />
             )
           })}
+        </div>
+      )}
+      {ifUserShowFuse(User.getInstance().userInfo?.group_list || []) && (
+        <div className="container-new-line checkbox-inline-container">
+          <Label className="checkbox-label">3FS Fuse</Label>
+          <RadioGroup
+            inline
+            onChange={(e: React.FormEvent<HTMLInputElement>) => {
+              setFFFSEnableFuse((e.target as HTMLInputElement).value)
+            }}
+            selectedValue={fffsEnableFuse}
+          >
+            {FuseOptions.map(({ key, value }) => {
+              return <Radio inline label={key} value={value} />
+            })}
+          </RadioGroup>
         </div>
       )}
       <h4 className="creator-part-title">{i18n.t(i18nKeys.biz_container_srvc_info_config)}</h4>
