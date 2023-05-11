@@ -41,7 +41,7 @@ HAI Platform Studio 是为 [HAI Platform](https://github.com/HFAiLab/hai-platfor
 ## 调试与部署
 
 在调试前，请先确保已经成功部署了 [HAI Platform](https://github.com/HFAiLab/hai-platform) 后端。
-本部分请参考[调试与部署](https://github.com/HFAiLab/hai-platform-docs)。
+本部分请参考[调试与部署](https://hfailab.github.io/hai-platform/start/studio.html#id2)。
 
 <a name="supply"></a>
 
